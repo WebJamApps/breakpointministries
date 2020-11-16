@@ -1,15 +1,15 @@
 {
-  "name": "collegelutheran",
-  "version": "0.1.4",
-  "description": "collegelutheran.org",
+  "name": "changeinchrist",
+  "version": "0.0.1",
+  "description": "changeinchrist.org",
   "main": "dist/index.html",
   "repository": {
-    "url": "git+ssh://git@github.com/WebJamApps/CollegeLutheran.git",
+    "url": "git+ssh://git@github.com/WebJamApps/breakpointministries.git",
     "type": "git"
   },
-  "author": "https://github.com/orgs/WebJamApps/teams/the-95-theses",
+  "author": "https://github.com/orgs/WebJamApps/teams/handlersandkickers",
   "engines": {
-    "node": ">=14.10.0"
+    "node": ">=15.1.0"
   },
   "files": [
     "webpack.config.js",
