@@ -6,7 +6,6 @@ import {
 import { connect } from 'react-redux';
 import authUtils from './authUtils';
 import mapStoreToProps, { Auth } from '../redux/mapStoreToProps';
-import Footer from './Footer';
 import menuUtils from './menuUtils';
 import menuItems, { MenuItem } from './menuItems';
 
@@ -129,15 +128,9 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
       <div className="nav-list" style={{ width: '220px' }}>
         <p style={{ fontSize: '1px', marginBottom: '2px' }} />
         <div className="menu-item" style={{ backgroundColor: '#244a8bff' }}>
-          <p style={{ color: '#fff', marginBottom: '2px' }}>
-            <a href="http://bit.ly/CollegeLutheranDirections" className="menu-hover" style={{ color: '#88c1ff' }}>
-              <span>210 S. College Ave</span>
-            </a>
-            <br />
-            Salem, VA 24153
-          </p>
+          <img width="200px" src="https://dl.dropboxusercontent.com/s/ojwr69z0gbi0zw8/Christ-the-redeemer.png?dl=0" alt="Christ the Redeemer" />
         </div>
-        <div className="menu-item" style={{ backgroundColor: '#244a8bff' }}>
+        {/* <div className="menu-item" style={{ backgroundColor: '#244a8bff' }}>
           <p style={{ color: '#fff', marginBottom: '2px' }}>
             <span>ph: </span>
             <a href="tel:5403894963" className="menu-hover" style={{ color: '#88c1ff' }}>(540) 389-4963</a>
@@ -149,7 +142,7 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
               <span className="menu-hover">office1@collegelutheran.org</span>
             </a>
           </p>
-        </div>
+        </div> */}
         {this.menus.map((menu, index) => (this.menuUtils.menuItem(menu, index, this)))}
       </div>
     );
@@ -184,14 +177,14 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
             backgroundColor: '#c0c0c0', zIndex: -1, position: 'relative',
           }}
         >
-          <div className="navImage" style={{ width: '220px' }}>
+          {/* <div className="navImage" style={{ width: '220px' }}>
             <img
               alt="Luther Rose"
               id="webjamwidelogo"
               src={`${this.currentStyles.sidebarImagePath}`}
               style={{ width: '86px', marginRight: 0, marginLeft: 0 }}
             />
-          </div>
+          </div> */}
           {this.navLinks()}
         </div>
       </div>
@@ -211,10 +204,10 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
           </span>
           <div className="mainPanel">
             <div className="swipe-area" />
-            {this.headerSection()}
+            {/* {this.headerSection()} */}
             <div style={{ width: 'auto' }} id="contentBlock" className="content-block">
               {children}
-              <Footer />
+              {/* <Footer /> */}
             </div>
           </div>
         </div>

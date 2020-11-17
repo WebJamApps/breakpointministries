@@ -13,7 +13,7 @@ const ensureArray = (config) => config && (Array.isArray(config) ? config : [con
 const when = (condition, config, negativeConfig) => (condition ? ensureArray(config) : ensureArray(negativeConfig));
 
 // primary config:
-const title = 'College Lutheran Church';
+const title = 'Change In Christ';
 const outDir = path.resolve(__dirname, 'dist');
 const srcDir = path.resolve(__dirname, 'src');
 const baseUrl = '/';

@@ -9,7 +9,7 @@
   },
   "author": "https://github.com/orgs/WebJamApps/teams/handlersandkickers",
   "engines": {
-    "node": ">=15.1.0"
+    "node": ">=15.2.0"
   },
   "files": [
     "webpack.config.js",
@@ -72,7 +72,6 @@
     "@types/webpack-env": "^1.15.1",
     "bootstrap": "latest",
     "copy-webpack-plugin": "latest",
-    "core-js": "latest",
     "css-loader": "latest",
     "dotenv": "latest",
     "expose-loader": "latest",
@@ -104,7 +103,6 @@
     "redux-logger": "latest",
     "redux-persist": "latest",
     "redux-thunk": "latest",
-    "regenerator-runtime": "latest",
     "sass-loader": "latest",
     "slick-carousel": "latest",
     "snyk": "^1.290.1",
