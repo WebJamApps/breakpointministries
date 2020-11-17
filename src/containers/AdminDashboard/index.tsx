@@ -5,7 +5,6 @@ import mapStoreToProps, { Ibook } from '../../redux/mapStoreToProps';
 import forms from '../../lib/forms';
 import AdminController from './AdminController';
 import commonUtils from '../../lib/commonUtils';
-import PTable from '../../components/PhotoTable';
 
 export interface PicData {
   buttonId: string; buttonClick: (e: React.ChangeEvent<EventTarget>) => Promise<string>; title: string; nameId: string;
@@ -262,9 +261,6 @@ export class AdminDashboard extends Component<DashboardProps, DashboardState> {
   }
 
   render(): JSX.Element {
-    const {
-      showTable, auth, dispatch, youthPics, familyPics, otherPics, musicPics,
-    } = this.props;
     return (
       <div className="page-content">
         <h4 style={{ textAlign: 'center', marginTop: '10px' }}>
@@ -273,16 +269,6 @@ export class AdminDashboard extends Component<DashboardProps, DashboardState> {
         {this.changeHomepage()}
         {this.controller.addForumForm()}
         {this.changeYouthForm()}
-        {showTable ? (
-          <PTable
-            auth={auth}
-            dispatch={dispatch}
-            youthPics={youthPics}
-            familyPics={familyPics}
-            otherPics={otherPics}
-            musicPics={musicPics}
-          />
-        ) : null}
       </div>
     );
   }
