@@ -1,12 +1,9 @@
-import 'core-js/stable';
-import 'regenerator-runtime/runtime';
-
 describe('Home', () => {
-  it('should be titled "College Lutheran Church"', async () => {
+  it('should be titled "Change In Christ"', async () => {
     const page = await browser.newPage();
-    await page.goto('http://localhost:7787/', {
+    await page.goto('http://localhost:9010/', {
       waitUntil: 'load',
     });
-    await expect(page.title()).resolves.toMatch('College Lutheran Church');
+    await expect(page.title()).resolves.toMatch('Change In Christ');
   });
 });
