@@ -2,7 +2,7 @@ version: 2.0
 jobs:
   build:
     environment:
-      CC_TEST_REPORTER_ID: idhere
+      CC_TEST_REPORTER_ID: 1c5b2bd21bcb5b2ec6cef1ac6c47761bf5cb0f00b06165874141e1afb2c9e8ef
     docker:
       - image: circleci/node:stretch
     working_directory: ~/repo
