@@ -1,5 +1,3 @@
-// import 'core-js/stable';
-// import 'regenerator-runtime/runtime';
 import superagent from 'superagent';
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';

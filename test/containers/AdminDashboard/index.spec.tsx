@@ -2,7 +2,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { AdminDashboard } from '../../../src/containers/AdminDashboard';
-import { PhotoTable } from '../../../src/components/PhotoTable';
 
 describe('Dashboard Container', () => {
   let props: any, wrapper: any;
@@ -156,26 +155,5 @@ describe('Dashboard Container', () => {
     wrapper.instance().setState = jest.fn((obj) => expect(obj.youthName).toBe(''));
     wrapper.update();
     wrapper.instance().resetEditForm({ preventDefault: () => { } });
-  });
-  it('doesnt show PTable when showTable is true', () => {
-    const editPic2:any = {
-      title: 'title', url: 'url', type: 'otherPics', _id: '123', comments: 'showCaption', created_at: '',
-    };
-    const wrapper2 = shallow<AdminDashboard>(<AdminDashboard
-      dispatch={(fun) => fun}
-      auth={props.auth}
-      books={props.books}
-      youthPics={props.youthPics}
-      familyPics={props.familyPics}
-      musicPics={props.musicPics}
-      otherPics={props.otherPics}
-      homeContent={props.homeContent || ''}
-      editPic={editPic2}
-      showTable={false}
-      history={history}
-      location={location}
-      match={match}
-    />);
-    expect(wrapper2.find(PhotoTable).exists()).toBe(false);
   });
 });
