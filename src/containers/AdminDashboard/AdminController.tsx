@@ -227,7 +227,6 @@ class AdminController {
         init={{
           height: 500,
           menubar: 'insert tools',
-          selector: 'textarea',
           menu: { format: { title: 'Format', items: 'forecolor backcolor' } },
           plugins: [
             'advlist autolink lists link image charmap print preview anchor',
