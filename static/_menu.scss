@@ -88,6 +88,10 @@ button.nav-link:hover {
   min-width: auto !important;
 }
 
+.searchBar, .subscribeBar {
+  margin-left: 3px;
+}
+
 .searchBar {
   border: black 1px solid;
 }
@@ -102,7 +106,6 @@ button.nav-link:hover {
   border: none;
   height: 33px;
   width: 25%;
-  min-width: 62px;
   background-repeat: no-repeat;
   background-position-x: 50%;
   background-position-y: 50%;
@@ -121,6 +124,7 @@ button.nav-link:hover {
   border: 1px solid #ffb900;
   background-color: #ffb900;
   font-weight: bold;
+  padding: 0 1px;
 }
 
 .sr-search-bar, .sr-subscribe-bar {
