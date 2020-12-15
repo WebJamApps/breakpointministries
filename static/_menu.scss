@@ -100,6 +100,7 @@ button.nav-link:hover {
   width: auto;
   overflow: visible;
   position: relative;
+  border: 1px solid #ffb900;
 }
 
 .searchSubmit, .subscribeSubmit {
@@ -114,10 +115,6 @@ button.nav-link:hover {
 
 .searchSubmit {
   background-color: #000;
-}
-
-.subscribeBar {
-  border: 1px solid #ffb900;
 }
 
 .subscribeSubmit {
