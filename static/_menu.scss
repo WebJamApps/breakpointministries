@@ -52,7 +52,7 @@ button.nav-link:hover {
 #mobilemenutoggle {
   cursor          : pointer;
   position        : fixed;
-  right           : 12px;
+  left           : 12px;
   top             : 32px;
   z-index         : 95;
   color           : #f4c00eff;
@@ -81,4 +81,48 @@ button.nav-link:hover {
 
 .menu-hover:hover {
   color: rgb(204, 224, 255) !important;
+}
+
+.searchBar, .subscribeBar, .searchSubmit, .subscribeSubmit {
+  margin-top: 0.5rem;
+  min-width: auto !important;
+}
+
+.searchBar {
+  border: black 1px solid;
+}
+
+.subscribeBar {
+  width: auto;
+  overflow: visible;
+  position: relative;
+}
+
+.searchSubmit, .subscribeSubmit {
+  border: none;
+  height: 33px;
+  width: 25%;
+  min-width: 62px;
+  background-repeat: no-repeat;
+  background-position-x: 50%;
+  background-position-y: 50%;
+  background-size: 25px;
+}
+
+.searchSubmit {
+  background-color: #000;
+}
+
+.subscribeBar {
+  border: 1px solid #ffb900;
+}
+
+.subscribeSubmit {
+  border: 1px solid #ffb900;
+  background-color: #ffb900;
+  font-weight: bold;
+}
+
+.sr-search-bar, .sr-subscribe-bar {
+  display: none;
 }

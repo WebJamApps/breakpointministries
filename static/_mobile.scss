@@ -1,14 +1,14 @@
 @media screen and (min-width: 900px) {
   .drawer-container {
-    float: right;
+    float: left;
     position: fixed;
-    right: 0;
+    left: 0;
     z-index: 100;
   }
 
   .main-panel {
     position: relative;
-    float: left;
+    float: right;
     clear: both;
     height: 100vh;
     width: calc(100% - 220px);
@@ -201,7 +201,7 @@
 
   .drawer {
     background-color: rgb(192, 192, 192);
-    float: right;
+    float: left;
     height: 100%;
   }
 
@@ -234,7 +234,7 @@
   .nav-list {
     position: fixed;
     top: 0 !important;
-    right: 0;
+    left: 0;
     margin: auto;
     padding-top: 1px;
   }
@@ -307,7 +307,7 @@
 .drawer-container {
   height: 100vh;
   position: fixed;
-  float: right;
+  float: left;
   z-index: 100;
   width: 220px;
 }
@@ -315,7 +315,7 @@
 .nav-list {
   position: fixed;
   top: 91px;
-  right: 0;
+  left: 0;
   height: 100%;
   z-index: 90000;
   background-color: rgb(192, 192, 192);
@@ -329,7 +329,7 @@
 .navImage {
     position: fixed;
     top: 0;
-    right: 0;
+    left: 0;
     background-color: #244a8bff;
     margin: auto;
     padding-top: 3px;

@@ -15,11 +15,32 @@ const menuItems = [{
   auth: true,
 },
 {
+  classname: 'search',
+  type: 'searchBar',
+  iconClass: 'fas fa-login',
+  link: '',
+  name: 'Search',
+},
+{
+  classname: 'subscribe',
+  type: 'subscribeBar',
+  iconClass: 'fas fa-login',
+  link: '',
+  name: 'Subscribe',
+},
+{
   classname: 'home',
   type: 'link',
   iconClass: 'fas fa-heart',
   link: '/',
   name: 'Home',
+},
+{
+  classname: 'about',
+  type: 'link',
+  iconClass: 'fas fa-question',
+  link: '/about',
+  name: 'About',
 },
 {
   classname: 'login',
