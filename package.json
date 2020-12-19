@@ -70,7 +70,6 @@
     "@types/terser-webpack-plugin": "latest",
     "@types/webpack-bundle-analyzer": "latest",
     "@types/webpack-env": "latest",
-    "bootstrap": "latest",
     "copy-webpack-plugin": "latest",
     "core-js": "^3.8.0",
     "crypto-browserify": "^3.12.0",

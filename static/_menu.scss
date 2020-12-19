@@ -42,6 +42,10 @@ button.nav-link:hover {
   padding-top           : 0;
   padding-right         : 16px;
   box-sizing            : border-box;
+
+  &:hover {
+    background-color: white;
+  }
 }
 
 .menu-toggle {
@@ -58,11 +62,11 @@ button.nav-link:hover {
   color           : #f4c00eff;
   background-color: #244a8bff;
   padding         : 1px 6px 0;
-}
 
-#mobilemenutoggle img {
-  width : 30px;
-  height: 20px;
+  img {
+    width : 30px;
+    height: 20px;
+  }
 }
 
 .mobile-menu-toggle {

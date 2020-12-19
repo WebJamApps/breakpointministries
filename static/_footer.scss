@@ -1,7 +1,3 @@
-.footer span i {
-  font-size: 2em;
-}
-
 .footerIcon:hover {
   color: white;
 }
@@ -9,26 +5,30 @@
 .footer {
   flex-shrink: 0;
   background-color: rgb(36, 74, 139) !important;
-}
 
-.footer span {
-  color: #f4c00eff;
-  cursor: pointer;
-}
+  span {
+    color: #f4c00eff;
+    cursor: pointer;
 
-.footer span:hover {
-  color: #ffffff;
-  cursor: pointer;
+    &:hover {
+      color: #ffffff;
+      cursor: pointer;
+    }
+
+    i {
+      font-size: 2em;
+    }
+  }
 }
 
 .wjllc {
   color: white;
   font-size: 9pt;
   font-weight: bold;
-}
 
-.wjllc:hover {
-  color: black;
+  &:hover {
+    color: black;
+  }
 }
 
 .nohover {

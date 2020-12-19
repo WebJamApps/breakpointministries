@@ -28,25 +28,6 @@ p {
   margin-top: 0;
 }
 
-#content {
-  left: auto;
-  width: 1000px;
-  margin: auto;
-}
-
-.elevation2 {
-  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.4);
-  padding: 10px;
-  height: 500px;
-  max-height: 500px;
-  max-width: 500px;
-  margin: auto;
-}
-
-.elevation3 {
-  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.4);
-}
-
 /* Headers */
 
 h1 {
@@ -60,10 +41,6 @@ h2 {
 h3 {
   font-weight: bold;
   font-size: 24pt;
-}
-
-h3.au-target.header-text.ohaf-header {
-  padding: 0;
 }
 
 h4 {
@@ -127,16 +104,16 @@ select {
   position: relative;
   box-sizing: border-box;
   border-radius: 2px;
-}
 
-.headercontent img {
-  position: relative;
-  left: 0px;
-}
+  img {
+    position: relative;
+    left: 0px;
+  }
 
-.headercontent h3 {
-  margin: 0 !important;
-  padding: 0 !important;
+  h3 {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
 }
 
 .header-text {
@@ -215,11 +192,11 @@ select {
 a:not([href]):not([tabindex]) {
   text-decoration: underline;
   color: #007bff;
-}
 
-a:not([href]):not([tabindex]):hover {
-  text-decoration: underline;
-  color: #0056b3;
+  &:hover {
+    text-decoration: underline;
+    color: #0056b3;
+  }
 }
 
 p, a, label {
@@ -232,10 +209,10 @@ a {
   text-align: center;
   cursor: pointer;
   border: none !important;
-}
 
-a:hover {
-  color: #0056b3;
+  &:hover {
+    color: #0056b3;
+  }
 }
 
 .regularLink {
@@ -246,16 +223,15 @@ a:hover {
 
 button {
   cursor: pointer;
-}
 
-button:hover {
-  background-color: #ddffcc;
+  &:hover {
+    background-color: #ddffcc;
+  }
 
-}
-
-button:disabled {
-  background-color: #f2f2f2;
-  cursor: none
+  &:disabled {
+    background-color: #f2f2f2;
+    cursor: none
+  }
 }
 
 .button-lib {
@@ -318,7 +294,7 @@ button:disabled {
   }
 }
 
-/* @media print { */
+/* @media print */
   div.page-host {
     position: absolute;
     left: 0;
@@ -328,7 +304,7 @@ button:disabled {
     overflow-x: hidden;
     overflow-y: auto;
 }
-/* } */
+
 @-webkit-keyframes fadeIn {
   0% {
     opacity: 0;
@@ -358,45 +334,6 @@ div.fof {
   height: 80vh;
 }
 
-/* App/Giving */
-
-.giving-iframe {
-  width: 800px;
-  height: 460px;
-  border: 1px solid #d3d3d3;
-}
-
-/* App/Staff */
-
-.staffPicture {
-  width: 288px;
-  display: block;
-  margin: auto;
-  text-align: center;
-}
-
-.staffDescription {
-  text-align: left;
-  max-width: 8in;
-  margin: auto;
-  margin-top: 15px;
-}
-
-/* components/elcaLogo */
-
-div.familyELCA, div.youthELCA, div.givingELCA, div.beliefsELCA, div.newsELCA {
-  text-align: center;
-  margin: auto;
-  padding-top: 0;
-}
-
-.staffElca {
-  text-align: left;
-  margin-bottom: -30px;
-  margin-top: 20px;
-  display: none;
-}
-
 .horiz-scroll {
     white-space: nowrap;
     position: relative;
@@ -406,7 +343,6 @@ div.familyELCA, div.youthELCA, div.givingELCA, div.beliefsELCA, div.newsELCA {
 
 @import 'footer';
 @import 'tables';
-@import 'home';
 @import 'materialui';
 @import 'mobile';
 @import 'slideshow';
