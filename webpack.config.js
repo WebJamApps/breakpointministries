@@ -126,7 +126,7 @@ module.exports = (env) => ({
         { from: 'static/favicon.ico', to: 'favicon.ico' },
       ],
     }),
-    new webpack.EnvironmentPlugin(['NODE_ENV','BackendUrl', 'GoogleClientId', 'userRoles', 'HashString', 'TINY_KEY']),
+    new webpack.EnvironmentPlugin(['NODE_ENV', 'BackendUrl', 'GoogleClientId', 'userRoles', 'HashString', 'TINY_KEY']),
     ...when(env.analyze, new BundleAnalyzerPlugin()),
   ],
 });
