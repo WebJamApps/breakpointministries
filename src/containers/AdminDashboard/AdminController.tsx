@@ -28,7 +28,7 @@ class AdminController {
 
   addForumButton(announcementtitle: string, announcementurl: string): JSX.Element {
     return (
-      <div style={{ marginLeft: '70%', marginTop: '1rem' }}>
+      <div style={{ marginLeft: '70%', marginTop: '10px' }}>
         <button
           type="button"
           id="addForum"
@@ -54,12 +54,12 @@ class AdminController {
     };
     const ip2 = { ...inputParams, label: 'Announcement URL', value: announcementurl };
     return (
-      <div className="material-content elevation3" style={{ maxWidth: '8in', margin: '3rem auto auto auto' }}>
+      <div className="material-content elevation3" style={{ maxWidth: '8in', margin: '30px auto auto auto' }}>
         <h5>Announcements Table</h5>
         <form
           id="create-forum"
           style={{
-            textAlign: 'left', marginLeft: '.4rem', width: '100%', maxWidth: '100%',
+            textAlign: 'left', marginLeft: '4px', width: '100%', maxWidth: '100%',
           }}
         >
           {this.view.forms.makeInput(inputParams)}
@@ -80,7 +80,7 @@ class AdminController {
     return (
       <div
         className="material-content elevation3"
-        style={{ maxWidth: '32rem', margin: '3rem auto' }}
+        style={{ maxWidth: '320px', margin: '30px auto' }}
       >
         <h4 className="material-header-h4">
           {editPic._id ? 'Edit ' : 'Add '}

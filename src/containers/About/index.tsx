@@ -32,8 +32,8 @@ export class About extends React.Component<AboutProps> {
         {width >= 900
           ? (
             <div className="page-content">
-              <h1 style={{ marginLeft: '1rem' }}>About Me</h1>
-              <p style={{ fontSize: '1.6rem', marginLeft: '1rem', marginBottom: '0' }}>
+              <h1 style={{ marginLeft: '10px' }}>About Me</h1>
+              <p style={{ fontSize: '12pt', marginLeft: '10px', marginBottom: '0' }}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 Ut enim ad minim veniam,
                 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
@@ -41,7 +41,7 @@ export class About extends React.Component<AboutProps> {
                 sunt in culpa qui officia deserunt mollit anim id est laborum.
               </p>
               &nbsp;
-              <p style={{ fontSize: '1.6rem', marginLeft: '1rem', marginBottom: '0' }}>
+              <p style={{ fontSize: '12pt', marginLeft: '10px', marginBottom: '0' }}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 Ut enim ad minim veniam,
                 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
@@ -49,7 +49,7 @@ export class About extends React.Component<AboutProps> {
                 sunt in culpa qui officia deserunt mollit anim id est laborum.
               </p>
               &nbsp;
-              <p style={{ fontSize: '1.6rem', marginLeft: '1rem', marginBottom: '0' }}>
+              <p style={{ fontSize: '12pt', marginLeft: '10px', marginBottom: '0' }}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 Ut enim ad minim veniam,
                 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
@@ -61,8 +61,8 @@ export class About extends React.Component<AboutProps> {
           : (
             <div className="page-content">
               <hr />
-              <p style={{ fontSize: '.8rem', marginBottom: '0' }}>&nbsp;</p>
-              <p style={{ fontSize: '.8rem', marginBottom: '0' }}>&nbsp;</p>
+              <p style={{ fontSize: '6pt', marginBottom: '0' }}>&nbsp;</p>
+              <p style={{ fontSize: '6pt', marginBottom: '0' }}>&nbsp;</p>
             </div>
           )}
       </div>

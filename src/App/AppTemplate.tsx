@@ -125,11 +125,24 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
 
   navLinks(): JSX.Element {
     return (
-      <div className="nav-list" style={{ width: '22rem' }}>
-        <p style={{ fontSize: '.1rem', marginBottom: '.2rem' }} />
+      <div className="nav-list" style={{ width: '220px' }}>
+        <p style={{ fontSize: '1px', marginBottom: '2px' }} />
         <div className="menu-item" style={{ backgroundColor: '#244a8bff' }}>
-          <img width="20rem" src="https://dl.dropboxusercontent.com/s/ojwr69z0gbi0zw8/Christ-the-redeemer.png?dl=0" alt="Christ the Redeemer" />
+          <img width="200px" src="https://dl.dropboxusercontent.com/s/ojwr69z0gbi0zw8/Christ-the-redeemer.png?dl=0" alt="Christ the Redeemer" />
         </div>
+        {/* <div className="menu-item" style={{ backgroundColor: '#244a8bff' }}>
+          <p style={{ color: '#fff', marginBottom: '2px' }}>
+            <span>ph: </span>
+            <a href="tel:5403894963" className="menu-hover" style={{ color: '#88c1ff' }}>(540) 389-4963</a>
+            <br />
+            <span>fax: </span>
+            <a href="tel:5403894980" className="menu-hover" style={{ color: '#88c1ff' }}>(540) 389-4980</a>
+            <br />
+            <a style={{ color: '#88c1ff', wordWrap: 'break-word' }} href="mailto:office1@collegelutheran.org">
+              <span className="menu-hover">office1@collegelutheran.org</span>
+            </a>
+          </p>
+        </div> */}
         {this.menus.map((menu, index) => (this.menuUtils.menuItem(menu, index, this)))}
       </div>
     );
@@ -140,9 +153,9 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
       <div id="header" className={`material-header ${this.currentStyles.headerClass}`}>
         <div className="headercontent" />
         <div>
-          <div style={{ marginLeft: '.5rem', marginTop: '-1.8rem' }}>
+          <div style={{ marginLeft: '5px', marginTop: '-18px' }}>
             <div className="flex-header">
-              <h2 className="header-text" style={{ marginBottom: '0', marginTop: '.1rem', fontSize: '3.4rem' }}>
+              <h2 className="header-text" style={{ marginBottom: '0px', marginTop: '1px', fontSize: '34px' }}>
                 <a className="header-text" href="/" style={{ textAlign: 'left', textDecoration: 'none' }}>College Lutheran Church</a>
               </h2>
               <p className="subTitle" style={{ maxWidth: '100%' }}>
@@ -164,6 +177,14 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
             backgroundColor: '#c0c0c0', zIndex: -1, position: 'relative',
           }}
         >
+          {/* <div className="navImage" style={{ width: '220px' }}>
+            <img
+              alt="Luther Rose"
+              id="webjamwidelogo"
+              src={`${this.currentStyles.sidebarImagePath}`}
+              style={{ width: '86px', marginRight: 0, marginLeft: 0 }}
+            />
+          </div> */}
           {this.navLinks()}
         </div>
       </div>
@@ -183,8 +204,10 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
           </span>
           <div className="mainPanel">
             <div className="swipe-area" />
+            {/* {this.headerSection()} */}
             <div style={{ width: 'auto' }} id="contentBlock" className="content-block">
               {children}
+              {/* <Footer /> */}
             </div>
           </div>
         </div>
