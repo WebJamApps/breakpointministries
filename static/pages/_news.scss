@@ -1,6 +1,6 @@
 .newsTable {
-    width: 320px;
-    margin-bottom: 1rem;
+    width: 32rem;
+    margin-bottom: 1.6rem;
     color: #212529;
     table-layout: fixed;
 }
@@ -20,27 +20,27 @@
 
 .newsUrl tbody tr:nth-child(even) {
   display: table-row;
-  background-color: #fff;
+  background-color: $color-white;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 32rem) {
   .newsTable {
-    width: 320px !important;
+    width: 32rem !important;
   }
 }
 
-@media screen and (max-width: 911px) {
+@media screen and (max-width: 91.1rem) {
   .TableContainer-root {
-    height: 220px !important;
+    height: 22rem !important;
   }
 }
 
-@media screen and (min-width: 912px) {
+@media screen and (min-width: 91.2rem) {
   .TableContainer-root {
     width: 100%;
   }
 
   .newsTitle {
-    width: 320px !important;
+    width: 32rem !important;
   }
 }

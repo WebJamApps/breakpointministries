@@ -1,0 +1,69 @@
+/* Home Header and Menu */
+
+.headercontent {
+  top: .2rem;
+  box-shadow: 0 .2rem .2rem 0
+  rgba($color-black, 0.14), 0 .1rem .5rem 0
+  rgba($color-black, 0.12), 0 .3rem .1rem -.2rem rgba($color-black, 0.2);
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  border-radius: .2rem;
+
+  img {
+    position: relative;
+    left: 0;
+  }
+
+  h3 {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
+.header-text {
+  color: $color-white;
+  font-size: 2.53rem;
+  font-weight: 500;
+  font-family: 'TrajanProRegular', Times, 'Times New Roman', serif;
+}
+
+.header-text-card {
+  left: 1rem;
+  top: -3.2rem;
+  text-align: center;
+}
+
+.home-sidebar {
+  background-color: #c0c0c0;
+}
+
+.home-header {
+  background-color: #2a222a;
+  height: 9.1rem;
+}
+
+.home-header-image {
+  width: 8.5rem;
+}
+
+.home-menu-toggle {
+  color: #333;
+}
+
+.flex-header {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin-left: .5rem;
+  padding: 0;
+  width: 80%;
+}
+
+.subTitle {
+  max-width: 80%;
+  font-weight: bold;
+  font-size: $default-font-size;
+  color: #999999;
+  font-family: 'Trebuchet MS', 'ChivoBlack', Arial, Helvetica, sans-serif;
+}

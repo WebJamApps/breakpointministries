@@ -1,0 +1,46 @@
+/* splash is in the index.ejs file, used for the initial page load animation */
+
+.splash {
+  text-align: center;
+  margin: 10% 0 0;
+  box-sizing: border-box;
+}
+
+.splash .message {
+  font-size: 7.2rem;
+  line-height: 7.2rem;
+  text-shadow: rgba(0, 0, 0, 0.5) 0 0 1.5rem;
+  text-transform: uppercase;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.splash .fa-spinner {
+  text-align: center;
+  display: inline-block;
+  font-size: 7.2rem;
+  margin-top: 5rem;
+}
+
+/* Keyframes */
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}

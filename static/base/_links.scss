@@ -1,0 +1,24 @@
+a {
+  text-decoration: underline;
+  text-align: center;
+  cursor: pointer;
+  border: none !important;
+
+  &:hover {
+    color: #0056b3;
+  }
+
+  &:not([href]):not([tabindex]) {
+    text-decoration: underline;
+    color: #007bff;
+
+    &:hover {
+      text-decoration: underline;
+      color: #0056b3;
+    }
+  }
+}
+
+.regularLink {
+  text-decoration: underline;
+}

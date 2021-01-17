@@ -1,72 +1,70 @@
-@import 'MuiTheme'; /* MuiData Table Theme Styling */
-
 .material-content {
-  padding: 10px;
+  padding: 1rem;
 }
 
 .material-content-faq {
-  padding: 10px;
+  padding: 1rem;
 }
 
 .material-content-h1,
 .material-content-h2,
 .material-content-h3 {
   text-align: center;
-  margin-top: 15px;
+  margin-top: 1.5rem;
 }
 
 .material-content-h2 {
-  font-size: 30px;
+  font-size: 3rem;
 }
 
 .material-content-h1 {
-  font-size: 34px;
-  color: black;
+  font-size: 3.4rem;
+  color: $color-black;
 }
 
 .material-content-p {
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  font-size: 16px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
   text-align: center;
 }
 
 .material-content-p-bigger {
-  font-size: 24px;
-  max-width: 800px;
+  font-size: 2.4rem;
+  max-width: 80rem;
 }
 
 .material-content-ul {
-  max-width: 400px;
+  max-width: 40rem;
   margin-left: auto;
   margin-right: auto;
-  font-size: 16px;
+  font-size: 1.6rem;
 }
 
 .material-header {
-  min-height: 88px;
+  min-height: 8.8rem;
   background-color: #244a8bff;
   z-index: 93;
   top: 0;
 }
 
 .material-header-content {
-  max-width: 500px;
+  max-width: 50rem;
   margin-left: auto;
   margin-right: auto;
 }
 
 .material-header-h3 {
-  color: white;
+  color: $color-white;
 }
 
 .material-header-h3-call {
-  color: white;
-  font-size: 22pt;
+  color: $color-white;
+  font-size: 2.9rem;
 }
 
 .material-header-h4 {
   text-align: center;
-  margin-top: 5px;
+  margin-top: .5rem;
 }

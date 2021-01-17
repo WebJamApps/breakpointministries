@@ -1,0 +1,18 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  -webkit-overflow-scrolling: touch;
+}
+
+html {
+  // Equivalent to 10px by default
+  // Defines what 1rem is equal to.
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+}

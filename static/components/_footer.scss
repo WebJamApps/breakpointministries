@@ -1,5 +1,5 @@
 .footerIcon:hover {
-  color: white;
+  color: $color-white;
 }
 
 .footer {
@@ -11,7 +11,7 @@
     cursor: pointer;
 
     &:hover {
-      color: #ffffff;
+      color: $color-white;
       cursor: pointer;
     }
 
@@ -22,19 +22,19 @@
 }
 
 .wjllc {
-  color: white;
-  font-size: 9pt;
+  color: $color-white;
+  font-size: 1.2rem;
   font-weight: bold;
 
   &:hover {
-    color: black;
+    color: $color-black;
   }
 }
 
 .nohover {
-  margin-left: 26px;
-  color: #fff !important;
-  font-size: 9pt;
+  margin-left: 2.6rem;
+  color: $color-white !important;
+  font-size: 1.2rem;
   margin-bottom: 0;
   cursor: text !important;
 }

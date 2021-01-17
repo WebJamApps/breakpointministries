@@ -1,6 +1,6 @@
 /* Slideshow container */
 #youthSlideshow, #youthSlideshow1, #familySlideshow, #familySlideshow1, #slideshowMusic, #slideshow1, #slideshow, #musicSlide2, #lSlide1, #lSlide2 {
-  max-width: 600px;
+  max-width: 60rem;
   position: relative;
   margin: auto;
 }
@@ -15,7 +15,7 @@
   width: 100% !important;
   height: 0 !important;
   padding-bottom: 50%;
-  margin-top: -15px;
+  margin-top: -1.5rem;
 }
 
 .slideshowimage {
@@ -28,17 +28,17 @@
 }
 
 .sidebar-image {
-  width: 180px;
+  width: 18rem;
   border: 0;
 }
 
 #musicSlide1 {
-  max-width: 998px !important;
+  max-width: 99.8rem !important;
   margin: auto !important;
 }
 
 #familySlideshowWide, #youthSlideshowWide {
-  max-width: 600px;
+  max-width: 6rem;
   margin: auto;
 }
 
@@ -48,18 +48,18 @@
 
 #familySlideshow img, #familySlideshow1 img, #youthSlideshow img, #youthSlideshow1 img, #slideshowMusic img, #slideshow img, #musicSlide2 img, #lSlide1 img, #lSlide2 img {
   margin: auto;
-  max-height: 5in;
+  max-height: 48rem;
   cursor: pointer;
 }
 
 #familySlideshowWide img, #familySlideshow1 img, #youthSlideshowWide img, #youthSlideshowWide1 img {
   margin: auto;
-  max-height: 5in;
-  padding-top: 1px
+  max-height: 48rem;
+  padding-top: .1rem
 }
 
 .slide-show {
-  height: 400px;
+  height: 40rem;
   width: 100%;
   object-fit: contain;
   background-color: rgb(192, 192, 192);

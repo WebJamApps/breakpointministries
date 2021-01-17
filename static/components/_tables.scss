@@ -1,5 +1,3 @@
-@import 'news';
-
 /* Tables Generic */
 
 table {
@@ -12,13 +10,13 @@ tbody tr:nth-child(odd) {
 }
 
 tbody.regformtbody tr:nth-child(odd) {
-  background-color: white;
+  background-color: $color-white;
 }
 
 th, td {
   border-collapse: collapse;
-  border: 1px solid #777;
-  padding: 8px;
+  border: .1rem solid #777;
+  padding: .8rem;
   text-align: left;
 }
 
@@ -32,8 +30,8 @@ tbody.regformtbody th {
 }
 
 tbody.regformtbody td {
-  padding: 10px;
-  padding-top: 4px;
+  padding: 1rem;
+  padding-top: .4rem;
 }
 
 /* Responsive/Sticky */
@@ -53,7 +51,7 @@ tbody.regformtbody td {
 }
 
 .TableContainer-root {
-  height: 300px;
+  height: 30rem;
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -79,27 +77,27 @@ tbody.regformtbody td {
 
 
 .StickyHeader {
-  min-width: 170px;
+  min-width: 17rem;
   top: 0;
   left: 0;
   z-index: 2;
   position: sticky;
-  background-color: #fff;
+  background-color: $color-white;
 }
 
 .TableCell-head {
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba($color-black, 0.87);
   font-weight: bold;
-  line-height: 1.5rem;
+  line-height: 2.4rem;
 }
 
 .TableCell-root {
   display: table-cell;
-  padding: 8px;
-  font-size: 0.875rem;
+  padding: .8rem;
+  font-size: 1.4rem;
   text-align: left;
-  border-bottom: 1px solid rgba(224, 224, 224, 1);
-  letter-spacing: 0.02em;
+  border-bottom: .1rem solid rgba(224, 224, 224, 1);
+  letter-spacing: 0.03rem;
   vertical-align: inherit;
 }
 
@@ -108,5 +106,5 @@ tbody.regformtbody td {
 }
 
 .TableCell-body {
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba($color-black, 0.87);
 }
