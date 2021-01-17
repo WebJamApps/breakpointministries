@@ -11,7 +11,7 @@ function makeDropdown(htmlFor: string,
   options: { type: string, Category: string }[]): JSX.Element {
   let key = 1;
   return (
-    <label htmlFor={htmlFor} style={{ paddingTop: '12px' }} id={htmlFor}>
+    <label htmlFor={htmlFor} style={{ paddingTop: '1.2rem' }} id={htmlFor}>
       {labelText}
       <br />
       <select id={htmlFor} value={value} onChange={(event) => onChange(event, htmlFor)}>
@@ -32,7 +32,7 @@ export interface DataDropParams {
 }
 function makeDataDropdown(p: DataDropParams): JSX.Element {
   return (
-    <label htmlFor={p.htmlFor} style={{ paddingTop: '12px' }} id={p.htmlFor}>
+    <label htmlFor={p.htmlFor} style={{ paddingTop: '1.2rem' }} id={p.htmlFor}>
       {p.labelText}
       <br />
       <select id={p.htmlFor} value={p.value} onChange={(event) => p.onChange(event, p.htmlFor)}>
@@ -73,7 +73,7 @@ function makeInput(p: InputParams): JSX.Element {
 }
 const radioButtons = (showCaption: string, onChange: ((event: React.ChangeEvent<HTMLInputElement>) => void) | undefined): JSX.Element => (
   <div>
-    <label htmlFor="hide-caption" style={{ position: 'relative', display: 'inline-block', width: '130px' }}>
+    <label htmlFor="hide-caption" style={{ position: 'relative', display: 'inline-block', width: '13rem' }}>
       <input
         id="hide-caption"
         type="radio"
@@ -86,7 +86,7 @@ const radioButtons = (showCaption: string, onChange: ((event: React.ChangeEvent<
       />
       Hide Caption
     </label>
-    <label htmlFor="show-caption" style={{ position: 'relative', display: 'inline-block', width: '130px' }}>
+    <label htmlFor="show-caption" style={{ position: 'relative', display: 'inline-block', width: '13rem' }}>
       <input
         type="radio"
         name="show-caption"

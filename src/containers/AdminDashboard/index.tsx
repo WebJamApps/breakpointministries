@@ -128,10 +128,10 @@ export class AdminDashboard extends Component<DashboardProps, DashboardState> {
     editPic: { _id: string }, youthName: string, youthURL: string, type: string): JSX.Element {
     const { firstEdit } = this.state;
     return (
-      <div style={{ marginLeft: '50%', marginTop: '10px' }}>
+      <div style={{ marginLeft: '50%', marginTop: '1rem' }}>
         {editPic._id ? (
           <button
-            style={{ display: 'relative', marginRight: '20px' }}
+            style={{ display: 'relative', marginRight: '2rem' }}
             type="button"
             id="cancel-edit-pic"
             onClick={this.resetEditForm}
@@ -216,12 +216,12 @@ export class AdminDashboard extends Component<DashboardProps, DashboardState> {
     };
     return (
       <div className="horiz-scroll">
-        <div className="material-content elevation3" style={{ width: '850px', margin: '30px auto' }}>
+        <div className="material-content elevation3" style={{ width: '85rem', margin: '3rem auto' }}>
           <h5>Change Homepage Section</h5>
           <form
             id="create-homepage"
             style={{
-              textAlign: 'left', marginLeft: '4px', width: '100%', maxWidth: '100%',
+              textAlign: 'left', marginLeft: '.4rem', width: '100%', maxWidth: '100%',
             }}
           >
             {this.forms.makeInput(inputParams)}
@@ -230,7 +230,7 @@ export class AdminDashboard extends Component<DashboardProps, DashboardState> {
               <br />
               {this.controller.editor(homePageContent)}
             </label>
-            <div style={{ marginLeft: '60%', marginTop: '10px' }}>
+            <div style={{ marginLeft: '60%', marginTop: '1rem' }}>
               <button type="button" id="c-h" disabled={false} onClick={this.controller.createHomeAPI}>
                 Update Homepage
               </button>
@@ -263,7 +263,7 @@ export class AdminDashboard extends Component<DashboardProps, DashboardState> {
   render(): JSX.Element {
     return (
       <div className="page-content">
-        <h4 style={{ textAlign: 'center', marginTop: '10px' }}>
+        <h4 style={{ textAlign: 'center', marginTop: '1rem' }}>
           CLC Admin Dashboard
         </h4>
         {this.changeHomepage()}

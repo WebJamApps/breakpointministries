@@ -38,14 +38,14 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
         {width >= 900
           ? (
             <div className="page-content">
-              <p style={{ fontSize: '6pt', marginBottom: '0' }}>&nbsp;</p>
+              <p style={{ fontSize: '.8rem', marginBottom: '0' }}>&nbsp;</p>
             </div>
           )
           : (
             <div className="page-content">
               <hr />
-              <p style={{ fontSize: '6pt', marginBottom: '0' }}>&nbsp;</p>
-              <p style={{ fontSize: '6pt', marginBottom: '0' }}>&nbsp;</p>
+              <p style={{ fontSize: '.8rem', marginBottom: '0' }}>&nbsp;</p>
+              <p style={{ fontSize: '.8rem', marginBottom: '0' }}>&nbsp;</p>
             </div>
           )}
       </div>
