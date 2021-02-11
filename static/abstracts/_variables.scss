@@ -1,0 +1,36 @@
+// Pallete Ideas
+
+$color-blue-dark-1: rgb(25, 86, 190);
+$color-blue-dark-2: rgb(25, 86, 190);
+$color-blue-dark-3: rgb(9, 44, 105);
+
+$color-blue-light-1: rgb(124, 174, 243);
+$color-blue-light-2: rgb(204, 213, 250);
+
+$color-purple-light-1: rgb(206, 192, 217);
+
+$color-purple-dark-1: rgb(77, 61, 111);
+$color-purple-dark-2: rgb(45, 40, 111);
+
+// Established Colours
+$color-black:rgb(31, 17, 44);
+$color-white: #fff;
+
+$color-grey-light-1: rgb(204, 204, 204);
+$color-grey-dark-1: rgb(150, 149, 149);
+
+
+// FONT
+$default-font-size: 1.6rem;
+
+// RESPONSIVE BREAKPOINTS
+$bp-largest: 75em;    //  1200 px
+$bp-large: 62.5em;    //  1000px
+$bp-med: 50em;        //  800px
+$bp-sm: 37.5em;       //  600px
+$bp-tiny: 18.75em;    //  300px
+
+// BOX SHADOW
+$box-shadow-1: 0 1.5rem 4rem rgba($color-blue-dark-1, .15);
+$box-shadow-2: 0 1rem 1.2rem  rgba($color-blue-dark-1, .6);
+$box-shadow-3:  0 .5rem 1rem rgba($color-blue-dark-1, .6);
