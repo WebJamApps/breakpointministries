@@ -113,8 +113,8 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
 
   makeMenuLink(menu: MenuItem, index: number): JSX.Element {
     return (
-      <div key={index} className="menu-item">
-        <Link to={menu.link} className="nav-link" onClick={this.close}>
+      <div key={index} className="nav">
+        <Link to={menu.link} className="nav__link" onClick={this.close}>
           <i className={`${menu.iconClass}`} />
           &nbsp;
           <span className="nav-item">{menu.name}</span>
@@ -125,7 +125,7 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
 
   navLinks(): JSX.Element {
     return (
-      <div className="nav-list" style={{ width: '220px' }}>
+      <div className="navigation">
         {this.menus.map((menu, index) => (this.menuUtils.menuItem(menu, index, this)))}
       </div>
     );
@@ -157,7 +157,7 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
               Search
             </h2>
             <form className="search__form" action="get">
-              <input className="search__form--input" type="text" role="searchbox" value="" placeholder="Search..." />
+              <input className="search__form--input" type="text" role="searchbox" defaultValue="" placeholder="Search..." />
               <input className="btn search__form--btn" type="submit" value="Search" />
             </form>
           </div>
@@ -170,33 +170,26 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
                 className="subscribe__form--input"
                 type="text"
                 aria-label="subscribe: Email input"
-                value=""
+                defaultValue=""
                 placeholder="Email..."
               />
               <input className="btn subscribe__form--btn" type="submit" value="Subscribe" />
             </form>
           </div>
         </div>
-        {this.navLinks}
+        {this.navLinks()}
       </div>
     );
   }
 
   render(): JSX.Element {
-    const { children } = this.props;
+    // const { children } = this.props;
     const { menuOpen } = this.state;
     const style = `${this.currentStyles.sidebarClass} ${menuOpen ? 'open' : 'close'}`;
     return (
       <div className="container">
         {this.drawerContainer(style)}
-        <div className="main-panel">
-          <div className="mainPanel">
-            <div className="swipe-area" />
-            <div style={{ width: 'auto' }} id="contentBlock" className="content-block">
-              {children}
-            </div>
-          </div>
-        </div>
+
       </div>
     );
   }
