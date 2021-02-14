@@ -183,13 +183,13 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
   }
 
   render(): JSX.Element {
-    // const { children } = this.props;
+    const { children } = this.props;
     const { menuOpen } = this.state;
     const style = `${this.currentStyles.sidebarClass} ${menuOpen ? 'open' : 'close'}`;
     return (
       <div className="container">
         {this.drawerContainer(style)}
-
+        {children}
       </div>
     );
   }
