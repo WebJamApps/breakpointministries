@@ -12,7 +12,7 @@ type HomepageProps = {
 };
 
 interface HomepageState {
-  blogs:[]
+  blogs: []
 }
 
 export class Homepage extends React.Component<HomepageProps, HomepageState> {
@@ -33,110 +33,57 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
   }
 
   render(): JSX.Element {
-    const { width, targetRef } = this.props;
+    const { targetRef } = this.props;
     return (
       <div className="blog" ref={targetRef}>
-        {width >= 900
-          ? (
-              <div className="blog__entry">
-                <section className="blog__entry--body">
-                  <h2 className="blog__entry--header heading-2 heading-2">
-                    <a href="blog_entry.html" className="blog__link">A Generic Title</a>
-                  </h2>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt nam earum voluptate? Nostrum et fugit
-                    possimus cum ratione temporibus aspernatur?
+        <div className="blog__entry">
+          <section className="blog__entry--body">
+            <h2 className="blog__entry--header heading-2 heading-2">
+              <a href="blog_entry.html" className="blog__link">A Generic Title</a>
+            </h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt nam earum voluptate? Nostrum et fugit
+              possimus cum ratione temporibus aspernatur?
                   </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Id libero temporibus, at neque facere fugiat.
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Id libero temporibus, at neque facere fugiat.
                   </p>
-                  <div className="blog__ender">
-                    <div className="blog__time-stamp">1/21/2021</div>
-                    <ul className="blog__social-media">
-                      <li>
-                        <a href="#" className="blog__social-media--link facebook" aria-label="Link to [site] facebook page">
-                          <i
-                            className="fab fa-facebook"
-                          />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className="blog__social-media--link twitter" aria-label="Link to [site] twitter account">
-                          <i
-                            className="fab fa-twitter"
-                          />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className="blog__social-media--link linkedin">
-                          <i
-                            className="fab fa-linkedin"
-                            aria-label="Link to [site] linkedin page"
-                          />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className="blog__social-media--link copylink" aria-label="Permanent link to blog posting">
-                          <i
-                            className="fas fa-link"
-                          />
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </section>
-              </div>
-          )
-          : (
-              <div className="blog__entry">
-                <section className="blog__entry--body">
-                  <h2 className="blog__entry--header heading-2 heading-2">
-                    <a href="blog_entry.html" className="blog__link">A Generic Title</a>
-                  </h2>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt nam earum voluptate? Nostrum et fugit
-                    possimus cum ratione temporibus aspernatur?
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Id libero temporibus, at neque facere fugiat.
-                  </p>
-                  <div className="blog__ender">
-                    <div className="blog__time-stamp">1/21/2021</div>
-                    <ul className="blog__social-media">
-                      <li>
-                        <a href="#" className="blog__social-media--link facebook" aria-label="Link to [site] facebook page">
-                          <i
-                            className="fab fa-facebook"
-                          />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className="blog__social-media--link twitter" aria-label="Link to [site] twitter account">
-                          <i
-                            className="fab fa-twitter"
-                          />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className="blog__social-media--link linkedin">
-                          <i
-                            className="fab fa-linkedin"
-                            aria-label="Link to [site] linkedin page"
-                          />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className="blog__social-media--link copylink" aria-label="Permanent link to blog posting">
-                          <i
-                            className="fas fa-link"
-                          />
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </section>
-              </div>
-          )}
+            <div className="blog__ender">
+              <div className="blog__time-stamp">1/21/2021</div>
+              <ul className="blog__social-media">
+                <li>
+                  <a href="#" className="blog__social-media--link facebook" aria-label="Link to [site] facebook page">
+                    <i
+                      className="fab fa-facebook"
+                    />
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="blog__social-media--link twitter" aria-label="Link to [site] twitter account">
+                    <i
+                      className="fab fa-twitter"
+                    />
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="blog__social-media--link linkedin">
+                    <i
+                      className="fab fa-linkedin"
+                      aria-label="Link to [site] linkedin page"
+                    />
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="blog__social-media--link copylink" aria-label="Permanent link to blog posting">
+                    <i
+                      className="fas fa-link"
+                    />
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </div>
       </div>
     );
   }
