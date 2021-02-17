@@ -32,6 +32,34 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     this.commonUtils.setTitleAndScroll('', window.screen.width);
   }
 
+  // eslint-disable-next-line class-methods-use-this
+  socialMedia():JSX.Element {
+    return (
+      <ul className="blog__social-media">
+        <li>
+          <a href="#" className="blog__social-media--link facebook" aria-label="Link to [site] facebook page">
+            <i className="fab fa-facebook" />
+          </a>
+        </li>
+        <li>
+          <a href="#" className="blog__social-media--link twitter" aria-label="Link to [site] twitter account">
+            <i className="fab fa-twitter" />
+          </a>
+        </li>
+        <li>
+          <a href="#" className="blog__social-media--link linkedin">
+            <i className="fab fa-linkedin" aria-label="Link to [site] linkedin page" />
+          </a>
+        </li>
+        <li>
+          <a href="#" className="blog__social-media--link copylink" aria-label="Permanent link to blog posting">
+            <i className="fas fa-link" />
+          </a>
+        </li>
+      </ul>
+    );
+  }
+
   render(): JSX.Element {
     const { targetRef } = this.props;
     return (
@@ -44,43 +72,13 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt nam earum voluptate? Nostrum et fugit
               possimus cum ratione temporibus aspernatur?
-                  </p>
+            </p>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Id libero temporibus, at neque facere fugiat.
-                  </p>
+            </p>
             <div className="blog__ender">
               <div className="blog__time-stamp">1/21/2021</div>
-              <ul className="blog__social-media">
-                <li>
-                  <a href="#" className="blog__social-media--link facebook" aria-label="Link to [site] facebook page">
-                    <i
-                      className="fab fa-facebook"
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="blog__social-media--link twitter" aria-label="Link to [site] twitter account">
-                    <i
-                      className="fab fa-twitter"
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="blog__social-media--link linkedin">
-                    <i
-                      className="fab fa-linkedin"
-                      aria-label="Link to [site] linkedin page"
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="blog__social-media--link copylink" aria-label="Permanent link to blog posting">
-                    <i
-                      className="fas fa-link"
-                    />
-                  </a>
-                </li>
-              </ul>
+              {this.socialMedia()}
             </div>
           </section>
         </div>

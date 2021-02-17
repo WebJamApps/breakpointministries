@@ -131,6 +131,35 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
     );
   }
 
+  // eslint-disable-next-line class-methods-use-this
+  makeForm(h2Text:string): JSX.Element {
+    const cN = h2Text.toLowerCase();
+    const h2cN = `${cN}__heading heading-2`;
+    const fcN = `${cN}__form`;
+    const icN = `${cN}__form--input`;
+    const iB = `btn ${cN}__form--btn`;
+    const pH = `${h2Text}...`;
+    return (
+      <div className={cN}>
+        <h2 className={h2cN}>{h2Text}</h2>
+        <form className={fcN} action="get">
+          <input className={icN} type="text" role="searchbox" defaultValue="" placeholder={pH} />
+          <input className={iB} type="submit" value={h2Text} />
+        </form>
+      </div>
+    );
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  sidebar(): JSX.Element {
+    return (
+      <div className="sidebar__functions">
+        {this.makeForm('Search')}
+        {this.makeForm('Subscribe')}
+      </div>
+    );
+  }
+
   drawerContainer(className: string): JSX.Element {
     return (
       <div className={className}>
@@ -151,32 +180,7 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
             </span>
           </div>
         </header>
-        <div className="sidebar__functions">
-          <div className="search">
-            <h2 className="search__heading heading-2">
-              Search
-            </h2>
-            <form className="search__form" action="get">
-              <input className="search__form--input" type="text" role="searchbox" defaultValue="" placeholder="Search..." />
-              <input className="btn search__form--btn" type="submit" value="Search" />
-            </form>
-          </div>
-          <div className="subscribe">
-            <h2 className="subscribe__heading heading-2">
-              Subscribe
-            </h2>
-            <form className="subscribe__form" action="get">
-              <input
-                className="subscribe__form--input"
-                type="text"
-                aria-label="subscribe: Email input"
-                defaultValue=""
-                placeholder="Email..."
-              />
-              <input className="btn subscribe__form--btn" type="submit" value="Subscribe" />
-            </form>
-          </div>
-        </div>
+        {this.sidebar()}
         {this.navLinks()}
       </div>
     );
