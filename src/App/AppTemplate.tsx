@@ -159,8 +159,7 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
   }
 
   drawerContainer(): JSX.Element {
-    const { menuOpen } = this.state;
-    const style = `${menuOpen ? 'open' : 'close'}`;
+    const { menuOpen } = this.state; const style = `${menuOpen ? 'open' : 'close'}`;
     return (
       <div className="sidebar">
         <header className="header">
