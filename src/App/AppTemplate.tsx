@@ -17,7 +17,6 @@ interface AppMainProps extends RouteComponentProps {
 
 interface CurrentStyles {
   headerClass: string,
-  sidebarClass: string,
   sidebarImagePath: string
 }
 
@@ -55,7 +54,6 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
   get currentStyles(): CurrentStyles { // eslint-disable-line class-methods-use-this
     const result = {
       headerClass: 'home-header',
-      sidebarClass: 'sidebar',
       sidebarImagePath: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Lutherrose.svg/800px-Lutherrose.svg.png',
     };
     return result;
@@ -123,9 +121,9 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
     );
   }
 
-  navLinks(): JSX.Element {
+  navLinks(className: string): JSX.Element {
     return (
-      <div className="navigation">
+      <div className={`navigation ${className}`}>
         {this.menus.map((menu, index) => (this.menuUtils.menuItem(menu, index, this)))}
       </div>
     );
@@ -160,9 +158,11 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
     );
   }
 
-  drawerContainer(className: string): JSX.Element {
+  drawerContainer(): JSX.Element {
+    const { menuOpen } = this.state;
+    const style = `${menuOpen ? 'open' : 'close'}`;
     return (
-      <div className={className}>
+      <div className="sidebar">
         <header className="header">
           <div className="header__border" />
           <div className="header__logo">
@@ -172,7 +172,13 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
               alt="A statue of jesus"
             />
             <span className="header__mobile-menu">
-              <button className="mobile-menu-btn" onClick={this.close} onKeyPress={this.handleKeyPress} tabIndex={0} type="button">
+              <button
+                className="mobile-menu-btn"
+                onClick={this.close}
+                onKeyPress={this.handleKeyPress}
+                tabIndex={0}
+                type="button"
+              >
                 <i
                   className="fas fa-bars"
                 />
@@ -181,18 +187,16 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
           </div>
         </header>
         {this.sidebar()}
-        {this.navLinks()}
+        {this.navLinks(style)}
       </div>
     );
   }
 
   render(): JSX.Element {
     const { children } = this.props;
-    const { menuOpen } = this.state;
-    const style = `${this.currentStyles.sidebarClass} ${menuOpen ? 'open' : 'close'}`;
     return (
       <div className="container">
-        {this.drawerContainer(style)}
+        {this.drawerContainer()}
         {children}
       </div>
     );
