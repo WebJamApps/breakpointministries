@@ -15,17 +15,36 @@ class AdminController {
     this.fetch = fetch;
     this.view = view;
     this.superagent = superagent;
+    this.createBlogAPI = this.createBlogAPI.bind(this);
     this.editor = this.editor.bind(this);
     this.handleEditorChange = this.handleEditorChange.bind(this);
-    this.createBlog = this.createBlog.bind(this);
+    this.createBook = this.createBook.bind(this);
   }
 
-  async createBlog(data: { title: string, comments: string, type: string}, redirect: string): Promise<string> {
+  async createBook(data: { title: string, comments: string, type: string}, redirect: string): Promise<string> {
     const { auth } = this.view.props;
     let r;
     try { r = await this.fetch.fetchPost(this.superagent, auth, data); } catch (e) { return `${e.message}`; }
     if (r.status === 201) {
       window.location.assign(redirect);
+      return `${r.status}`;
+    }
+    return 'Failed to create blog';
+  }
+
+  async createBlogAPI(evt: { preventDefault: () => void; }): Promise<string> {
+    evt.preventDefault();
+    const { auth } = this.view.props;
+    const { title, homePageContent } = this.view.state;
+    let r;
+    try {
+      r = await this.superagent.post(`${process.env.BackendUrl}/blog`)
+        .set('Authorization', `Bearer ${auth.token}`)
+        .set('Accept', 'application/json')
+        .send({ title, body: homePageContent });
+    } catch (e) { return `${e.messsage}`; }
+    if (r.status === 201) {
+      window.location.assign('/');
       return `${r.status}`;
     }
     return 'Failed to create blog';

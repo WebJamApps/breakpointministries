@@ -94,7 +94,7 @@ export class AdminDashboard extends Component<DashboardProps, DashboardState> {
               {this.controller.editor(homePageContent)}
             </label>
             <div style={{ marginLeft: '60%', marginTop: '10px' }}>
-              <button type="button" id="c-h" disabled={false} onClick={this.controller.createHomeAPI}>
+              <button type="button" id="c-h" disabled={false} onClick={this.controller.createBlogAPI}>
                 Post Blog
               </button>
             </div>
