@@ -18,7 +18,7 @@ function setup() {
 describe('AppTemplate', () => {
   it('renders the component', () => {
     const { wrapper } = setup();
-    expect(wrapper.find('div.page-host').exists()).toBe(true);
+    expect(wrapper.find('div.container').exists()).toBe(true);
   });
   it('rerenders the component when menuOpen state changes', () => {
     const { wrapper } = setup();
