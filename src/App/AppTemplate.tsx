@@ -170,18 +170,14 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
               src="https://dl.dropboxusercontent.com/s/ojwr69z0gbi0zw8/Christ-the-redeemer.png?dl=0"
               alt="A statue of jesus"
             />
-            <span className="header__mobile-menu">
-              <button
-                className="mobile-menu-btn"
-                onClick={this.close}
-                onKeyPress={this.handleKeyPress}
-                tabIndex={0}
-                type="button"
-              >
-                <i
-                  className="fas fa-bars"
-                />
-              </button>
+            <span
+              className="header__mobile-menu"
+              onClick={this.toggleMobileMenu}
+              onKeyPress={this.handleKeyMenu}
+              tabIndex={0}
+              role="button"
+            >
+              <i className="fas fa-bars" />
             </span>
           </div>
         </header>
