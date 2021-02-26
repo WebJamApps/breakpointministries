@@ -72,11 +72,11 @@ export class AdminDashboard extends Component<DashboardProps, DashboardState> {
   changeHomepage(): JSX.Element {
     const { title, homePageContent } = this.state;
     const inputParams = {
-      type: 'text', label: 'Title', isRequired: false, onChange: this.onChange, value: title, width: '90%',
+      type: 'text', label: 'Title', isRequired: false, onChange: this.onChange, value: title, width: '280px',
     };
     return (
       <div className="horiz-scroll">
-        <div className="material-content elevation3" style={{ width: '850px', margin: '30px auto' }}>
+        <div className="material-content elevation3" style={{ width: '100%', margin: '30px auto' }}>
           <form
             id="post-blog"
             style={{
@@ -84,13 +84,14 @@ export class AdminDashboard extends Component<DashboardProps, DashboardState> {
             }}
           >
             {this.forms.makeInput(inputParams)}
-            <label htmlFor="content">
+            <p>&nbsp;</p>
+            <label htmlFor="content" style={{ fontSize: '12pt', fontWeight: 'bold' }}>
               Content
               <br />
               {this.controller.editor(homePageContent)}
             </label>
-            <div style={{ marginLeft: '60%', marginTop: '10px' }}>
-              <button type="button" id="c-h" disabled={false} onClick={this.controller.createBlogAPI}>
+            <div style={{ marginLeft: '2px', marginTop: '10px' }}>
+              <button className="btn" style={{ padding: '4px' }} type="button" id="c-h" disabled={false} onClick={this.controller.createBlogAPI}>
                 Post Blog
               </button>
             </div>
@@ -102,10 +103,10 @@ export class AdminDashboard extends Component<DashboardProps, DashboardState> {
 
   render(): JSX.Element {
     return (
-      <div className="page-content">
-        <h4 style={{ textAlign: 'center', marginTop: '10px' }}>
+      <div className="page-content" style={{ margin: 'auto', width: '79vw' }}>
+        <h1 style={{ textAlign: 'center', marginTop: '10px' }}>
           Post A New Blog
-        </h4>
+        </h1>
         {this.changeHomepage()}
       </div>
     );

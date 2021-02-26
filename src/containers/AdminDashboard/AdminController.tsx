@@ -46,7 +46,7 @@ class AdminController {
         apiKey={process.env.TINY_KEY}
         initialValue={homePageContent}
         init={{
-          height: 500,
+          height: 600,
           menubar: 'insert tools',
           menu: { format: { title: 'Format', items: 'forecolor backcolor' } },
           plugins: [

@@ -9,7 +9,7 @@ function makeInput(p: InputParams): JSX.Element {
   let fId = p.label && p.label.toLowerCase();
   fId = fId.replace(/\s/g, '');
   return (
-    <label className="inquiryLabel" htmlFor={fId}>
+    <label className="inquiryLabel" htmlFor={fId} style={{ fontSize: '12pt', fontWeight: 'bold' }}>
       {p.isRequired ? '* ' : ''}
       {p.label}
       <br />
