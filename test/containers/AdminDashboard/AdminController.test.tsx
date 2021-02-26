@@ -28,6 +28,12 @@ describe('AdminController', () => {
     expect(window.location.assign).toHaveBeenCalled();
   });
 
+  it('catches error when creates a new blog', async () => {
+    controller.superagent.post = jest.fn(() => ({ set: () => ({ set: () => ({ send: () => Promise.reject(new Error('bad')) }) }) }));
+    r = await controller.createBlogAPI({ preventDefault: () => { } });
+    expect(r).toBe('bad');
+  });
+
   it('handles 300 res from creates a new blog', async () => {
     controller.superagent.post = jest.fn(() => ({ set: () => ({ set: () => ({ send: () => Promise.resolve({ status: 300 }) }) }) }));
     r = await controller.createBlogAPI({ preventDefault: () => { } });

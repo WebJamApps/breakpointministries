@@ -38,8 +38,8 @@ describe('Dashboard Container', () => {
   });
   it('renders correctly', () => { expect(wrapper).toMatchSnapshot(); });
 
-  it('uses the stateValue on change', () => {
-    const result = wrapper.instance().onChange({ persist: jest.fn(), target: {} }, 'stateValue');
-    expect(result).toBe('stateValue');
+  it('handles onChange', () => {
+    const result = wrapper.instance().onChange({ persist: jest.fn(), target: { id: '123' } }, 'stateValue');
+    expect(result).toBe('123');
   });
 });

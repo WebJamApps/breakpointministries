@@ -63,12 +63,8 @@ export class AdminDashboard extends Component<DashboardProps, DashboardState> {
 
   componentDidMount(): void { this.commonUtils.setTitleAndScroll('Admin Dashboard', window.screen.width); }
 
-  onChange(evt: React.ChangeEvent<HTMLInputElement>, stateValue?: string): string {
+  onChange(evt: React.ChangeEvent<HTMLInputElement>): string {
     evt.persist();
-    if (typeof stateValue === 'string') {
-      this.setState((prevState) => ({ ...prevState, [stateValue]: evt.target.value, firstEdit: false }));
-      return stateValue;
-    }
     this.setState((prevState) => ({ ...prevState, [evt.target.id]: evt.target.value, firstEdit: false }));
     return evt.target.id;
   }
