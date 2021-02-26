@@ -1,12 +1,5 @@
 import React from 'react';
 
-// export interface DataDropParams {
-//   htmlFor: string,
-//   labelText: string,
-//   value: string,
-//   onChange: (arg0: React.ChangeEvent<HTMLSelectElement>, arg1: string) => void,
-//   options: Record<string, string>[], oValue: string, dValue: string
-// }
 export interface InputParams {
   type: string | undefined,
   label: string, isRequired: boolean | undefined,
@@ -15,8 +8,6 @@ export interface InputParams {
 function makeInput(p: InputParams): JSX.Element {
   let fId = p.label && p.label.toLowerCase();
   fId = fId.replace(/\s/g, '');
-  // fId = fId.split('(');
-  // [fId] = fId;
   return (
     <label className="inquiryLabel" htmlFor={fId}>
       {p.isRequired ? '* ' : ''}
@@ -34,36 +25,7 @@ function makeInput(p: InputParams): JSX.Element {
     </label>
   );
 }
-// const radioButtons = (showCaption: string, onChange: ((event: React.ChangeEvent<HTMLInputElement>) => void) | undefined): JSX.Element => (
-//   <div>
-//     <label htmlFor="hide-caption" style={{ position: 'relative', display: 'inline-block', width: '130px' }}>
-//       <input
-//         id="hide-caption"
-//         type="radio"
-//         name="hide-caption"
-//         value="hideCaption"
-//         checked={showCaption !== 'showCaption'}
-//         onChange={onChange}
-//         className="form-check-input"
-//         style={{ minWidth: 0 }}
-//       />
-//       Hide Caption
-//     </label>
-//     <label htmlFor="show-caption" style={{ position: 'relative', display: 'inline-block', width: '130px' }}>
-//       <input
-//         type="radio"
-//         name="show-caption"
-//         value="showCaption"
-//         checked={showCaption === 'showCaption'}
-//         onChange={onChange}
-//         className="form-check-input"
-//         style={{ minWidth: 0 }}
-//       />
-//       Show Caption
-//     </label>
-//   </div>
-// );
+
 export default {
   makeInput,
-  // makeDropdown, radioButtons, makeDataDropdown,
 };

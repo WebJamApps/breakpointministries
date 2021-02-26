@@ -18,19 +18,7 @@ class AdminController {
     this.createBlogAPI = this.createBlogAPI.bind(this);
     this.editor = this.editor.bind(this);
     this.handleEditorChange = this.handleEditorChange.bind(this);
-    // this.createBook = this.createBook.bind(this);
   }
-
-  // async createBook(data: { title: string, comments: string, type: string}, redirect: string): Promise<string> {
-  //   const { auth } = this.view.props;
-  //   let r;
-  //   try { r = await this.fetch.fetchPost(this.superagent, auth, data); } catch (e) { return `${e.message}`; }
-  //   if (r.status === 201) {
-  //     window.location.assign(redirect);
-  //     return `${r.status}`;
-  //   }
-  //   return 'Failed to create blog';
-  // }
 
   async createBlogAPI(evt: { preventDefault: () => void; }): Promise<string> {
     evt.preventDefault();
