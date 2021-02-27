@@ -15,11 +15,6 @@ interface AppMainProps extends RouteComponentProps {
   dispatch: Dispatch<unknown>;
 }
 
-interface CurrentStyles {
-  headerClass: string,
-  sidebarImagePath: string
-}
-
 interface AppMainState { menuOpen: boolean }
 export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
   static defaultProps = {
@@ -49,14 +44,6 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
     this.responseGoogleLogout = this.responseGoogleLogout.bind(this);
     this.googleButtons = this.googleButtons.bind(this);
     this.authUtils = authUtils;
-  }
-
-  get currentStyles(): CurrentStyles { // eslint-disable-line class-methods-use-this
-    const result = {
-      headerClass: 'home-header',
-      sidebarImagePath: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Lutherrose.svg/800px-Lutherrose.svg.png',
-    };
-    return result;
   }
 
   toggleMobileMenu(): void {
