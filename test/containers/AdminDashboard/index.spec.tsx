@@ -8,9 +8,6 @@ describe('Dashboard Container', () => {
   const history: any = {};
   const location: any = {};
   const match: any = {};
-  const editPic:any = {
-    title: '', _id: '', type: '', created_at: '',
-  };
   beforeEach(() => {
     props = {
       auth: { token: 'token' },
@@ -23,17 +20,9 @@ describe('Dashboard Container', () => {
     wrapper = shallow<AdminDashboard>(<AdminDashboard
       dispatch={(fun) => fun}
       auth={props.auth}
-      books={props.books}
-      homeContent={props.homeContent}
-      showTable
-      editPic={editPic}
       history={history}
       location={location}
       match={match}
-      youthPics={[]}
-      familyPics={[]}
-      otherPics={[]}
-      musicPics={[]}
     />);
   });
   it('renders correctly', () => { expect(wrapper).toMatchSnapshot(); });
