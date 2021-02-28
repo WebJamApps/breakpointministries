@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { RefObject } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { withResizeDetector } from 'react-resize-detector';
 import commonUtils from '../../lib/commonUtils';
-import mapStoreToProps from '../../redux/mapStoreToProps';
+import mapStoreToProps, { Ibook } from '../../redux/mapStoreToProps';
 
 type HomepageProps = {
   targetRef: RefObject<HTMLDivElement>;
@@ -12,7 +13,7 @@ type HomepageProps = {
 };
 
 interface HomepageState {
-  blogs: []
+  blogs: Ibook[];
 }
 
 export class Homepage extends React.Component<HomepageProps, HomepageState> {
@@ -33,56 +34,67 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  socialMedia():JSX.Element {
+  makeBlogArticle(): JSX.Element {
+    const { targetRef } = this.props;
+    const { blogs } = this.state;
+    return (
+      <div className="blog" ref={targetRef}>
+        {blogs && blogs.length > 0 ? blogs.map((blog) => (
+          <div className="blog__entry">
+            <section className="blog__entry--body">
+              <h2 className="blog__entry--header heading-2 heading-2">
+                <Link to={blog._id} className="blog__link">{blog.title}</Link>
+              </h2>
+              {blog.body}
+              <div className="blog__ender">
+                <div className="blog__time-stamp">{blog.dateOfPub}</div>
+                {this.socialMedia()}
+              </div>
+            </section>
+          </div>
+        ))
+          : (
+            <div className="blog__entry">
+              <section className="blog__entry--body">
+                <p>There are no blog entries at this time.</p>
+              </section>
+            </div>
+          )}
+      </div>
+    );
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  socialMedia(): JSX.Element {
     return (
       <ul className="blog__social-media">
         <li>
-          <a href="#" className="blog__social-media--link facebook" aria-label="Link to [site] facebook page">
+          <Link to="#" className="blog__social-media--link facebook" aria-label="Link to [site] facebook page">
             <i className="fab fa-facebook" />
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#" className="blog__social-media--link twitter" aria-label="Link to [site] twitter account">
+          <Link to="#" className="blog__social-media--link twitter" aria-label="Link to [site] twitter account">
             <i className="fab fa-twitter" />
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#" className="blog__social-media--link linkedin">
+          <Link to="#" className="blog__social-media--link linkedin">
             <i className="fab fa-linkedin" aria-label="Link to [site] linkedin page" />
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#" className="blog__social-media--link copylink" aria-label="Permanent link to blog posting">
+          <Link to="#" className="blog__social-media--link copylink" aria-label="Permanent link to blog posting">
             <i className="fas fa-link" />
-          </a>
+          </Link>
         </li>
       </ul>
     );
   }
 
   render(): JSX.Element {
-    const { targetRef } = this.props;
     return (
-      <div className="blog" ref={targetRef}>
-        <div className="blog__entry">
-          <section className="blog__entry--body">
-            <h2 className="blog__entry--header heading-2 heading-2">
-              <a href="blog_entry.html" className="blog__link">A Generic Title</a>
-            </h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt nam earum voluptate? Nostrum et fugit
-              possimus cum ratione temporibus aspernatur?
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Id libero temporibus, at neque facere fugiat.
-            </p>
-            <div className="blog__ender">
-              <div className="blog__time-stamp">1/21/2021</div>
-              {this.socialMedia()}
-            </div>
-          </section>
-        </div>
-      </div>
+      this.makeBlogArticle()
     );
   }
 }

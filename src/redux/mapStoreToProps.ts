@@ -28,6 +28,7 @@ export interface Ibook {
   comments?: string,
   checkedOutBy?: string,
   checkedOutByName?: string,
+  body?: string,
 }
 
 export interface Store {
@@ -39,6 +40,7 @@ export interface Store {
   books: { books: Ibook[] };
   otherPics: { otherPics: Ibook[], editPic: Ibook };
   showTable: { showTable: boolean };
+  blogs: { blogs: Ibook[] };
 }
 
 const mapStoreToProps = (store: Store): Record<string, unknown> => ({
@@ -51,5 +53,6 @@ const mapStoreToProps = (store: Store): Record<string, unknown> => ({
   otherPics: store.otherPics.otherPics,
   editPic: store.otherPics.editPic,
   showTable: store.showTable.showTable,
+  blogs: store.blogs.blogs,
 });
 export default mapStoreToProps;
