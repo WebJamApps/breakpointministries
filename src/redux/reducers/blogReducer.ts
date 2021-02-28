@@ -4,7 +4,7 @@ const initialState = {
   blogs: [],
 };
 
-const reducer = (state = initialState, action: { type: string; data: Ibook; }): Record<string, unknown> => {
+const reducer = (state = initialState, action: { type: string; data: Ibook[]; }): Record<string, unknown> => {
   switch (action.type) {
     case 'GOT_BLOGS':
       return {
