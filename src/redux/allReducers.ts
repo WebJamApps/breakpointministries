@@ -7,6 +7,7 @@ import musicReducer from './reducers/musicReducer';
 import booksReducer from './reducers/booksReducer';
 import otherReducer from './reducers/otherReducer';
 import tableReducer from './reducers/tableReducer';
+import blogReducer from './reducers/blogReducer';
 
 const reducer = combineReducers({
   auth: authReducer,
@@ -17,6 +18,7 @@ const reducer = combineReducers({
   otherPics: otherReducer,
   musicPics: musicReducer,
   showTable: tableReducer,
+  blogs: blogReducer,
 });
 
 export default reducer;

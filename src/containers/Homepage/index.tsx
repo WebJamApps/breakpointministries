@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { withResizeDetector } from 'react-resize-detector';
 import commonUtils from '../../lib/commonUtils';
-import mapStoreToProps from '../../redux/mapStoreToProps';
+import mapStoreToProps, { Ibook } from '../../redux/mapStoreToProps';
 
 type HomepageProps = {
   targetRef: RefObject<HTMLDivElement>;
@@ -13,7 +13,7 @@ type HomepageProps = {
 };
 
 interface HomepageState {
-  blogs: []
+  blogs: Ibook[];
 }
 
 export class Homepage extends React.Component<HomepageProps, HomepageState> {
@@ -43,7 +43,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
           <div className="blog__entry">
             <section className="blog__entry--body">
               <h2 className="blog__entry--header heading-2 heading-2">
-                <Link to="#" className="blog__link">{blog.title}</Link>
+                <Link to={blog._id} className="blog__link">{blog.title}</Link>
               </h2>
               {blog.body}
               <div className="blog__ender">
