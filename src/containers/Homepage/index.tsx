@@ -2,18 +2,21 @@
 import React, { RefObject } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import ReactHtmlParser from 'react-html-parser';
 import { withResizeDetector } from 'react-resize-detector';
 import commonUtils from '../../lib/commonUtils';
-import mapStoreToProps, { Ibook } from '../../redux/mapStoreToProps';
+import mapStoreToProps from '../../redux/mapStoreToProps';
 
 type HomepageProps = {
   targetRef: RefObject<HTMLDivElement>;
   width: number;
   height: number;
+  blogs: any[];
 };
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface HomepageState {
-  blogs: Ibook[];
+
 }
 
 export class Homepage extends React.Component<HomepageProps, HomepageState> {
@@ -26,7 +29,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     this.commonUtils = commonUtils;
     this.parentRef = React.createRef();
     // eslint-disable-next-line react/no-unused-state
-    this.state = { blogs: [] };
+    this.state = { };
   }
 
   async componentDidMount(): Promise<void> {
@@ -35,20 +38,19 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
 
   // eslint-disable-next-line class-methods-use-this
   makeBlogArticle(): JSX.Element {
-    const { targetRef } = this.props;
-    const { blogs } = this.state;
+    const { targetRef, blogs } = this.props;
     return (
       <div className="blog" ref={targetRef}>
         {blogs && blogs.length > 0 ? blogs.map((blog) => (
-          <div className="blog__entry">
+          <div key={`blog_entry${blog._id}`} className="blog__entry">
             <section className="blog__entry--body">
               <h2 className="blog__entry--header heading-2 heading-2">
-                <Link to={blog._id} className="blog__link">{blog.title}</Link>
+                <Link key={blog._id} to={blog._id} className="blog__link">{ReactHtmlParser(blog && blog.title ? blog.title : '')}</Link>
               </h2>
-              {blog.body}
+              {ReactHtmlParser(blog && blog.body ? blog.body : '')}
               <div className="blog__ender">
                 <div className="blog__time-stamp">{blog.dateOfPub}</div>
-                {this.socialMedia()}
+                {this.socialMedia(blog._id)}
               </div>
             </section>
           </div>
@@ -65,27 +67,26 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  socialMedia(): JSX.Element {
+  makeLink(id:string, type:string): JSX.Element {
+    return (
+      <li key={`${type}${id}`}>
+        <Link to="#" className={`blog__social-media--link ${type}`} aria-label={`Link to [site] ${type} page`}>
+          <i key={id} className={`fab fa-${type}`} />
+        </Link>
+      </li>
+    );
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  socialMedia(id:string): JSX.Element {
     return (
       <ul className="blog__social-media">
-        <li>
-          <Link to="#" className="blog__social-media--link facebook" aria-label="Link to [site] facebook page">
-            <i className="fab fa-facebook" />
-          </Link>
-        </li>
-        <li>
-          <Link to="#" className="blog__social-media--link twitter" aria-label="Link to [site] twitter account">
-            <i className="fab fa-twitter" />
-          </Link>
-        </li>
-        <li>
-          <Link to="#" className="blog__social-media--link linkedin">
-            <i className="fab fa-linkedin" aria-label="Link to [site] linkedin page" />
-          </Link>
-        </li>
-        <li>
-          <Link to="#" className="blog__social-media--link copylink" aria-label="Permanent link to blog posting">
-            <i className="fas fa-link" />
+        {this.makeLink(id, 'facebook')}
+        {this.makeLink(id, 'twitter')}
+        {this.makeLink(id, 'linkedin')}
+        <li key={`url${id}`}>
+          <Link key={`urll${id}`} to="#" className="blog__social-media--link copylink" aria-label="Permanent link to blog posting">
+            <i key={id} className="fas fa-link" />
           </Link>
         </li>
       </ul>

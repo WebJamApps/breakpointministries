@@ -1,7 +1,7 @@
 import React, { Component, Dispatch } from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { connect } from 'react-redux';
-import mapStoreToProps, { Ibook } from '../../redux/mapStoreToProps';
+import mapStoreToProps from '../../redux/mapStoreToProps';
 import forms from '../../lib/forms';
 import AdminController from './AdminController';
 import commonUtils from '../../lib/commonUtils';
@@ -11,27 +11,11 @@ export interface PicData {
 }
 export interface DashboardProps extends RouteComponentProps {
   dispatch: Dispatch<unknown>;
-  homeContent: Ibook;
   auth: { token: string };
-  books: Record<string, string>[];
-  showTable: boolean;
-  editPic: Ibook;
-  youthPics: Ibook[];
-  familyPics: Ibook[];
-  otherPics: Ibook[];
-  musicPics: Ibook[];
 }
 type DashboardState = {
-  type: string;
   title: string;
-  homePageContent: string;
-  announcementtitle: string;
-  announcementurl: string;
-  youthName: string;
-  youthURL: string;
-  forumId: string;
-  showCaption: string;
-  firstEdit: boolean;
+  blogContent: string;
 };
 export class AdminDashboard extends Component<DashboardProps, DashboardState> {
   commonUtils: { setTitleAndScroll: (pageTitle: string, width: number) => void; };
@@ -45,16 +29,7 @@ export class AdminDashboard extends Component<DashboardProps, DashboardState> {
     this.commonUtils = commonUtils;
     this.controller = new AdminController(this);
     this.state = {
-      type: '',
-      title: props.homeContent.title || '',
-      homePageContent: props.homeContent.comments || '',
-      announcementtitle: '',
-      announcementurl: '',
-      youthName: '',
-      youthURL: '',
-      forumId: '',
-      showCaption: '',
-      firstEdit: true,
+      title: '', blogContent: '',
     };
     this.forms = forms;
     this.onChange = this.onChange.bind(this);
@@ -65,12 +40,12 @@ export class AdminDashboard extends Component<DashboardProps, DashboardState> {
 
   onChange(evt: React.ChangeEvent<HTMLInputElement>): string {
     evt.persist();
-    this.setState((prevState) => ({ ...prevState, [evt.target.id]: evt.target.value, firstEdit: false }));
+    this.setState((prevState) => ({ ...prevState, [evt.target.id]: evt.target.value }));
     return evt.target.id;
   }
 
   changeHomepage(): JSX.Element {
-    const { title, homePageContent } = this.state;
+    const { title, blogContent } = this.state;
     const inputParams = {
       type: 'text', label: 'Title', isRequired: false, onChange: this.onChange, value: title, width: '280px',
     };
@@ -88,7 +63,7 @@ export class AdminDashboard extends Component<DashboardProps, DashboardState> {
             <label htmlFor="content" style={{ fontSize: '12pt', fontWeight: 'bold' }}>
               Content
               <br />
-              {this.controller.editor(homePageContent)}
+              {this.controller.editor(blogContent)}
             </label>
             <div style={{ marginLeft: '2px', marginTop: '10px' }}>
               <button className="btn" style={{ padding: '4px' }} type="button" id="c-h" disabled={false} onClick={this.controller.createBlogAPI}>

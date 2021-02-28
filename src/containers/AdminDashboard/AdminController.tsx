@@ -23,13 +23,13 @@ class AdminController {
   async createBlogAPI(evt: { preventDefault: () => void; }): Promise<string> {
     evt.preventDefault();
     const { auth } = this.view.props;
-    const { title, homePageContent } = this.view.state;
+    const { title, blogContent } = this.view.state;
     let r;
     try {
       r = await this.superagent.post(`${process.env.BackendUrl}/blog`)
         .set('Authorization', `Bearer ${auth.token}`)
         .set('Accept', 'application/json')
-        .send({ title, body: homePageContent });
+        .send({ title, body: blogContent });
     } catch (e) { return `${e.message}`; }
     if (r.status === 201) {
       window.location.assign('/');
@@ -38,13 +38,13 @@ class AdminController {
     return 'Failed to create blog';
   }
 
-  handleEditorChange(homePageContent: string): boolean { this.view.setState({ homePageContent }); return true; }
+  handleEditorChange(blogContent: string): boolean { this.view.setState({ blogContent }); return true; }
 
-  editor(homePageContent: string | undefined): JSX.Element {
+  editor(blogContent: string | undefined): JSX.Element {
     return (
       <Editor
         apiKey={process.env.TINY_KEY}
-        initialValue={homePageContent}
+        initialValue={blogContent}
         init={{
           height: 600,
           menubar: 'insert tools',
