@@ -39,7 +39,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     const { blogs } = this.state;
     return (
       <div className="blog" ref={targetRef}>
-        {blogs.map((blog) => (
+        {blogs && blogs.length > 0 ? blogs.map((blog) => (
           <div className="blog__entry">
             <section className="blog__entry--body">
               <h2 className="blog__entry--header heading-2 heading-2">
@@ -52,13 +52,20 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
               </div>
             </section>
           </div>
-        ))}
+        ))
+          : (
+            <div className="blog__entry">
+              <section className="blog__entry--body">
+                <p>There are no blog entries at this time.</p>
+              </section>
+            </div>
+          )}
       </div>
     );
   }
 
   // eslint-disable-next-line class-methods-use-this
-  socialMedia():JSX.Element {
+  socialMedia(): JSX.Element {
     return (
       <ul className="blog__social-media">
         <li>

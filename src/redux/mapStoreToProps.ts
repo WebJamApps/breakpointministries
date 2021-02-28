@@ -40,7 +40,7 @@ export interface Store {
   books: { books: Ibook[] };
   otherPics: { otherPics: Ibook[], editPic: Ibook };
   showTable: { showTable: boolean };
-  blog: { blog: Ibook[] };
+  blogs: { blogs: Ibook[] };
 }
 
 const mapStoreToProps = (store: Store): Record<string, unknown> => ({
@@ -53,6 +53,6 @@ const mapStoreToProps = (store: Store): Record<string, unknown> => ({
   otherPics: store.otherPics.otherPics,
   editPic: store.otherPics.editPic,
   showTable: store.showTable.showTable,
-  blog: store.blog.blog,
+  blogs: store.blogs.blogs,
 });
 export default mapStoreToProps;
