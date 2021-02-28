@@ -67,24 +67,23 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
   }
 
   // eslint-disable-next-line class-methods-use-this
+  makeLink(id:string, type:string): JSX.Element {
+    return (
+      <li key={`${type}${id}`}>
+        <Link to="#" className={`blog__social-media--link ${type}`} aria-label={`Link to [site] ${type} page`}>
+          <i key={id} className={`fab fa-${type}`} />
+        </Link>
+      </li>
+    );
+  }
+
+  // eslint-disable-next-line class-methods-use-this
   socialMedia(id:string): JSX.Element {
     return (
       <ul className="blog__social-media">
-        <li key={`fb${id}`}>
-          <Link key={`fbl${id}`} to="#" className="blog__social-media--link facebook" aria-label="Link to [site] facebook page">
-            <i key={id} className="fab fa-facebook" />
-          </Link>
-        </li>
-        <li key={`tw${id}`}>
-          <Link key={`twl${id}`} to="#" className="blog__social-media--link twitter" aria-label="Link to [site] twitter account">
-            <i key={id} className="fab fa-twitter" />
-          </Link>
-        </li>
-        <li key={`li${id}`}>
-          <Link key={`lil${id}`} to="#" className="blog__social-media--link linkedin">
-            <i key={id} className="fab fa-linkedin" aria-label="Link to [site] linkedin page" />
-          </Link>
-        </li>
+        {this.makeLink(id, 'facebook')}
+        {this.makeLink(id, 'twitter')}
+        {this.makeLink(id, 'linkedin')}
         <li key={`url${id}`}>
           <Link key={`urll${id}`} to="#" className="blog__social-media--link copylink" aria-label="Permanent link to blog posting">
             <i key={id} className="fas fa-link" />
