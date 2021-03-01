@@ -44,6 +44,23 @@ export class AdminDashboard extends Component<DashboardProps, DashboardState> {
     return evt.target.id;
   }
 
+  postBlogButton(): JSX.Element {
+    return (
+      <div style={{ marginLeft: '2px', marginTop: '10px' }}>
+        <button
+          className="btn"
+          style={{ padding: '6px', fontSize: '12pt' }}
+          type="button"
+          id="c-h"
+          disabled={false}
+          onClick={this.controller.createBlogAPI}
+        >
+          Post Blog
+        </button>
+      </div>
+    );
+  }
+
   changeHomepage(): JSX.Element {
     const { title, blogContent } = this.state;
     const inputParams = {
@@ -65,18 +82,7 @@ export class AdminDashboard extends Component<DashboardProps, DashboardState> {
               <br />
               {this.controller.editor(blogContent)}
             </label>
-            <div style={{ marginLeft: '2px', marginTop: '10px' }}>
-              <button
-                className="btn"
-                style={{ padding: '6px', fontSize: '12pt' }}
-                type="button"
-                id="c-h"
-                disabled={false}
-                onClick={this.controller.createBlogAPI}
-              >
-                Post Blog
-              </button>
-            </div>
+            {this.postBlogButton()}
           </form>
         </div>
       </div>
