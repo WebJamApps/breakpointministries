@@ -15,12 +15,6 @@ interface AppMainProps extends RouteComponentProps {
   dispatch: Dispatch<unknown>;
 }
 
-interface CurrentStyles {
-  headerClass: string,
-  sidebarClass: string,
-  sidebarImagePath: string
-}
-
 interface AppMainState { menuOpen: boolean }
 export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
   static defaultProps = {
@@ -50,15 +44,6 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
     this.responseGoogleLogout = this.responseGoogleLogout.bind(this);
     this.googleButtons = this.googleButtons.bind(this);
     this.authUtils = authUtils;
-  }
-
-  get currentStyles(): CurrentStyles { // eslint-disable-line class-methods-use-this
-    const result = {
-      headerClass: 'home-header',
-      sidebarClass: 'home-sidebar',
-      sidebarImagePath: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Lutherrose.svg/800px-Lutherrose.svg.png',
-    };
-    return result;
   }
 
   toggleMobileMenu(): void {
@@ -113,8 +98,8 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
 
   makeMenuLink(menu: MenuItem, index: number): JSX.Element {
     return (
-      <div key={index} className="menu-item">
-        <Link to={menu.link} className="nav-link" onClick={this.close}>
+      <div key={index} className="nav">
+        <Link to={menu.link} className="nav__link" onClick={this.close} style={{ padding: '0px' }}>
           <i className={`${menu.iconClass}`} />
           &nbsp;
           <span className="nav-item">{menu.name}</span>
@@ -123,94 +108,84 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
     );
   }
 
-  navLinks(): JSX.Element {
+  navLinks(className: string): JSX.Element {
     return (
-      <div className="nav-list" style={{ width: '220px' }}>
-        <p style={{ fontSize: '1px', marginBottom: '2px' }} />
-        <div className="menu-item" style={{ backgroundColor: '#244a8bff' }}>
-          <img width="200px" src="https://dl.dropboxusercontent.com/s/ojwr69z0gbi0zw8/Christ-the-redeemer.png?dl=0" alt="Christ the Redeemer" />
-        </div>
-        {/* <div className="menu-item" style={{ backgroundColor: '#244a8bff' }}>
-          <p style={{ color: '#fff', marginBottom: '2px' }}>
-            <span>ph: </span>
-            <a href="tel:5403894963" className="menu-hover" style={{ color: '#88c1ff' }}>(540) 389-4963</a>
-            <br />
-            <span>fax: </span>
-            <a href="tel:5403894980" className="menu-hover" style={{ color: '#88c1ff' }}>(540) 389-4980</a>
-            <br />
-            <a style={{ color: '#88c1ff', wordWrap: 'break-word' }} href="mailto:office1@collegelutheran.org">
-              <span className="menu-hover">office1@collegelutheran.org</span>
-            </a>
-          </p>
-        </div> */}
+      <div className={`navigation ${className}`}>
         {this.menus.map((menu, index) => (this.menuUtils.menuItem(menu, index, this)))}
       </div>
     );
   }
 
-  headerSection(): JSX.Element {
+  // eslint-disable-next-line class-methods-use-this
+  makeForm(h2Text:string): JSX.Element {
+    const cN = h2Text.toLowerCase();
+    const h2cN = `${cN}__heading heading-2`;
+    const fcN = `${cN}__form`;
+    const icN = `${cN}__form--input`;
+    const iB = `btn ${cN}__form--btn`;
+    const pH = `${h2Text}...`;
     return (
-      <div id="header" className={`material-header ${this.currentStyles.headerClass}`}>
-        <div className="headercontent" />
-        <div>
-          <div style={{ marginLeft: '5px', marginTop: '-18px' }}>
-            <div className="flex-header">
-              <h2 className="header-text" style={{ marginBottom: '0px', marginTop: '1px', fontSize: '34px' }}>
-                <a className="header-text" href="/" style={{ textAlign: 'left', textDecoration: 'none' }}>College Lutheran Church</a>
-              </h2>
-              <p className="subTitle" style={{ maxWidth: '100%' }}>
-                We celebrate God&apos;s grace and share His love in Christ!
-              </p>
-            </div>
-          </div>
-        </div>
+      <div className={cN}>
+        <h2 className={h2cN}>{h2Text}</h2>
+        <form className={fcN} action="get">
+          <input className={icN} type="text" role="searchbox" defaultValue="" placeholder={pH} />
+          <input className={iB} type="submit" value={h2Text} />
+        </form>
       </div>
     );
   }
 
-  drawerContainer(className: string): JSX.Element {
+  // eslint-disable-next-line class-methods-use-this
+  sidebar(): JSX.Element {
     return (
-      <div tabIndex={0} role="button" id="sidebar" onClick={this.close} onKeyPress={this.handleKeyPress} className={`${className} drawer-container`}>
-        <div
-          className="drawer"
-          style={{
-            backgroundColor: '#c0c0c0', zIndex: -1, position: 'relative',
-          }}
-        >
-          {/* <div className="navImage" style={{ width: '220px' }}>
+      <div className="sidebar__functions">
+        {// TODO remove process.env check when feature is working
+        /* istanbul ignore next */process.env.NODE_ENV !== 'production'
+        ? this.makeForm('Search') : null
+        }
+        {// TODO remove process.env check when feature is working
+        /* istanbul ignore next */process.env.NODE_ENV !== 'production'
+        ? this.makeForm('Subscribe') : null
+        }
+      </div>
+    );
+  }
+
+  drawerContainer(): JSX.Element {
+    const { menuOpen } = this.state; const style = `${menuOpen ? 'open' : 'close'}`;
+    return (
+      <div className="sidebar">
+        <header className="header">
+          <div className="header__border" />
+          <div className="header__logo">
             <img
-              alt="Luther Rose"
-              id="webjamwidelogo"
-              src={`${this.currentStyles.sidebarImagePath}`}
-              style={{ width: '86px', marginRight: 0, marginLeft: 0 }}
+              className="header__logo--picture"
+              src="https://dl.dropboxusercontent.com/s/ojwr69z0gbi0zw8/Christ-the-redeemer.png?dl=0"
+              alt="A statue of jesus"
             />
-          </div> */}
-          {this.navLinks()}
-        </div>
+            <span
+              className="header__mobile-menu"
+              onClick={this.toggleMobileMenu}
+              onKeyPress={this.handleKeyMenu}
+              tabIndex={0}
+              role="button"
+            >
+              <i className="fas fa-bars" />
+            </span>
+          </div>
+        </header>
+        {this.sidebar()}
+        {this.navLinks(style)}
       </div>
     );
   }
 
   render(): JSX.Element {
     const { children } = this.props;
-    const { menuOpen } = this.state;
-    const style = `${this.currentStyles.sidebarClass} ${menuOpen ? 'open' : 'close'}`;
     return (
-      <div className="page-host">
-        {this.drawerContainer(style)}
-        <div className="main-panel">
-          <span onClick={this.toggleMobileMenu} onKeyPress={this.handleKeyMenu} id="mobilemenutoggle" tabIndex={0} role="button">
-            <i className="fas fa-bars" />
-          </span>
-          <div className="mainPanel">
-            <div className="swipe-area" />
-            {/* {this.headerSection()} */}
-            <div style={{ width: 'auto' }} id="contentBlock" className="content-block">
-              {children}
-              {/* <Footer /> */}
-            </div>
-          </div>
-        </div>
+      <div className="container">
+        {this.drawerContainer()}
+        {children}
       </div>
     );
   }

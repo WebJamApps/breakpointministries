@@ -6,7 +6,7 @@ import commonUtils from '../lib/commonUtils';
 import AdminDashboardDefault from '../containers/AdminDashboard';
 import AppFourOhFour from './404';
 import AppTemplateDefault from './AppTemplate';
-import DefaultHome from '../containers/Homepage';
+import DefaultHomepage from '../containers/Homepage';
 import mapStoreToProps from '../redux/mapStoreToProps';
 import fetch from '../lib/fetch';
 import { AppProps } from './AppTypes';
@@ -46,7 +46,7 @@ export class App extends Component<AppProps> {
         <Router>
           <AppTemplateDefault>
             <Switch>
-              <Route exact path="/" component={DefaultHome} />
+              <Route exact path="/" component={DefaultHomepage} />
               {auth.isAuthenticated && auth.user.userType && userRoles.indexOf(auth.user.userType) !== -1
                 ? <Route path="/admin" component={AdminDashboardDefault} /> : null}
               <Route component={AppFourOhFour} />

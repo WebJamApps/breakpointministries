@@ -15,6 +15,7 @@ function menuItem(menu: MenuItem,
   index: number, view: AppTemplate): JSX.Element | null {
   const userRoles: string[] = commonUtils.getUserRoles();
   const { auth } = view.props;
+  if (menu.name === 'Home' && window.location.pathname === '/') return null;
   if (menu.name === 'Admin Dashboard' && (!auth.isAuthenticated || !auth.user.userType || userRoles.indexOf(auth.user.userType) === -1)) return null;
   return continueMenuItem(menu, index, auth, view);
 }
