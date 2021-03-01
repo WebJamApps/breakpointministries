@@ -42,4 +42,13 @@ describe('menuUtils', () => {
     1, viewStub);
     expect(r).toBe(null);
   });
+  it('does not dispaly the home page link when on the home page already', () => {
+    window.location.pathname = '/';
+    viewStub.props.auth = { isAuthenticated: false, token: '', user: { userType: 'booya' } };
+    r = menuUtils.menuItem({
+      name: 'Home', link: '/', type: '', auth: false, classname: '', iconClass: '',
+    },
+    1, viewStub);
+    expect(r).toBe(null);
+  });
 });
