@@ -1,6 +1,8 @@
 .blog {
   grid-column: col-start 1 / col-end 8;
-
+  background-color: white;
+  padding:6px;
+  width:70vw;
   display: grid;
   grid-row-gap: 3rem;
   margin-bottom: 6rem;

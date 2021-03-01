@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { RefObject } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -36,7 +35,6 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     this.commonUtils.setTitleAndScroll('', window.screen.width);
   }
 
-  // eslint-disable-next-line class-methods-use-this
   makeBlogArticle(): JSX.Element {
     const { targetRef, blogs } = this.props;
     return (
@@ -50,7 +48,9 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
               {ReactHtmlParser(blog && blog.body ? blog.body : '')}
               <div className="blog__ender">
                 <div className="blog__time-stamp">{blog.dateOfPub}</div>
-                {this.socialMedia(blog._id)}
+                {// TODO remove process.env check when feature is working
+                /* istanbul ignore next */process.env.NODE_ENV !== 'production' ? this.socialMedia(blog._id) : null
+                }
               </div>
             </section>
           </div>
@@ -68,6 +68,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
 
   // eslint-disable-next-line class-methods-use-this
   makeLink(id:string, type:string): JSX.Element {
+    /* eslint-disable jsx-a11y/anchor-is-valid */
     return (
       <li key={`${type}${id}`}>
         <Link to="#" className={`blog__social-media--link ${type}`} aria-label={`Link to [site] ${type} page`}>
@@ -77,7 +78,6 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     );
   }
 
-  // eslint-disable-next-line class-methods-use-this
   socialMedia(id:string): JSX.Element {
     return (
       <ul className="blog__social-media">
@@ -94,9 +94,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
   }
 
   render(): JSX.Element {
-    return (
-      this.makeBlogArticle()
-    );
+    return (this.makeBlogArticle());
   }
 }
 

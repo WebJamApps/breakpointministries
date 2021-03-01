@@ -99,7 +99,7 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
   makeMenuLink(menu: MenuItem, index: number): JSX.Element {
     return (
       <div key={index} className="nav">
-        <Link to={menu.link} className="nav__link" onClick={this.close}>
+        <Link to={menu.link} className="nav__link" onClick={this.close} style={{ padding: '0px' }}>
           <i className={`${menu.iconClass}`} />
           &nbsp;
           <span className="nav-item">{menu.name}</span>
@@ -139,8 +139,14 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
   sidebar(): JSX.Element {
     return (
       <div className="sidebar__functions">
-        {this.makeForm('Search')}
-        {this.makeForm('Subscribe')}
+        {// TODO remove process.env check when feature is working
+        /* istanbul ignore next */process.env.NODE_ENV !== 'production'
+        ? this.makeForm('Search') : null
+        }
+        {// TODO remove process.env check when feature is working
+        /* istanbul ignore next */process.env.NODE_ENV !== 'production'
+        ? this.makeForm('Subscribe') : null
+        }
       </div>
     );
   }
