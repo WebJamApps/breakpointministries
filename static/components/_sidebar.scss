@@ -111,7 +111,6 @@
         display: initial;
         grid-row: 1 / 1;
         justify-self: end;
-        grid-column: 1 / 1;
         margin-top: 1rem;
         margin-right: 3rem;
         outline: none;
@@ -124,9 +123,6 @@
   }
 
   .sidebar__functions {
-    @media only screen and (max-width: $bp-med) {
-      display: none;
-    }
     margin-left: .5rem;
     margin-right: .5rem;
 
@@ -193,6 +189,19 @@
         }
       }
     }
+  }
+}
+
+@media only screen and (max-width: $bp-med) {
+
+  div.close.sidebar__functions {
+    display: none;
+  }
+
+  div.open.sidebar__functions {
+    width: 80%;
+    margin: 0 auto;
+    display: block;
   }
 }
 
