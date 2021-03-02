@@ -30,6 +30,31 @@
       margin-bottom: 0;
     }
 
+    &__title {
+      @media only screen and (max-width: $bp-med) {
+        grid-row: 1 / 2;
+        grid-column: 1 / 1;
+        margin: auto 0;
+      }
+
+      h2 {
+        text-align: center;
+
+
+        @media only screen and (max-width: $bp-med) {
+          font-size: 6rem;
+        }
+
+        @media only screen and (max-width: $bp-sm) {
+          font-size: 2.5rem;
+        }
+
+        @media only screen and (max-width: $bp-tiny) {
+          font-size: 2rem;
+        }
+      }
+    }
+
     &__border {
       min-height: .8rem;
       max-width: 100%;
@@ -78,10 +103,10 @@
         grid-column: 1 / 1;
         margin-top: 1rem;
         margin-right: 3rem;
+        outline: none;
 
         & span > i.fas, i.fa-bars {
           font-size: 2.5rem;
-          outline: none;
         }
       }
     }

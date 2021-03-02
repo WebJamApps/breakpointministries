@@ -166,6 +166,9 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
             >
               <i className="fas fa-bars" />
             </span>
+            <span className="header__title">
+              <h2>Change in Christ</h2>
+            </span>
           </div>
         </header>
         {this.sidebar()}
