@@ -70,7 +70,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
   makeLink(id:string, type:string): JSX.Element {
     return (
       <li key={`${type}${id}`}>
-        <Link to="#" className={`blog__social-media--link ${type}`} aria-label={`Link to [site] ${type} page`}>
+        <Link to="#" className={`blog__social-media--link ${type}`} aria-label={`Link to ${type} page`}>
           <i key={id} className={`fab fa-${type}`} />
         </Link>
       </li>

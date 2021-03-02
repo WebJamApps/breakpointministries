@@ -22,6 +22,15 @@ $color-grey-dark-1: rgb(150, 149, 149);
 
 // FONT
 $default-font-size: 1.6rem;
+$default-font-family: 'PT Serif', serif; // Body
+$alt-font-family: 'Source Sans Pro', sans-serif; // H2, Links
+
+// FONT WEIGHTS
+$font-weight-normal: 400;
+$font-weight-extra-light: 300;
+$font-weight-light: 600;
+$font-weight-med: 700; // Equivalent to bold
+$font-weight-heavy: 900;
 
 // RESPONSIVE BREAKPOINTS
 $bp-largest: 75em;    //  1200 px

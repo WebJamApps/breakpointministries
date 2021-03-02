@@ -16,14 +16,15 @@ html {
 }
 
 body {
-  font-weight: 300;
+  font-weight: $font-weight-extra-light;
   line-height: 1.6;
   background-color: rgba($color-purple-light-1, .4);
+  font-family: $default-font-family;
 }
 
 .container {
   display: grid;
-  grid-template-rows: repeat(2, 50vh);
+  grid-template-rows: minmax(100vh, auto);
   grid-template-columns: [sidebar-start] minmax(min-content, max-content) [sidebar-end full-start] minmax(5rem, .4fr) [center-start] repeat(8, [col-start] minmax(min-content, 8rem) [col-end]) [center-end] minmax(5rem, .4fr) [full-end];
 
   @media only screen and (max-width: $bp-large) {
