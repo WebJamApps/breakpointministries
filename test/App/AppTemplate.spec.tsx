@@ -23,7 +23,7 @@ describe('AppTemplate', () => {
   it('rerenders the component when menuOpen state changes', () => {
     const { wrapper } = setup();
     wrapper.setState({ menuOpen: true });
-    expect(wrapper.find('div.open').length).toBe(1);
+    expect(wrapper.find('div.open').length).toBe(2);
   });
   it('handles response from google login', async () => {
     authUtils.responseGoogleLogin = jest.fn(() => Promise.resolve(''));
