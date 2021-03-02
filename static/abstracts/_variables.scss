@@ -33,11 +33,16 @@ $font-weight-med: 700; // Equivalent to bold
 $font-weight-heavy: 900;
 
 // RESPONSIVE BREAKPOINTS
-$bp-largest: 75em;    //  1200 px
+$bp-largest: 75em;    //  1200px
 $bp-large: 62.5em;    //  1000px
 $bp-med: 50em;        //  800px
 $bp-sm: 37.5em;       //  600px
 $bp-tiny: 18.75em;    //  300px
+
+// MOBILE RESPONSIVE BREAKPOINTS
+$bp-mobile-l: 26.6em; // 425px
+$bp-mobile-m: 23.5em; // 376px
+$bp-mobile-s: 20em; // 320px
 
 // BOX SHADOW
 $box-shadow-1: 0 1.5rem 4rem rgba($color-blue-dark-1, .15);
