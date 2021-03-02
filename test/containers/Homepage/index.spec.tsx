@@ -8,7 +8,7 @@ const testBlogs = [
   { _id: 'badBlog' },
 ];
 const targetRef:any = {};
-const wrapper = shallow<Homepage>(<Homepage targetRef={targetRef} width={1000} height={800} blogs={testBlogs} />);
+const wrapper = shallow<Homepage>(<Homepage targetRef={targetRef} width={1000} height={800} blogs={testBlogs} auth={{ isAuthenticated: false }} />);
 
 describe('Home', () => {
   it('renders snapshot correctly', () => { expect(wrapper).toMatchSnapshot(); });

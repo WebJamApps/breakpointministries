@@ -1,9 +1,10 @@
 import React, { RefObject } from 'react';
+import Superagent from 'superagent';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ReactHtmlParser from 'react-html-parser';
 import { withResizeDetector } from 'react-resize-detector';
-import commonUtils from '../../lib/commonUtils';
+import CommonUtils from '../../lib/commonUtils';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 type HomepageProps = {
@@ -11,6 +12,7 @@ type HomepageProps = {
   width: number;
   height: number;
   blogs: any[];
+  auth: any;
 };
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -19,13 +21,14 @@ interface HomepageState {
 }
 
 export class Homepage extends React.Component<HomepageProps, HomepageState> {
-  commonUtils: typeof commonUtils;
+  public commonUtils: typeof CommonUtils = CommonUtils;
+
+  public superagent: Superagent.SuperAgentStatic = Superagent;
 
   parentRef: React.RefObject<unknown>;
 
   constructor(props: HomepageProps) {
     super(props);
-    this.commonUtils = commonUtils;
     this.parentRef = React.createRef();
     // eslint-disable-next-line react/no-unused-state
     this.state = { };
@@ -35,8 +38,23 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     this.commonUtils.setTitleAndScroll('', window.screen.width);
   }
 
+  async deleteBlog(id:string): Promise<string> {
+    const { auth } = this.props;
+    let r;
+    try {
+      r = await this.superagent.delete(`${process.env.BackendUrl}/blog/${id}`)
+        .set('Authorization', `Bearer ${auth.token}`)
+        .set('Accept', 'application/json');
+    } catch (e) { return `${e.message}`; }
+    if (r.status === 200) {
+      window.location.reload();
+      return `${r.status}`;
+    }
+    return `Failed to delete blog, ${r.body.message}`;
+  }
+
   makeBlogArticle(): JSX.Element {
-    const { targetRef, blogs } = this.props;
+    const { targetRef, blogs, auth } = this.props;
     return (
       <div className="blog" ref={targetRef}>
         {blogs && blogs.length > 0 ? blogs.map((blog) => (
@@ -47,10 +65,23 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
               </h2>
               {ReactHtmlParser(blog && blog.body ? blog.body : '')}
               <div className="blog__ender">
-                <div className="blog__time-stamp">{blog.dateOfPub}</div>
-                {// TODO remove process.env check when feature is working
+                <div style={{ display: 'inline-block' }}>
+                  <div className="blog__time-stamp">{blog.dateOfPub}</div>
+                  <div style={{ display: 'inline-block', marginRight: '20px', marginTop: '10px' }}>
+                    {auth.isAuthenticated ? (
+                      <button
+                        style={{ width: '50px' }}
+                        type="button"
+                        onClick={() => this.deleteBlog(blog._id)}
+                      >
+                        Delete
+                      </button>
+                    ) : null}
+                  </div>
+                  {// TODO remove process.env check when feature is working
                 /* istanbul ignore next */process.env.NODE_ENV !== 'production' ? this.socialMedia(blog._id) : null
                 }
+                </div>
               </div>
             </section>
           </div>
@@ -80,16 +111,18 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
 
   socialMedia(id:string): JSX.Element {
     return (
-      <ul className="blog__social-media">
-        {this.makeLink(id, 'facebook')}
-        {this.makeLink(id, 'twitter')}
-        {this.makeLink(id, 'linkedin')}
-        <li key={`url${id}`}>
-          <Link key={`urll${id}`} to="#" className="blog__social-media--link copylink" aria-label="Permanent link to blog posting">
-            <i key={id} className="fas fa-link" />
-          </Link>
-        </li>
-      </ul>
+      <div style={{ display: 'inline-block' }}>
+        <ul className="blog__social-media">
+          {this.makeLink(id, 'facebook')}
+          {this.makeLink(id, 'twitter')}
+          {this.makeLink(id, 'linkedin')}
+          <li key={`url${id}`}>
+            <Link key={`urll${id}`} to="#" className="blog__social-media--link copylink" aria-label="Permanent link to blog posting">
+              <i key={id} className="fas fa-link" />
+            </Link>
+          </li>
+        </ul>
+      </div>
     );
   }
 
