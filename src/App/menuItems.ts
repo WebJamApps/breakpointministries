@@ -17,7 +17,7 @@ const menuItems = [{
 {
   classname: 'home',
   type: 'link',
-  iconClass: 'fas fa-heart',
+  iconClass: 'fas fa-home',
   link: '/',
   name: 'Home',
 },
