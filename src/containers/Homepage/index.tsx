@@ -42,7 +42,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
         {blogs && blogs.length > 0 ? blogs.map((blog) => (
           <div key={`blog_entry${blog._id}`} className="blog__entry">
             <section className="blog__entry--body">
-              <h2 className="blog__entry--header heading-2 heading-2">
+              <h2 className="blog__entry--header">
                 <Link key={blog._id} to={blog._id} className="blog__link">{ReactHtmlParser(blog && blog.title ? blog.title : '')}</Link>
               </h2>
               {ReactHtmlParser(blog && blog.body ? blog.body : '')}
@@ -71,7 +71,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     /* eslint-disable jsx-a11y/anchor-is-valid */
     return (
       <li key={`${type}${id}`}>
-        <Link to="#" className={`blog__social-media--link ${type}`} aria-label={`Link to [site] ${type} page`}>
+        <Link to="#" className={`blog__social-media--link ${type}`} aria-label={`Link to ${type} page`}>
           <i key={id} className={`fab fa-${type}`} />
         </Link>
       </li>
