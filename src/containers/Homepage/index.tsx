@@ -42,7 +42,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
         {blogs && blogs.length > 0 ? blogs.map((blog) => (
           <div key={`blog_entry${blog._id}`} className="blog__entry">
             <section className="blog__entry--body">
-              <h2 className="blog__entry--header heading-2 heading-2">
+              <h2 className="blog__entry--header">
                 <Link key={blog._id} to={blog._id} className="blog__link">{ReactHtmlParser(blog && blog.title ? blog.title : '')}</Link>
               </h2>
               {ReactHtmlParser(blog && blog.body ? blog.body : '')}
