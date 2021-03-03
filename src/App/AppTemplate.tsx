@@ -165,13 +165,13 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
               alt="A statue of jesus"
             />
             <span
-              className="header__mobile-menu"
+              className={`${style} header__mobile-menu`}
               onClick={this.toggleMobileMenu}
               onKeyPress={this.handleKeyMenu}
               tabIndex={0}
               role="button"
             >
-              <i className="fas fa-bars" />
+              <span className="header__mobile-menu--icon" />
             </span>
             <span className="header__title">
               <h2>Change in Christ</h2>
