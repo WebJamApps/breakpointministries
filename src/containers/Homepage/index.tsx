@@ -50,7 +50,38 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
       window.location.reload();
       return `${r.status}`;
     }
-    return `Failed to delete blog, ${r.body.message}`;
+    return `Failed to delete blog, ${r.body ? r.body.message : ''}`;
+  }
+
+  deleteBlogButton(id:string):JSX.Element {
+    return (
+      <button
+        id={`deleteBlogButton${id}`}
+        style={{ width: '50px' }}
+        type="button"
+        onClick={() => this.deleteBlog(id)}
+      >
+        Delete
+      </button>
+    );
+  }
+
+  blogEnder(blog: { dateOfPub: React.ReactNode; _id: string; }, auth: { isAuthenticated: boolean; }):JSX.Element {
+    return (
+      <div className="blog__ender">
+        <div style={{ display: 'inline-block' }}>
+          <div className="blog__time-stamp">{blog.dateOfPub}</div>
+          <div style={{ display: 'inline-block', marginRight: '20px', marginTop: '10px' }}>
+            {auth.isAuthenticated
+              ? this.deleteBlogButton(blog._id)
+              : null}
+          </div>
+          {// TODO remove process.env check when feature is working
+      /* istanbul ignore next */process.env.NODE_ENV !== 'production' ? this.socialMedia(blog._id) : null
+      }
+        </div>
+      </div>
+    );
   }
 
   makeBlogArticle(): JSX.Element {
@@ -64,25 +95,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
                 <Link key={blog._id} to={blog._id} className="blog__link">{ReactHtmlParser(blog && blog.title ? blog.title : '')}</Link>
               </h2>
               {ReactHtmlParser(blog && blog.body ? blog.body : '')}
-              <div className="blog__ender">
-                <div style={{ display: 'inline-block' }}>
-                  <div className="blog__time-stamp">{blog.dateOfPub}</div>
-                  <div style={{ display: 'inline-block', marginRight: '20px', marginTop: '10px' }}>
-                    {auth.isAuthenticated ? (
-                      <button
-                        style={{ width: '50px' }}
-                        type="button"
-                        onClick={() => this.deleteBlog(blog._id)}
-                      >
-                        Delete
-                      </button>
-                    ) : null}
-                  </div>
-                  {// TODO remove process.env check when feature is working
-                /* istanbul ignore next */process.env.NODE_ENV !== 'production' ? this.socialMedia(blog._id) : null
-                }
-                </div>
-              </div>
+              {this.blogEnder(blog, auth)}
             </section>
           </div>
         ))
