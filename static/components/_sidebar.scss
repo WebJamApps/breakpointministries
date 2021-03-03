@@ -12,7 +12,13 @@
   }
 
   h2 {
+  font-size: 2.2rem;
+  font-weight: $font-weight-light;
+  color: rgba($color-purple-dark-1, .9);
+
+  @media only screen and (max-width: $bp-med) {
     font-size: $default-font-size;
+  }
   }
 
   a {
@@ -53,7 +59,7 @@
         }
 
         @media only screen and (max-width: $bp-mobile-m) {
-          font-size: 3rem;
+          font-size: 2.85rem;
         }
 
         @media only screen and (max-width: $bp-mobile-s) {
@@ -111,22 +117,42 @@
         display: initial;
         grid-row: 1 / 1;
         justify-self: end;
-        grid-column: 1 / 1;
         margin-top: 1rem;
-        margin-right: 3rem;
+        margin-right: 6rem;
         outline: none;
 
-        & span > i.fas, i.fa-bars {
-          font-size: 2.5rem;
+        &--icon {
+            position: relative;
+
+            &,
+            &::before,
+            &::after {
+                width: 3rem;
+                height: 2px;
+                background-color: black;
+                display: inline-block;
+                transition: all .2s;
+            }
+
+            &::before,
+            &::after {
+                content: "";
+                position: absolute;
+                left: 0;
+            }
+
+            &::before { top: -.8rem; }
+            &::after { top: .8rem; }
         }
+      }
+
+      @media only screen and (max-width: $bp-sm) {
+        margin-right: 4rem;
       }
     }
   }
 
   .sidebar__functions {
-    @media only screen and (max-width: $bp-med) {
-      display: none;
-    }
     margin-left: .5rem;
     margin-right: .5rem;
 
@@ -147,6 +173,7 @@
     .subscribe__form {
       display: grid;
       grid-row-gap: 1.5rem;
+      grid-template-rows: 1fr;
 
       &--input {
         height: 2.5rem;
@@ -160,9 +187,10 @@
         color: $color-purple-dark-1;
         background-color: $color-blue-light-2;
         padding: .3rem 0;
-        margin: auto auto;
         backface-visibility: hidden;
         transition: all .2s;
+
+        justify-self: end;
 
         &:hover {
           transform: translateY(-.2rem);
@@ -196,6 +224,33 @@
   }
 }
 
+@media only screen and (max-width: $bp-med) {
+
+  div.close.sidebar__functions {
+    display: none;
+  }
+
+  div.open.sidebar__functions {
+    width: 80%;
+    margin: 0 auto;
+    display: block;
+  }
+
+  span.open.header__mobile-menu > span.header__mobile-menu--icon {
+    background-color: transparent;
+
+    &:before {
+      top: 0;
+      transform: rotate(135deg);
+    }
+
+    &:after {
+      top: 0;
+      transform: rotate(-135deg);
+    }
+  }
+}
+
 .nav {
   list-style: none;
 
@@ -211,7 +266,6 @@
     font-size: 1.4rem;
     color: $color-black;
     text-decoration: none;
-    // font-family: $font-display;
     padding: 1.5rem;
     display: block;
     transition: all .2s;
@@ -225,18 +279,11 @@
 
 .menu-item {
   padding-left          : 1rem;
-  display               : flex;
-  flex-direction        : row;
-  align-items           : center;
-  font-family           : 'Trebuchet MS', 'ChivoBlack', Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  font-size             : 1.6rem;
-  font-weight           : $font-weight-normal;
-  line-height           : 2.4rem;
-  position              : relative;
   min-height            : 4.4rem;
-  padding-top           : 1rem;
-  padding-right         : 1.6rem;
-  box-sizing            : border-box;
+  padding-top           : 2.5rem;
   margin-bottom         : 1.5rem;
+
+  @media only screen and (max-width: $bp-med) {
+    padding-top: 1rem;
+  }
 }
