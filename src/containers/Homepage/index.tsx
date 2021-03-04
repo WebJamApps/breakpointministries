@@ -53,6 +53,31 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     return `Failed to delete blog, ${r.body ? r.body.message : ''}`;
   }
 
+  // eslint-disable-next-line class-methods-use-this
+  makeEditBlogSection(id: string) {
+    console.log(`show form for this blog id: ${id}`);
+    //  find the blog that matches this id in the props
+    //  set state to be this blog
+    //  use the same form that is in Admin page (make it a component to import)
+    //  change events for title and blog content
+    //  Update and Cancel Buttons (do not display Create button)
+    //  PUT request to update in database
+    //  reload page when successful
+  }
+
+  editBlogButton(id:string):JSX.Element {
+    return (
+      <button
+        id={`editBlogButton${id}`}
+        style={{ width: '50px' }}
+        type="button"
+        onClick={() => this.makeEditBlogSection(id)}
+      >
+        Edit
+      </button>
+    );
+  }
+
   deleteBlogButton(id:string):JSX.Element {
     return (
       <button
@@ -72,9 +97,8 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
         <div style={{ display: 'inline-block' }}>
           <div className="blog__time-stamp">{blog.dateOfPub}</div>
           <div style={{ display: 'inline-block', marginRight: '20px', marginTop: '10px' }}>
-            {auth.isAuthenticated
-              ? this.deleteBlogButton(blog._id)
-              : null}
+            <span style={{ marginRight: '8px' }}>{auth.isAuthenticated ? this.deleteBlogButton(blog._id) : null}</span>
+            <span>{auth.isAuthenticated ? this.editBlogButton(blog._id) : null}</span>
           </div>
           {// TODO remove process.env check when feature is working
       /* istanbul ignore next */process.env.NODE_ENV !== 'production' ? this.socialMedia(blog._id) : null
