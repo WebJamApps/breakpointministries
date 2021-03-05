@@ -6,6 +6,7 @@ import ReactHtmlParser from 'react-html-parser';
 import { withResizeDetector } from 'react-resize-detector';
 import CommonUtils from '../../lib/commonUtils';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import BlogEditor from '../../components/BlogEditor';
 
 type HomepageProps = {
   targetRef: RefObject<HTMLDivElement>;
@@ -17,7 +18,7 @@ type HomepageProps = {
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface HomepageState {
-
+  editBlog:any
 }
 
 export class Homepage extends React.Component<HomepageProps, HomepageState> {
@@ -31,7 +32,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     super(props);
     this.parentRef = React.createRef();
     // eslint-disable-next-line react/no-unused-state
-    this.state = { };
+    this.state = { editBlog: {} };
   }
 
   async componentDidMount(): Promise<void> {
@@ -54,10 +55,10 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  makeEditBlogSection(id: string) {
-    console.log(`show form for this blog id: ${id}`);
-    //  find the blog that matches this id in the props
-    //  set state to be this blog
+  makeEditBlogSection(blog: { dateOfPub?: React.ReactNode; _id: any; }) {
+    console.log(JSON.stringify(blog));
+    // eslint-disable-next-line react/no-unused-state
+    this.setState({ editBlog: blog });
     //  use the same form that is in Admin page (make it a component to import)
     //  change events for title and blog content
     //  Update and Cancel Buttons (do not display Create button)
@@ -65,13 +66,13 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     //  reload page when successful
   }
 
-  editBlogButton(id:string):JSX.Element {
+  editBlogButton(blog: { dateOfPub?: React.ReactNode; _id: any; }):JSX.Element {
     return (
       <button
-        id={`editBlogButton${id}`}
+        id={`editBlogButton${blog._id}`}
         style={{ width: '50px' }}
         type="button"
-        onClick={() => this.makeEditBlogSection(id)}
+        onClick={() => this.makeEditBlogSection(blog)}
       >
         Edit
       </button>
@@ -98,7 +99,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
           <div className="blog__time-stamp">{blog.dateOfPub}</div>
           <div style={{ display: 'inline-block', marginRight: '20px', marginTop: '10px' }}>
             <span style={{ marginRight: '8px' }}>{auth.isAuthenticated ? this.deleteBlogButton(blog._id) : null}</span>
-            <span>{auth.isAuthenticated ? this.editBlogButton(blog._id) : null}</span>
+            <span>{auth.isAuthenticated ? this.editBlogButton(blog) : null}</span>
           </div>
           {// TODO remove process.env check when feature is working
       /* istanbul ignore next */process.env.NODE_ENV !== 'production' ? this.socialMedia(blog._id) : null
@@ -164,6 +165,8 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
   }
 
   render(): JSX.Element {
+    const { editBlog } = this.state;
+    if (editBlog._id) { return (<BlogEditor comp={this} editBlog={editBlog} />); }
     return (this.makeBlogArticle());
   }
 }
