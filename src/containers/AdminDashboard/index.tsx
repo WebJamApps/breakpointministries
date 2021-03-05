@@ -44,7 +44,7 @@ export class AdminDashboard extends Component<DashboardProps, DashboardState> {
     return evt.target.id;
   }
 
-  postBlogButton(): JSX.Element {
+  postBlogButton(title: string, blogContent: string): JSX.Element {
     return (
       <div style={{ marginLeft: '2px', marginTop: '10px' }}>
         <button
@@ -52,7 +52,7 @@ export class AdminDashboard extends Component<DashboardProps, DashboardState> {
           style={{ padding: '6px', fontSize: '12pt' }}
           type="button"
           id="c-h"
-          disabled={false}
+          disabled={this.controller.validateBlogPost(title, blogContent)}
           onClick={this.controller.createBlogAPI}
         >
           Post Blog
@@ -82,7 +82,7 @@ export class AdminDashboard extends Component<DashboardProps, DashboardState> {
               <br />
               {this.controller.editor(blogContent)}
             </label>
-            {this.postBlogButton()}
+            {this.postBlogButton(title, blogContent)}
           </form>
         </div>
       </div>

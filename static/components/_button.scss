@@ -4,6 +4,11 @@
     font-size: 1.44rem;
     font-weight: $font-weight-med;
 
+    &:disabled:hover {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
     &:link, &:visited {
       text-transform: uppercase;
       text-decoration: none;
