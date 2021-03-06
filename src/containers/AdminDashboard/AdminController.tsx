@@ -38,6 +38,13 @@ class AdminController {
     return 'Failed to create blog';
   }
 
+  // eslint-disable-next-line class-methods-use-this
+  validateBlogPost(title: string, blogContent: string): boolean {
+    let disabled = true;
+    if (title !== '' && blogContent !== '') { disabled = false; }
+    return disabled;
+  }
+
   handleEditorChange(blogContent: string): boolean { this.view.setState({ blogContent }); return true; }
 
   editor(blogContent: string | undefined): JSX.Element {
