@@ -49,7 +49,7 @@ export class AdminDashboard extends Component<DashboardProps, DashboardState> {
       <div style={{ marginLeft: '2px', marginTop: '10px' }}>
         <button
           className="btn"
-          style={{ padding: '6px', fontSize: '12pt' }}
+          style={{ width: '10%' }}
           type="button"
           id="c-h"
           disabled={this.controller.validateBlogPost(title, blogContent)}

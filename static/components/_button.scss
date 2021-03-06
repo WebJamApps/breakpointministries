@@ -4,9 +4,23 @@
     font-size: 1.44rem;
     font-weight: $font-weight-med;
 
-    &:disabled:hover {
+    border-radius: .3rem;
+    height: 3.3rem;
+    color: $color-purple-dark-1;
+    background-color: $color-blue-light-2;
+    padding: .3rem 0;
+    backface-visibility: hidden;
+    transition: all .2s;
+
+    &:disabled {
+      background-color: rgba($color-grey-light-1, .2);
+      color: rgba($color-black, .6);
+      border: 1px solid rgba($color-red-dark-1, .7);
+
+      &:hover {
       transform: translateY(0);
       box-shadow: none;
+      }
     }
 
     &:link, &:visited {
