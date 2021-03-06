@@ -1,16 +1,22 @@
 import React from 'react';
+import type { IBlog, Homepage } from '../../containers/Homepage';
 import Forms from '../../lib/forms';
 import utils from './blogEditorUtils';
 
-type PageProps = {comp:any;editBlog:any;};
+type PageProps = {comp:Homepage;editBlog:IBlog;};
 const BlogEditor = ({
   comp, editBlog,
 }:PageProps): JSX.Element => {
-  const { title, content } = editBlog;
+  const { title, body } = editBlog;
   return (
     <div className="horiz-scroll">
-      <div className="material-content elevation3" style={{ width: '850px', margin: '30px auto' }}>
-        <h5>Edit Blog</h5>
+      <div
+        className="material-content elevation3"
+        style={{
+          width: '78vw', margin: 'auto', padding: '10px', paddingTop: '20px',
+        }}
+      >
+        <h1 style={{ textAlign: 'center', fontSize: '16pt' }}>Edit Blog</h1>
         <form
           id={`update-blog${editBlog._id}`}
           style={{
@@ -28,17 +34,18 @@ const BlogEditor = ({
             value: title,
             width: '90%',
           })}
-          <label htmlFor="content">
+          <p>&nbsp;</p>
+          <label htmlFor="content" style={{ fontSize: '12pt', fontWeight: 'bold' }}>
             Content
             <br />
-            {utils.editor(content, comp.onChangeBlogContent)}
+            {utils.editor(body, comp.handleEditorChange)}
           </label>
-          <div style={{ marginLeft: '60%', marginTop: '10px' }}>
+          <div style={{ marginLeft: '10px', marginTop: '10px' }}>
             <button
               type="button"
               id="update-youthContent"
               disabled={false}
-              onClick={() => comp.putAPI({ title, content }, `/blog/${editBlog._id}`)}
+              onClick={() => comp.putAPI()}
             >
               Update Blog
             </button>

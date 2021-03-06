@@ -14,7 +14,9 @@ function makeInput(p: InputParams): JSX.Element {
       {p.label}
       <br />
       <input
-        style={{ paddingLeft: 0, minWidth: 'inherit', width: p.width }}
+        style={{
+          paddingLeft: 0, minWidth: 'inherit', width: p.width, fontSize: '12pt',
+        }}
         id={fId}
         type={p.type}
         name={fId}

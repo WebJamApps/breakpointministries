@@ -8,6 +8,8 @@ import CommonUtils from '../../lib/commonUtils';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import BlogEditor from '../../components/BlogEditor';
 
+export interface IBlog { dateOfPub?: React.ReactNode; _id: string; title:string, body:string }
+
 type HomepageProps = {
   targetRef: RefObject<HTMLDivElement>;
   width: number;
@@ -18,7 +20,7 @@ type HomepageProps = {
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface HomepageState {
-  editBlog:any
+  editBlog:IBlog
 }
 
 export class Homepage extends React.Component<HomepageProps, HomepageState> {
@@ -32,7 +34,8 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     super(props);
     this.parentRef = React.createRef();
     // eslint-disable-next-line react/no-unused-state
-    this.state = { editBlog: {} };
+    this.state = { editBlog: { title: '', body: '', _id: '' } };
+    this.handleEditorChange = this.handleEditorChange.bind(this);
   }
 
   async componentDidMount(): Promise<void> {
@@ -54,8 +57,14 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     return `Failed to delete blog, ${r.body ? r.body.message : ''}`;
   }
 
+  putAPI() {
+    const { editBlog } = this.state;
+    // `/blog/${editBlog._id}`
+    console.log(editBlog);
+  }
+
   // eslint-disable-next-line class-methods-use-this
-  makeEditBlogSection(blog: { dateOfPub?: React.ReactNode; _id: any; }) {
+  makeEditBlogSection(blog: IBlog) {
     console.log(JSON.stringify(blog));
     // eslint-disable-next-line react/no-unused-state
     this.setState({ editBlog: blog });
@@ -66,7 +75,14 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     //  reload page when successful
   }
 
-  editBlogButton(blog: { dateOfPub?: React.ReactNode; _id: any; }):JSX.Element {
+  handleEditorChange(body: string): void {
+    const { editBlog } = this.state;
+    const newEditBlog = { ...editBlog, body };
+    // eslint-disable-next-line react/no-unused-state
+    this.setState({ editBlog: newEditBlog });
+  }
+
+  editBlogButton(blog: IBlog):JSX.Element {
     return (
       <button
         id={`editBlogButton${blog._id}`}
@@ -92,7 +108,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     );
   }
 
-  blogEnder(blog: { dateOfPub: React.ReactNode; _id: string; }, auth: { isAuthenticated: boolean; }):JSX.Element {
+  blogEnder(blog: IBlog, auth: { isAuthenticated: boolean; }):JSX.Element {
     return (
       <div className="blog__ender">
         <div style={{ display: 'inline-block' }}>

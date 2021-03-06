@@ -20,6 +20,7 @@
       &:hover {
       transform: translateY(0);
       box-shadow: none;
+      cursor:none;
       }
     }
 
@@ -37,6 +38,7 @@
     &:hover {
       transform: translateY(-3px);
       box-shadow: $box-shadow-2;
+      cursor: pointer;
 
       &::after {
         transform: scaleX(1.4) scaleY(1.6);
