@@ -11,7 +11,7 @@ const menuItems = [{
   type: 'link',
   iconClass: 'fas fa-user-secret',
   link: 'admin',
-  name: 'Admin Dashboard',
+  name: 'Admin',
   auth: true,
 },
 {

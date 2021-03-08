@@ -26,7 +26,7 @@ async function setUser(view: AppTemplate): Promise<string> {
     } catch (e) { return `${e.message}`; }
     dispatch({ type: 'SET_USER', data: user.body });
   }
-  window.location.assign('/admin');
+  window.location.reload();
   return 'user set';
 }
 async function responseGoogleLogin(response: GoogleLoginResponseOffline | GoogleLoginResponse, view: AppTemplate): Promise<string> {

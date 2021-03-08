@@ -42,12 +42,22 @@ const BlogEditor = ({
           </label>
           <div style={{ marginLeft: '10px', marginTop: '10px' }}>
             <button
+              style={{ marginRight: '10px' }}
               type="button"
               id="update-youthContent"
               disabled={false}
               onClick={() => comp.putAPI()}
             >
               Update Blog
+            </button>
+            <button
+              style={{ marginRight: '10px' }}
+              type="button"
+              id="update-youthContent"
+              disabled={false}
+              onClick={() => comp.setState({ editBlog: { _id: '', title: '', body: '' } })}
+            >
+              Cancel
             </button>
           </div>
         </form>

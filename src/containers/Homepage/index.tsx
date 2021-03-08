@@ -68,8 +68,6 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     console.log(JSON.stringify(blog));
     // eslint-disable-next-line react/no-unused-state
     this.setState({ editBlog: blog });
-    //  use the same form that is in Admin page (make it a component to import)
-    //  change events for title and blog content
     //  Update and Cancel Buttons (do not display Create button)
     //  PUT request to update in database
     //  reload page when successful
@@ -182,7 +180,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
 
   render(): JSX.Element {
     const { editBlog } = this.state;
-    if (editBlog._id) { return (<BlogEditor comp={this} editBlog={editBlog} />); }
+    if (editBlog._id !== '') { return (<BlogEditor comp={this} editBlog={editBlog} />); }
     return (this.makeBlogArticle());
   }
 }
