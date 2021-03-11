@@ -6,8 +6,8 @@
 
     border-radius: .3rem;
     height: 3.3rem;
-    color: $color-purple-dark-1;
-    background-color: $color-blue-light-2;
+    color: $color-theme-purple-dark-1;
+    background-color: rgba($color-theme-2-blue-light-1, .3);
     padding: .3rem 0;
     backface-visibility: hidden;
     transition: all .2s;
@@ -47,29 +47,6 @@
     &:active {
       transform: translateY(-1px);
       box-shadow: $box-shadow-3;
-    }
-
-    // &::after {
-    //   content: "";
-    //   display: inline-block;
-    //   height: 100%;
-    //   width: 100%;
-    //   border-radius: 10rem;
-    //   position: absolute;
-    //   top: 0;
-    //   left: 0;
-    //   z-index: -1;
-    //   transition: all .4s;
-    // }
-
-    &--blue {
-      color: $color-purple-dark-1;
-      background-color: $color-blue-light-2;
-      font-weight: $font-weight-med;
-
-      &::after {
-        background-color: $color-blue-light-2;
-      }
     }
 
     &--animated {

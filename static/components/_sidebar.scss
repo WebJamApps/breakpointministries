@@ -1,5 +1,5 @@
 .sidebar {
-  background-color: rgba($color-blue-light-1, .1);
+  background: linear-gradient((rgba($color-theme-2-white-1, 1), rgba($color-grey-light-1, .4), rgba($sand-6, 1)));
   grid-column: sidebar-start / sidebar-end;
   grid-row: 1 / -1;
   border-right: 1px solid rgba($color-purple-dark-1, .5);
@@ -14,7 +14,7 @@
   h2 {
   font-size: 2.2rem;
   font-weight: $font-weight-light;
-  color: rgba($color-purple-dark-1, .9);
+  color: rgba($color-theme-green-light-2, 0.7);
 
   @media only screen and (max-width: $bp-med) {
     font-size: $default-font-size;
@@ -75,8 +75,8 @@
     &__border {
       min-height: .8rem;
       max-width: 100%;
-      background-color: $color-blue-light-1;
-      border-top: .8rem solid $color-blue-dark-1;
+      background-color: rgba($color-theme-2-blue-light-1, .3);
+      border-top: .8rem solid rgba($color-theme-2-blue-dark-1, .5);
 
       @media only screen and (max-width: $bp-med) {
         grid-row: 2 / 2;
@@ -90,9 +90,6 @@
     &__logo {
       display: grid;
       justify-content: center;
-      background-color: rgba($color-blue-light-1, .1);
-
-
 
       @media only screen and (max-width: $bp-med) {
         justify-content: inherit;
@@ -181,20 +178,12 @@
       }
 
       &--btn {
-        border-radius: .3rem;
         width: 90%;
-        height: 3.3rem;
-        color: $color-purple-dark-1;
-        background-color: $color-blue-light-2;
-        padding: .3rem 0;
-        backface-visibility: hidden;
-        transition: all .2s;
-
         justify-self: end;
 
         &:hover {
           transform: translateY(-.2rem);
-          box-shadow: $box-shadow-2;
+          box-shadow: $box-shadow-3;
 
           &::after {
             transform: scaleX(1) scaleY(1.2);
