@@ -6,6 +6,9 @@ import ReactHtmlParser from 'react-html-parser';
 import { withResizeDetector } from 'react-resize-detector';
 import CommonUtils from '../../lib/commonUtils';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import BlogEditor from '../../components/BlogEditor';
+
+export interface IBlog { dateOfPub?: React.ReactNode; _id: string; title:string, body:string }
 
 type HomepageProps = {
   targetRef: RefObject<HTMLDivElement>;
@@ -17,7 +20,7 @@ type HomepageProps = {
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface HomepageState {
-
+  editBlog:IBlog
 }
 
 export class Homepage extends React.Component<HomepageProps, HomepageState> {
@@ -31,7 +34,8 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     super(props);
     this.parentRef = React.createRef();
     // eslint-disable-next-line react/no-unused-state
-    this.state = { };
+    this.state = { editBlog: { title: '', body: '', _id: '' } };
+    this.handleEditorChange = this.handleEditorChange.bind(this);
   }
 
   async componentDidMount(): Promise<void> {
@@ -53,6 +57,45 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     return `Failed to delete blog, ${r.body ? r.body.message : ''}`;
   }
 
+  async putAPI():Promise<string> {
+    const { editBlog } = this.state;
+    const { auth } = this.props;
+    let r;
+    try {
+      r = await this.superagent.put(`${process.env.BackendUrl}/blog/${editBlog._id}`)
+        .set('Authorization', `Bearer ${auth.token}`)
+        .set('Accept', 'application/json')
+        .send({ body: editBlog.body, title: editBlog.title });
+    } catch (e) { return `${e.message}`; }
+    if (r.status === 200) {
+      window.location.reload();
+      return `${r.status}`;
+    }
+    return `Failed to edit blog, ${r.body ? r.body.message : ''}`;
+  }
+
+  makeEditBlogSection(blog: IBlog):void { this.setState({ editBlog: blog }); }
+
+  handleEditorChange(body: string): void {
+    const { editBlog } = this.state;
+    const newEditBlog = { ...editBlog, body };
+    // eslint-disable-next-line react/no-unused-state
+    this.setState({ editBlog: newEditBlog });
+  }
+
+  editBlogButton(blog: IBlog):JSX.Element {
+    return (
+      <button
+        id={`editBlogButton${blog._id}`}
+        style={{ width: '50px' }}
+        type="button"
+        onClick={() => this.makeEditBlogSection(blog)}
+      >
+        Edit
+      </button>
+    );
+  }
+
   deleteBlogButton(id:string):JSX.Element {
     return (
       <button
@@ -66,15 +109,14 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     );
   }
 
-  blogEnder(blog: { dateOfPub: React.ReactNode; _id: string; }, auth: { isAuthenticated: boolean; }):JSX.Element {
+  blogEnder(blog: IBlog, auth: { isAuthenticated: boolean; }):JSX.Element {
     return (
       <div className="blog__ender">
         <div style={{ display: 'inline-block' }}>
           <div className="blog__time-stamp">{blog.dateOfPub}</div>
           <div style={{ display: 'inline-block', marginRight: '20px', marginTop: '10px' }}>
-            {auth.isAuthenticated
-              ? this.deleteBlogButton(blog._id)
-              : null}
+            <span style={{ marginRight: '8px' }}>{auth.isAuthenticated ? this.deleteBlogButton(blog._id) : null}</span>
+            <span>{auth.isAuthenticated ? this.editBlogButton(blog) : null}</span>
           </div>
           {// TODO remove process.env check when feature is working
       /* istanbul ignore next */process.env.NODE_ENV !== 'production' ? this.socialMedia(blog._id) : null
@@ -142,6 +184,8 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
   }
 
   render(): JSX.Element {
+    const { editBlog } = this.state;
+    if (editBlog._id !== '') { return (<BlogEditor comp={this} editBlog={editBlog} />); }
     return (this.makeBlogArticle());
   }
 }

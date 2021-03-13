@@ -92,7 +92,7 @@ export class AdminDashboard extends Component<DashboardProps, DashboardState> {
   render(): JSX.Element {
     return (
       <div className="page-content" style={{ margin: 'auto', width: '79vw' }}>
-        <h1 style={{ textAlign: 'center', marginTop: '10px' }}>
+        <h1 style={{ textAlign: 'center', marginTop: '10px', fontSize: '16pt' }}>
           Post A New Blog
         </h1>
         {this.changeHomepage()}

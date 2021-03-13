@@ -37,7 +37,7 @@ describe('menuUtils', () => {
   it('Prevents access to Admin Dashboard when auth user userType is incorrect', () => {
     viewStub.props.auth = { isAuthenticated: true, token: '', user: { userType: 'booya' } };
     r = menuUtils.menuItem({
-      name: 'Admin Dashboard', link: '/admin', type: '', auth: true, classname: '', iconClass: '',
+      name: 'Admin', link: '/admin', type: '', auth: true, classname: '', iconClass: '',
     },
     1, viewStub);
     expect(r).toBe(null);
