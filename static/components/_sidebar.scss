@@ -2,7 +2,7 @@
   background: linear-gradient((rgba($color-theme-2-white-1, 1), rgba($color-grey-light-1, .4), rgba($sand-6, 1)));
   grid-column: sidebar-start / sidebar-end;
   grid-row: 1 / -1;
-  border-right: 1px solid rgba($color-purple-dark-1, .5);
+  border-right: 1px solid rgba($color-theme-purple-dark-2, .5);
   display: grid;
 
   @media only screen and (max-width: $bp-med) {

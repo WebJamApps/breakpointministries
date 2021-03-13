@@ -22,14 +22,14 @@
     &--header {
       font-weight: $font-weight-heavy;
       font-size: 3.52rem;
-      color: rgba($color-purple-dark-1, .9);
+      color: rgba($color-theme-purple-dark-2, .9);
 
       @media only screen and (max-width: $bp-med) {
         font-size: 2.88rem;
       }
 
       & a {
-        color: rgba($color-purple-dark-2, 0.9);
+        color: rgba($color-theme-purple-light-1, 0.9);
       }
     }
   }
@@ -62,11 +62,11 @@
 
     & i {
       font-size: 2.2rem;
-      color: $color-purple-dark-2;
+      color: $color-theme-purple-dark-1;
       transition: all .3s;
 
       &:hover {
-        color: rgba($color-purple-dark-2, .8);
+        color: rgba($color-theme-purple-dark-1, .8);
       }
     }
 

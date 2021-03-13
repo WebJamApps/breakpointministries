@@ -152,6 +152,19 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
     );
   }
 
+  // eslint-disable-next-line class-methods-use-this
+  headerLogo2(): JSX.Element {
+    return (
+      <div className="header__logo--logo-2">
+        <img
+          className="header__logo--picture"
+          src="https://dl.dropboxusercontent.com/s/u7lzqanxc7vrskx/ChristTheRedeemer.png?dl=0"
+          alt="A statue of jesus"
+        />
+      </div>
+    );
+  }
+
   drawerContainer(): JSX.Element {
     const { menuOpen } = this.state; const style = `${menuOpen ? 'open' : 'close'}`;
     return (
@@ -180,13 +193,7 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
         </header>
         {this.sidebar()}
         {this.navLinks(style)}
-        <div className="header__logo--logo-2">
-          <img
-            className="header__logo--picture"
-            src="https://dl.dropboxusercontent.com/s/u7lzqanxc7vrskx/ChristTheRedeemer.png?dl=0"
-            alt="A statue of jesus"
-          />
-        </div>
+        {this.headerLogo2()}
       </div>
     );
   }
