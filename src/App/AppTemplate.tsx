@@ -152,6 +152,19 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
     );
   }
 
+  // eslint-disable-next-line class-methods-use-this
+  headerLogo2(): JSX.Element {
+    return (
+      <div className="header__logo--logo-2">
+        <img
+          className="header__logo--picture"
+          src="https://dl.dropboxusercontent.com/s/u7lzqanxc7vrskx/ChristTheRedeemer.png?dl=0"
+          alt="A statue of jesus"
+        />
+      </div>
+    );
+  }
+
   drawerContainer(): JSX.Element {
     const { menuOpen } = this.state; const style = `${menuOpen ? 'open' : 'close'}`;
     return (
@@ -161,17 +174,17 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
           <div className="header__logo">
             <img
               className="header__logo--picture"
-              src="https://dl.dropboxusercontent.com/s/ojwr69z0gbi0zw8/Christ-the-redeemer.png?dl=0"
-              alt="A statue of jesus"
+              src="https://dl.dropboxusercontent.com/s/d2reogpoev04hu7/qxVq7Pec2.png?dl=0"
+              alt="The Jesus Fish"
             />
             <span
-              className="header__mobile-menu"
+              className={`${style} header__mobile-menu`}
               onClick={this.toggleMobileMenu}
               onKeyPress={this.handleKeyMenu}
               tabIndex={0}
               role="button"
             >
-              <i className="fas fa-bars" />
+              <span className="header__mobile-menu--icon" />
             </span>
             <span className="header__title">
               <h2>Change in Christ</h2>
@@ -180,6 +193,7 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
         </header>
         {this.sidebar()}
         {this.navLinks(style)}
+        {this.headerLogo2()}
       </div>
     );
   }
