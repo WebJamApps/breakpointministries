@@ -57,21 +57,24 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     return `Failed to delete blog, ${r.body ? r.body.message : ''}`;
   }
 
-  putAPI() {
+  async putAPI():Promise<string> {
     const { editBlog } = this.state;
-    // `/blog/${editBlog._id}`
-    console.log(editBlog);
+    const { auth } = this.props;
+    let r;
+    try {
+      r = await this.superagent.put(`${process.env.BackendUrl}/blog/${editBlog._id}`)
+        .set('Authorization', `Bearer ${auth.token}`)
+        .set('Accept', 'application/json')
+        .send({ body: editBlog.body, title: editBlog.title });
+    } catch (e) { return `${e.message}`; }
+    if (r.status === 200) {
+      window.location.reload();
+      return `${r.status}`;
+    }
+    return `Failed to edit blog, ${r.body ? r.body.message : ''}`;
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  makeEditBlogSection(blog: IBlog) {
-    console.log(JSON.stringify(blog));
-    // eslint-disable-next-line react/no-unused-state
-    this.setState({ editBlog: blog });
-    //  Update and Cancel Buttons (do not display Create button)
-    //  PUT request to update in database
-    //  reload page when successful
-  }
+  makeEditBlogSection(blog: IBlog):void { this.setState({ editBlog: blog }); }
 
   handleEditorChange(body: string): void {
     const { editBlog } = this.state;
