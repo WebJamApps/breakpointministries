@@ -159,13 +159,11 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
         <header className="header">
           <div className="header__border" />
           <div className="header__logo">
-            <div className="header__logo--logo-2">
-              <img
-                className="header__logo--picture"
-                src="https://dl.dropboxusercontent.com/s/u7lzqanxc7vrskx/ChristTheRedeemer.png?dl=0"
-                alt="A statue of jesus"
-              />
-            </div>
+            <img
+              className="header__logo--picture"
+              src="https://dl.dropboxusercontent.com/s/d2reogpoev04hu7/qxVq7Pec2.png?dl=0"
+              alt="The Jesus Fish"
+            />
             <span
               className={`${style} header__mobile-menu`}
               onClick={this.toggleMobileMenu}
@@ -182,13 +180,13 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
         </header>
         {this.sidebar()}
         {this.navLinks(style)}
-        {/* <div className="header__logo--logo-2">
+        <div className="header__logo--logo-2">
           <img
             className="header__logo--picture"
             src="https://dl.dropboxusercontent.com/s/u7lzqanxc7vrskx/ChristTheRedeemer.png?dl=0"
             alt="A statue of jesus"
           />
-        </div> */}
+        </div>
       </div>
     );
   }

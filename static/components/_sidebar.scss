@@ -92,9 +92,17 @@
       display: grid;
       justify-content: center;
 
+      @media only screen and (max-width: $bp-med) {
+        justify-content: inherit;
+      }
+
       &--logo-2 {
         display: grid;
         justify-content: center;
+
+        @media only screen and (max-width: $bp-med) {
+          display: none;
+        }
       }
 
       &--picture {
