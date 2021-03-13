@@ -126,25 +126,27 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
   makeBlogArticle(): JSX.Element {
     const { targetRef, blogs, auth } = this.props;
     return (
-      <div className="blog" ref={targetRef}>
-        {blogs && blogs.length > 0 ? blogs.map((blog) => (
-          <div key={`blog_entry${blog._id}`} className="blog__entry">
-            <section className="blog__entry--body">
-              <h2 className="blog__entry--header">
-                <Link key={blog._id} to={blog._id} className="blog__link">{ReactHtmlParser(blog && blog.title ? blog.title : '')}</Link>
-              </h2>
-              {ReactHtmlParser(blog && blog.body ? blog.body : '')}
-              {this.blogEnder(blog, auth)}
-            </section>
-          </div>
-        ))
-          : (
-            <div className="blog__entry">
+      <div className="blog-container">
+        <div className="blog" ref={targetRef}>
+          {blogs && blogs.length > 0 ? blogs.map((blog) => (
+            <div key={`blog_entry${blog._id}`} className="blog__entry">
               <section className="blog__entry--body">
-                <p>There are no blog entries at this time.</p>
+                <h2 className="blog__entry--header">
+                  <Link key={blog._id} to={blog._id} className="blog__link">{ReactHtmlParser(blog && blog.title ? blog.title : '')}</Link>
+                </h2>
+                {ReactHtmlParser(blog && blog.body ? blog.body : '')}
+                {this.blogEnder(blog, auth)}
               </section>
             </div>
-          )}
+          ))
+            : (
+              <div className="blog__entry">
+                <section className="blog__entry--body">
+                  <p>There are no blog entries at this time.</p>
+                </section>
+              </div>
+            )}
+        </div>
       </div>
     );
   }

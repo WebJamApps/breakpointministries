@@ -18,7 +18,6 @@ html {
 body {
   font-weight: $font-weight-extra-light;
   line-height: 1.6;
-  background-color: rgba($color-purple-light-1, .4);
   font-family: $default-font-family;
 }
 
@@ -32,10 +31,7 @@ body {
   }
 
   @media only screen and (max-width: $bp-med) {
-    grid-template-rows: 1fr;
-  }
-
-  @media only screen and (max-width: $bp-tiny) {
-    grid-template-columns: [full-start] minmax(4rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(4rem, 1fr) [full-end];
+    grid-template-rows: auto 100vh;
+    grid-template-columns: [full-start] minmax(2rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(2rem, 1fr) [full-end];
   }
 }
