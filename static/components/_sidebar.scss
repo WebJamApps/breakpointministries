@@ -3,6 +3,7 @@
   grid-column: sidebar-start / sidebar-end;
   grid-row: 1 / -1;
   border-right: 1px solid rgba($color-purple-dark-1, .5);
+  display: grid;
 
   @media only screen and (max-width: $bp-med) {
     grid-column: 1 / -1;
@@ -91,8 +92,9 @@
       display: grid;
       justify-content: center;
 
-      @media only screen and (max-width: $bp-med) {
-        justify-content: inherit;
+      &--logo-2 {
+        display: grid;
+        justify-content: center;
       }
 
       &--picture {
@@ -183,7 +185,7 @@
 
         &:hover {
           transform: translateY(-.2rem);
-          box-shadow: $box-shadow-3;
+          box-shadow: $box-shadow-2;
 
           &::after {
             transform: scaleX(1) scaleY(1.2);

@@ -20,6 +20,8 @@ $color-theme-purple-dark-2: rgb(3, 1, 66);
 $color-theme-purple-light-1: rgb(72, 79, 115);
 $color-theme-green-light-1: rgb(20, 115, 115);
 $color-theme-green-light-2: rgb(8, 89, 66);
+$color-theme-pink-light-1: rgb(255, 182, 182);
+$color-theme-pink-light-2: rgb(175, 110, 110);
 
 // Colour theme 2
 $color-theme-2-white-1: rgb(246, 240, 240);
@@ -69,5 +71,5 @@ $bp-mobile-s: 20em; // 320px
 
 // BOX SHADOW
 $box-shadow-1: 0 1.5rem 4rem rgba($color-blue-dark-1, .15);
-$box-shadow-2: 0 1rem 1.2rem  rgba($color-blue-dark-1, .6);
-$box-shadow-3:  0 .5rem 1rem rgba(255, 182, 182, 0.6);
+$box-shadow-2: 0 1rem 1.2rem  rgba($color-theme-pink-light-1, .6);
+$box-shadow-3:  0 .5rem 1rem rgba($color-theme-pink-light-1, 0.6);
