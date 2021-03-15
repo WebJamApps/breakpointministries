@@ -42,6 +42,15 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     this.commonUtils.setTitleAndScroll('', window.screen.width);
   }
 
+  // eslint-disable-next-line class-methods-use-this
+  finishAPI(type: string, r: Superagent.Response):string {
+    if (r.status === 200) {
+      window.location.reload();
+      return `${r.status}`;
+    }
+    return `Failed to ${type} blog, ${r.body ? r.body.message : ''}`;
+  }
+
   async deleteBlog(id:string): Promise<string> {
     const { auth } = this.props;
     let r;
@@ -50,11 +59,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
         .set('Authorization', `Bearer ${auth.token}`)
         .set('Accept', 'application/json');
     } catch (e) { return `${e.message}`; }
-    if (r.status === 200) {
-      window.location.reload();
-      return `${r.status}`;
-    }
-    return `Failed to delete blog, ${r.body ? r.body.message : ''}`;
+    return this.finishAPI('delete', r);
   }
 
   async putAPI():Promise<string> {
@@ -67,11 +72,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
         .set('Accept', 'application/json')
         .send({ body: editBlog.body, title: editBlog.title });
     } catch (e) { return `${e.message}`; }
-    if (r.status === 200) {
-      window.location.reload();
-      return `${r.status}`;
-    }
-    return `Failed to edit blog, ${r.body ? r.body.message : ''}`;
+    return this.finishAPI('update', r);
   }
 
   makeEditBlogSection(blog: IBlog):void { this.setState({ editBlog: blog }); }
