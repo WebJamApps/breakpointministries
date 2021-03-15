@@ -9,7 +9,7 @@ const BlogEditor = ({
 }:PageProps): JSX.Element => {
   const { title, body } = editBlog;
   return (
-    <div className="horiz-scroll">
+    <div className="horiz-scroll blogEditor">
       <div
         className="material-content elevation3"
         style={{

@@ -2,6 +2,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Homepage } from '../../../src/containers/Homepage';
+import BlogEditor from '../../../src/components/BlogEditor';
 
 const testBlogs = [
   { _id: '1', title: 'title1', body: 'body1' }, { _id: '2', title: 'title2', body: 'body2' }, { _id: '3', title: 'title3', body: 'body3' },
@@ -23,6 +24,19 @@ describe('Home', () => {
     wrapper2.instance().deleteBlog = jest.fn();
     wrapper2.find('#deleteBlogButton1').simulate('click');
     expect(wrapper2.instance().deleteBlog).toHaveBeenCalledWith('1');
+  });
+  it('renders when authenticated and clicks button to editBlog', () => {
+    const wrapper2 = shallow<Homepage>(<Homepage
+      targetRef={targetRef}
+      width={1000}
+      height={800}
+      blogs={testBlogs}
+      auth={{ isAuthenticated: true }}
+    />);
+    const testBlog:any = { _id: '123' };
+    const editButton = wrapper2.instance().editBlogButton(testBlog);
+    editButton.props.onClick();
+    expect(wrapper2.contains(<BlogEditor editBlog={testBlog} comp={wrapper2.instance()} />)).toBe(true);
   });
   it('deleteBlog successfully', async () => {
     const saDelete:any = jest.fn(() => ({ set: () => ({ set: () => Promise.resolve({ status: 200 }) }) }));
