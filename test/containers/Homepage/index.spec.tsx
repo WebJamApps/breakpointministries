@@ -62,4 +62,10 @@ describe('Home', () => {
     const r = await wrapper.instance().deleteBlog('1');
     expect(r).toBe('Failed to delete blog, id does not exist');
   });
+  it('handleEditorChange', () => {
+    wrapper.instance().setState = jest.fn();
+    wrapper.update();
+    wrapper.instance().handleEditorChange('howdy');
+    expect(wrapper.instance().setState).toHaveBeenCalledWith({ editBlog: { body: 'howdy', _id: '', title: '' } });
+  });
 });
