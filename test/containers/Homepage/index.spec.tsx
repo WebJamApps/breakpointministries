@@ -68,4 +68,20 @@ describe('Home', () => {
     wrapper.instance().handleEditorChange('howdy');
     expect(wrapper.instance().setState).toHaveBeenCalledWith({ editBlog: { body: 'howdy', _id: '', title: '' } });
   });
+  it('putAPI returns an error message', async () => {
+    const r = await wrapper.instance().putAPI();
+    expect(r.includes('Cannot read property')).toBe(true);
+  });
+  it('putAPI is successful', async () => {
+    const res:any = Promise.resolve(true);
+    const sSend: any = ({ send: () => res });
+    wrapper.instance().finishAPI = jest.fn();
+    const putR: any = () => ({
+      set: () => ({ set: () => sSend }),
+    });
+    wrapper.instance().superagent.put = putR;
+    wrapper.update();
+    await wrapper.instance().putAPI();
+    expect(wrapper.instance().finishAPI).toHaveBeenCalled();
+  });
 });
