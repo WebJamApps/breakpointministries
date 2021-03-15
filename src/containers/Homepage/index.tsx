@@ -14,7 +14,7 @@ type HomepageProps = {
   targetRef: RefObject<HTMLDivElement>;
   width: number;
   height: number;
-  blogs: IBlog[];
+  blogs: any[];
   auth: any;
 };
 
