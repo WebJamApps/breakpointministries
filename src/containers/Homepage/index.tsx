@@ -8,13 +8,13 @@ import CommonUtils from '../../lib/commonUtils';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import BlogEditor from '../../components/BlogEditor';
 
-export interface IBlog { dateOfPub?: React.ReactNode; _id: string; title:string, body:string }
+export interface IBlog { created_at?: string; _id: string; title:string, body:string }
 
 type HomepageProps = {
   targetRef: RefObject<HTMLDivElement>;
   width: number;
   height: number;
-  blogs: any[];
+  blogs: IBlog[];
   auth: any;
 };
 
@@ -110,10 +110,13 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
   }
 
   blogEnder(blog: IBlog, auth: { isAuthenticated: boolean; }):JSX.Element {
+    let newTime = blog.created_at;
+    // eslint-disable-next-line prefer-destructuring
+    if (blog.created_at !== undefined && blog.created_at !== null) newTime = blog.created_at.split('T')[0];
     return (
       <div className="blog__ender">
         <div style={{ display: 'inline-block' }}>
-          <div className="blog__time-stamp">{blog.dateOfPub}</div>
+          <div className="blog__time-stamp">{newTime}</div>
           <div style={{ display: 'inline-block', marginRight: '20px', marginTop: '10px' }}>
             <span style={{ marginRight: '8px' }}>{auth.isAuthenticated ? this.deleteBlogButton(blog._id) : null}</span>
             <span>{auth.isAuthenticated ? this.editBlogButton(blog) : null}</span>
