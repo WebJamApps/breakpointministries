@@ -40,11 +40,11 @@ const BlogEditor = ({
             <br />
             {utils.editor(body, comp.handleEditorChange)}
           </label>
-          <div style={{ marginLeft: '10px', marginTop: '10px' }}>
+          <div style={{ marginLeft: '10px', marginTop: '10px' }} id="update-blog-button-div">
             <button
               style={{ marginRight: '10px' }}
               type="button"
-              id="update-youthContent"
+              id="update-blog-button"
               disabled={false}
               onClick={() => comp.putAPI()}
             >
@@ -53,7 +53,7 @@ const BlogEditor = ({
             <button
               style={{ marginRight: '10px' }}
               type="button"
-              id="update-youthContent"
+              id="cancel-blog-update-button"
               disabled={false}
               onClick={() => comp.setState({ editBlog: { _id: '', title: '', body: '' } })}
             >
