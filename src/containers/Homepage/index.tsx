@@ -1,5 +1,6 @@
 import React, { RefObject } from 'react';
 import Superagent from 'superagent';
+import Moment from 'react-moment';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import ReactHtmlParser from 'react-html-parser';
@@ -119,13 +120,20 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
   }
 
   blogEnder(blog: IBlog): JSX.Element {
-    let newTime = blog.created_at;
+    let newTime;
     // eslint-disable-next-line prefer-destructuring
-    if (blog.created_at !== undefined && blog.created_at !== null) newTime = blog.created_at.split('T')[0];
+    if (blog.created_at !== undefined && blog.created_at !== null) {
+      newTime = <Moment format="MM/DD/YYYY hh:mm">{blog.created_at}</Moment>;
+    }
     return (
       <div className="blog__ender">
         <div style={{ display: 'inline-block' }}>
-          <div className="blog__time-stamp">{newTime}</div>
+          <div className="blog__time-stamp">
+            <span>
+              Posted: &nbsp;
+              {newTime}
+            </span>
+          </div>
           {// TODO remove process.env check when feature is working
       /* istanbul ignore next */process.env.NODE_ENV !== 'production' ? this.socialMedia(blog._id) : null
           }
