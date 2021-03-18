@@ -148,7 +148,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     return (
       <div className="blog__entry">
         <section className="blog__entry--body">
-          <p>There are no blog entries at this time.</p>
+          <p className="blog__entry--no-blogs">There are no blog entries at this time.</p>
         </section>
       </div>
     );

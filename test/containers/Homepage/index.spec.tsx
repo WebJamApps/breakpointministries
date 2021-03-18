@@ -1,11 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import { shallow } from 'enzyme';
 import { Homepage } from '../../../src/containers/Homepage';
 import BlogEditor from '../../../src/components/BlogEditor';
 
 const testBlogs = [
-  { _id: '1', title: 'title1', body: 'body1' }, { _id: '2', title: 'title2', body: 'body2' }, { _id: '3', title: 'title3', body: 'body3' },
+  { _id: '1', title: 'title1', body: 'body1' }, { _id: '2', title: 'title2', body: 'body2' }, {
+    _id: '3', title: 'title3', body: 'body3', created_at: '1/11/1111',
+  },
   { _id: 'badBlog' },
 ];
 const targetRef:any = {};
@@ -84,4 +87,30 @@ describe('Home', () => {
     await wrapper.instance().putAPI();
     expect(wrapper.instance().finishAPI).toHaveBeenCalled();
   });
+  it('redirects to /admin', () => {
+    wrapper.setState({ referrer: '/admin#test' });
+    expect(wrapper.find(Redirect).length).toBe(1);
+  });
+  it('renders blogNotFound', () => {
+    const wrapper3 = shallow<Homepage>(<Homepage
+      targetRef={targetRef}
+      width={1000}
+      height={800}
+      blogs={[]}
+      auth={{ isAuthenticated: false }}
+    />);
+    expect(wrapper3.find('p.blog__entry--no-blogs').exists()).toBe(true);
+  });
+  // it('renders when authenticated and clicks button to addBlog', () => {
+  //   const wrapper2 = shallow<Homepage>(<Homepage
+  //     targetRef={targetRef}
+  //     width={1000}
+  //     height={800}
+  //     blogs={testBlogs}
+  //     auth={{ isAuthenticated: true }}
+  //   />);
+  //   wrapper2.instance().addBlogButton = jest.fn();
+  //   wrapper2.find('#addBlogButton').simulate('click');
+  //   expect(wrapper2.instance().addBlogButton).toHaveBeenCalledWith('1');
+  // });
 });
