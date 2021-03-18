@@ -143,6 +143,17 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     );
   }
 
+  // eslint-disable-next-line class-methods-use-this
+  blogNotFound(): JSX.Element {
+    return (
+      <div className="blog__entry">
+        <section className="blog__entry--body">
+          <p>There are no blog entries at this time.</p>
+        </section>
+      </div>
+    );
+  }
+
   makeBlogArticle(): JSX.Element {
     const { targetRef, blogs, auth } = this.props;
     return (
@@ -167,11 +178,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
             </div>
           ))
             : (
-              <div className="blog__entry">
-                <section className="blog__entry--body">
-                  <p>There are no blog entries at this time.</p>
-                </section>
-              </div>
+              this.blogNotFound()
             )}
         </div>
       </div>
