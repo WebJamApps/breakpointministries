@@ -166,7 +166,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
                   <Link key={blog._id} to={blog._id} className="blog__link">{ReactHtmlParser(blog && blog.title ? blog.title : '')}</Link>
                 </h2>
                 <div className="blog__entry--button-container">
-                  <span style={{ marginRight: '8px' }}>{this.addBlogButton()}</span>
+                  <span style={{ marginRight: '8px' }}>{auth.isAuthenticated ? this.addBlogButton() : null}</span>
                   <span style={{ marginRight: '8px' }}>{auth.isAuthenticated ? this.deleteBlogButton(blog._id) : null}</span>
                   <span>{auth.isAuthenticated ? this.editBlogButton(blog) : null}</span>
                 </div>
