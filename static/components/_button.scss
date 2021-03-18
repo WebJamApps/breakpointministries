@@ -2,6 +2,12 @@
   @include buttonDefault;
 }
 
-button[id*="deleteBlogButton"] {
+button[id*="deleteBlogButton"],
+button[id*="editBlogButton"],
+button[id*="addBlogButton"] {
   @include buttonDefault;
+}
+
+button[id*="addBlogButton"] {
+  width: 5rem;
 }

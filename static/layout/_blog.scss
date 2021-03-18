@@ -9,14 +9,23 @@
   border-radius: .3rem;
 
   &__entry {
-    margin-top: 3rem;
+    margin: 2rem 1rem 0;
     height: min-content;
 
     &--body {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+
       p {
         font-size: 1.8rem;
         margin-bottom: .5rem;
       }
+    }
+
+    &--button-container {
+      display: inline-block;
+      margin-right: 2rem;
+      margin-top: 1.5rem;
     }
 
     &--header {
@@ -32,6 +41,10 @@
         color: rgba($color-theme-purple-light-1, 0.9);
       }
     }
+
+    &--paragraph {
+      grid-column: 1 / end;
+    }
   }
 
   &__link {
@@ -43,10 +56,12 @@
     width: 100%;
     border-top: .1rem solid $color-black;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-row: 3 / 3;
+    grid-column: 1 / end;
   }
 
   &__time-stamp {
+    margin-left: 2rem;
     font-size: 1.28rem;
     font-weight: $font-weight-light;
   }
@@ -57,8 +72,8 @@
     width: 95%;
     margin: 0 auto;
     display: inline-flex;
-    justify-content: end;
-    transform: translateY(1.5rem);
+    justify-content: flex-end;
+    transform: translateY(-.5rem);
 
     & i {
       font-size: 2.2rem;
@@ -80,10 +95,6 @@
       font-size: 1.8rem;
     }
   }
-}
-
-.button-container {
-  margin-top: 4rem;
 }
 
 .blog-container {

@@ -1,14 +1,14 @@
 import React, { RefObject } from 'react';
 import Superagent from 'superagent';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import ReactHtmlParser from 'react-html-parser';
 import { withResizeDetector } from 'react-resize-detector';
 import CommonUtils from '../../lib/commonUtils';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import BlogEditor from '../../components/BlogEditor';
 
-export interface IBlog { created_at?: string; _id: string; title:string, body:string }
+export interface IBlog { created_at?: string; _id: string; title: string, body: string }
 
 type HomepageProps = {
   targetRef: RefObject<HTMLDivElement>;
@@ -20,7 +20,8 @@ type HomepageProps = {
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface HomepageState {
-  editBlog:IBlog
+  editBlog: IBlog;
+  referrer: string;
 }
 
 export class Homepage extends React.Component<HomepageProps, HomepageState> {
@@ -34,7 +35,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     super(props);
     this.parentRef = React.createRef();
     // eslint-disable-next-line react/no-unused-state
-    this.state = { editBlog: { title: '', body: '', _id: '' } };
+    this.state = { editBlog: { title: '', body: '', _id: '' }, referrer: '' };
     this.handleEditorChange = this.handleEditorChange.bind(this);
   }
 
@@ -42,7 +43,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     this.commonUtils.setTitleAndScroll('', window.screen.width);
   }
 
-  async deleteBlog(id:string): Promise<string> {
+  async deleteBlog(id: string): Promise<string> {
     const { auth } = this.props;
     let r;
     try {
@@ -57,7 +58,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     return `Failed to delete blog, ${r.body ? r.body.message : ''}`;
   }
 
-  async putAPI():Promise<string> {
+  async putAPI(): Promise<string> {
     const { editBlog } = this.state;
     const { auth } = this.props;
     let r;
@@ -74,7 +75,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     return `Failed to edit blog, ${r.body ? r.body.message : ''}`;
   }
 
-  makeEditBlogSection(blog: IBlog):void { this.setState({ editBlog: blog }); }
+  makeEditBlogSection(blog: IBlog): void { this.setState({ editBlog: blog }); }
 
   handleEditorChange(body: string): void {
     const { editBlog } = this.state;
@@ -83,7 +84,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     this.setState({ editBlog: newEditBlog });
   }
 
-  editBlogButton(blog: IBlog):JSX.Element {
+  editBlogButton(blog: IBlog): JSX.Element {
     return (
       <button
         id={`editBlogButton${blog._id}`}
@@ -96,7 +97,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     );
   }
 
-  deleteBlogButton(id:string):JSX.Element {
+  deleteBlogButton(id: string): JSX.Element {
     return (
       <button
         id={`deleteBlogButton${id}`}
@@ -109,7 +110,15 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     );
   }
 
-  blogEnder(blog: IBlog, auth: { isAuthenticated: boolean; }):JSX.Element {
+  addBlogButton(): JSX.Element {
+    return (
+      <button type="button" id="addBlogButton" onClick={() => this.setState({ referrer: '/admin#admin-top' })}>
+        <i className="fa fa-plus" />
+      </button>
+    );
+  }
+
+  blogEnder(blog: IBlog): JSX.Element {
     let newTime = blog.created_at;
     // eslint-disable-next-line prefer-destructuring
     if (blog.created_at !== undefined && blog.created_at !== null) newTime = blog.created_at.split('T')[0];
@@ -117,13 +126,9 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
       <div className="blog__ender">
         <div style={{ display: 'inline-block' }}>
           <div className="blog__time-stamp">{newTime}</div>
-          <div style={{ display: 'inline-block', marginRight: '20px', marginTop: '10px' }}>
-            <span style={{ marginRight: '8px' }}>{auth.isAuthenticated ? this.deleteBlogButton(blog._id) : null}</span>
-            <span>{auth.isAuthenticated ? this.editBlogButton(blog) : null}</span>
-          </div>
           {// TODO remove process.env check when feature is working
       /* istanbul ignore next */process.env.NODE_ENV !== 'production' ? this.socialMedia(blog._id) : null
-      }
+          }
         </div>
       </div>
     );
@@ -140,8 +145,15 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
                 <h2 className="blog__entry--header">
                   <Link key={blog._id} to={blog._id} className="blog__link">{ReactHtmlParser(blog && blog.title ? blog.title : '')}</Link>
                 </h2>
-                {ReactHtmlParser(blog && blog.body ? blog.body : '')}
-                {this.blogEnder(blog, auth)}
+                <div className="blog__entry--button-container">
+                  <span style={{ marginRight: '8px' }}>{this.addBlogButton()}</span>
+                  <span style={{ marginRight: '8px' }}>{auth.isAuthenticated ? this.deleteBlogButton(blog._id) : null}</span>
+                  <span>{auth.isAuthenticated ? this.editBlogButton(blog) : null}</span>
+                </div>
+                <div className="blog__entry--paragraph">
+                  {ReactHtmlParser(blog && blog.body ? blog.body : '')}
+                </div>
+                {this.blogEnder(blog)}
               </section>
             </div>
           ))
@@ -158,7 +170,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  makeLink(id:string, type:string): JSX.Element {
+  makeLink(id: string, type: string): JSX.Element {
     /* eslint-disable jsx-a11y/anchor-is-valid */
     return (
       <li key={`${type}${id}`}>
@@ -169,9 +181,9 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     );
   }
 
-  socialMedia(id:string): JSX.Element {
+  socialMedia(id: string): JSX.Element {
     return (
-      <div style={{ display: 'inline-block' }}>
+      <div style={{ display: 'grid' }}>
         <ul className="blog__social-media">
           {this.makeLink(id, 'facebook')}
           {this.makeLink(id, 'twitter')}
@@ -187,8 +199,9 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
   }
 
   render(): JSX.Element {
-    const { editBlog } = this.state;
+    const { editBlog, referrer } = this.state;
     if (editBlog._id !== '') { return (<BlogEditor comp={this} editBlog={editBlog} />); }
+    if (referrer !== '') return <Redirect to={referrer} />;
     return (this.makeBlogArticle());
   }
 }
