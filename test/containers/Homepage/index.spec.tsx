@@ -101,16 +101,22 @@ describe('Home', () => {
     />);
     expect(wrapper3.find('p.blog__entry--no-blogs').exists()).toBe(true);
   });
-  // it('renders when authenticated and clicks button to addBlog', () => {
-  //   const wrapper2 = shallow<Homepage>(<Homepage
-  //     targetRef={targetRef}
-  //     width={1000}
-  //     height={800}
-  //     blogs={testBlogs}
-  //     auth={{ isAuthenticated: true }}
-  //   />);
-  //   wrapper2.instance().addBlogButton = jest.fn();
-  //   wrapper2.find('#addBlogButton').simulate('click');
-  //   expect(wrapper2.instance().addBlogButton).toHaveBeenCalledWith('1');
-  // });
+  it('renders when authenticated and clicks button to addBlog', () => {
+    const wrapper2 = shallow<Homepage>(<Homepage
+      targetRef={targetRef}
+      width={1000}
+      height={800}
+      blogs={testBlogs}
+      auth={{ isAuthenticated: true }}
+    />);
+    wrapper2.find('#addBlogButton').at(1).simulate('click');
+    expect(wrapper2.instance().state).toStrictEqual({
+      editBlog: {
+        _id: '',
+        body: '',
+        title: '',
+      },
+      referrer: '/admin#admin-top',
+    });
+  });
 });
