@@ -11,3 +11,14 @@ button[id*="addBlogButton"] {
 button[id*="addBlogButton"] {
   width: 5rem;
 }
+
+#c-h {
+  width: 10%;
+  @media only screen and (max-width: $bp-mobile-l) {
+    width: 20%;
+  }
+
+  @media only screen and (max-width: $bp-mobile-s) {
+    height: auto;
+  }
+}
