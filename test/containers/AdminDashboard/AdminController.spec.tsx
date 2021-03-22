@@ -44,4 +44,7 @@ describe('AdminController', () => {
     r = controller.handleEditorChange('howdy');
     expect(r).toBe(true);
   });
+  it('validateBlogPost', () => {
+    expect(controller.validateBlogPost('howdy', 'hola')).toBe(false);
+  });
 });

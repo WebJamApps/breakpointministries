@@ -7,3 +7,6 @@ describe('Home', () => {
     await expect(page.title()).resolves.toMatch('Change In Christ');
   });
 });
+
+// eslint-disable-next-line jest/no-export
+export {};

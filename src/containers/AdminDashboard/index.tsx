@@ -49,7 +49,6 @@ export class AdminDashboard extends Component<DashboardProps, DashboardState> {
       <div style={{ marginLeft: '2px', marginTop: '10px' }}>
         <button
           className="btn"
-          style={{ width: '10%' }}
           type="button"
           id="c-h"
           disabled={this.controller.validateBlogPost(title, blogContent)}
@@ -68,7 +67,7 @@ export class AdminDashboard extends Component<DashboardProps, DashboardState> {
     };
     return (
       <div className="horiz-scroll">
-        <div className="material-content elevation3" style={{ width: '100%', margin: '30px auto' }}>
+        <div className="material-content elevation3 changeHomepage">
           <form
             id="post-blog"
             style={{
