@@ -5,6 +5,10 @@
   border-right: 1px solid rgba($color-theme-purple-dark-2, .5);
   display: grid;
 
+  @media only screen and (min-width: $bp-largest) {
+    display: block;
+  };
+
   @media only screen and (max-width: $bp-med) {
     grid-column: 1 / -1;
     grid-row: 1 / 2;

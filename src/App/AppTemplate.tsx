@@ -174,8 +174,8 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
           <div className="header__logo">
             <img
               className="header__logo--picture"
-              src="https://dl.dropboxusercontent.com/s/d2reogpoev04hu7/qxVq7Pec2.png?dl=0"
-              alt="The Jesus Fish"
+              src="https://dl.dropbox.com/s/befh330hypey44l/fish%20with%20color.png?dl=0"
+              alt="The Jesus Fish with a multi-coloured background"
             />
             <span
               className={`${style} header__mobile-menu`}
