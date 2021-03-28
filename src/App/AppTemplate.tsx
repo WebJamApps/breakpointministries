@@ -117,7 +117,7 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  makeForm(h2Text:string): JSX.Element {
+  makeForm(h2Text: string): JSX.Element {
     const cN = h2Text.toLowerCase();
     const h2cN = `${cN}__heading heading-2`;
     const fcN = `${cN}__form`;
@@ -157,7 +157,7 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
     return (
       <div className="header__logo--logo-2">
         <img
-          className="header__logo--picture"
+          className="header__logo--picture-2"
           src="https://dl.dropboxusercontent.com/s/u7lzqanxc7vrskx/ChristTheRedeemer.png?dl=0"
           alt="A statue of jesus"
         />

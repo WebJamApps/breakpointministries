@@ -109,7 +109,7 @@
         }
       }
 
-      &--picture {
+      &--picture, &--picture-2 {
         max-width: 20vw;
 
         @media only screen and (max-width: $bp-med) {
@@ -118,6 +118,11 @@
           grid-row: 1 / 1;
           grid-column: 1 / 1;
         }
+      }
+
+      &--picture-2 {
+        height: 80%;
+        margin: 0 auto;
       }
     }
 
