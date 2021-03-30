@@ -158,7 +158,7 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
       <div className="header__logo--logo-2">
         <img
           className="header__logo--picture-2"
-          src="https://dl.dropboxusercontent.com/s/u7lzqanxc7vrskx/ChristTheRedeemer.png?dl=0"
+          src="https://dl.dropboxusercontent.com/s/0o9m9sggpgiooft/ChristTheRedeemerResized.png?dl=0"
           alt="A statue of jesus"
         />
       </div>

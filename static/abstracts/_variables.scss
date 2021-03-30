@@ -1,31 +1,21 @@
-// Pallete Ideas
+// Logo Colours
+$logo-blue: rgb(90, 155, 213);
+$logo-green: rgb(190, 221, 128);
+$logo-red: rgb(255, 124, 129);
+$logo-yellow: rgb(254, 255, 153);
 
-$color-blue-dark-1: rgb(25, 86, 190);
 
-$color-blue-light-1: rgb(124, 174, 243);
+// Colour Pallete
 
-$color-red-dark-1: rgb(148, 24, 24);
-
-/* Color Theme Swatches in RGBA */
-$color-theme-purple-dark-1: rgb(10, 18, 92);
-$color-theme-purple-dark-2: rgb(3, 1, 66);
-$color-theme-purple-light-1: rgb(72, 79, 115);
-$color-theme-green-light-2: rgb(8, 89, 66);
-$color-theme-pink-light-1: rgb(255, 182, 182);
-
-// Colour theme 2
-$color-theme-2-white-1: rgb(246, 240, 240);
-$color-theme-2-blue-light-1: rgb(96, 227, 213);
-$color-theme-2-blue-dark-1: rgb(5, 103, 168);
-
-// SAND COLOURS
+$logo-green-dark: rgb(31, 81, 21);
 
 $sand-3: rgb(211, 214, 203);
 $sand-6: rgb(255, 212, 193);
 
-// Established Colours
 $color-black:rgb(31, 17, 44);
 $color-white: rgb(255, 255, 255);
+
+$color-white-2: rgb(246, 240, 240);
 
 $color-grey-light-1: rgb(204, 204, 204);
 
@@ -54,6 +44,5 @@ $bp-mobile-m: 23.5em; // 376px
 $bp-mobile-s: 20em; // 320px
 
 // BOX SHADOW
-$box-shadow-1: 0 1.5rem 4rem rgba($color-blue-dark-1, .15);
-$box-shadow-2: 0 1rem 1.2rem  rgba($color-theme-pink-light-1, .6);
-$box-shadow-3:  0 .5rem 1rem rgba($color-theme-pink-light-1, .6);
+$box-shadow-2: 0 1rem 1.2rem  rgba($logo-red, .4);
+$box-shadow-3:  0 .5rem 1rem rgba($logo-red, .4);
