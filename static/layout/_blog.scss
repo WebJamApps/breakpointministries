@@ -109,11 +109,11 @@
 
     & i {
       font-size: 2.2rem;
-      color: $logo-blue;
+      color: $logo-blue-dark;
       transition: all .3s;
 
       &:hover {
-        color: rgba($logo-blue, .8);
+        color: rgba($logo-blue-dark, .85);
       }
     }
 
