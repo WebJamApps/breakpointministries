@@ -117,7 +117,7 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  makeForm(h2Text:string): JSX.Element {
+  makeForm(h2Text: string): JSX.Element {
     const cN = h2Text.toLowerCase();
     const h2cN = `${cN}__heading heading-2`;
     const fcN = `${cN}__form`;
@@ -157,8 +157,8 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
     return (
       <div className="header__logo--logo-2">
         <img
-          className="header__logo--picture"
-          src="https://dl.dropboxusercontent.com/s/u7lzqanxc7vrskx/ChristTheRedeemer.png?dl=0"
+          className="header__logo--picture-2"
+          src="https://dl.dropboxusercontent.com/s/0o9m9sggpgiooft/ChristTheRedeemerResized.png?dl=0"
           alt="A statue of jesus"
         />
       </div>
@@ -174,8 +174,8 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
           <div className="header__logo">
             <img
               className="header__logo--picture"
-              src="https://dl.dropboxusercontent.com/s/d2reogpoev04hu7/qxVq7Pec2.png?dl=0"
-              alt="The Jesus Fish"
+              src="https://dl.dropbox.com/s/befh330hypey44l/fish%20with%20color.png?dl=0"
+              alt="The Jesus Fish with a multi-coloured background"
             />
             <span
               className={`${style} header__mobile-menu`}
