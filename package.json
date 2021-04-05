@@ -110,7 +110,7 @@
     "redux-thunk": "latest",
     "sass-loader": "latest",
     "slick-carousel": "latest",
-    "snyk": "^1.465.0",
+    "snyk": "^1.518.0",
     "socketcluster-client": "latest",
     "source-map-loader": "latest",
     "stream-browserify": "^3.0.0",
