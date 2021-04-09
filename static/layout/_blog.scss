@@ -10,6 +10,8 @@
   border: .2rem solid rgba($sand-3, .3);
   border-radius: 1.1rem;
 
+  height: 90vh;
+
   overflow-y: auto;
 
   scrollbar-width: thin;
@@ -31,11 +33,6 @@
 
   @media only screen and (max-width: $bp-mobile-l) {
     width: 100%;
-  }
-
-  @media only screen and (min-width: $bp-largest) {
-    overflow-y: auto;
-    height: 100vh;
   }
 
   &__entry {

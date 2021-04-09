@@ -170,7 +170,6 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
     return (
       <div className="sidebar">
         <header className="header">
-          <div className="header__border" />
           <div className="header__logo">
             <img
               className="header__logo--picture"
