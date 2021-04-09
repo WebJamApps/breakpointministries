@@ -29,7 +29,6 @@
 
   .header {
     display: grid;
-    grid-template-rows: 2rem 1fr;
     margin-bottom: 2rem;
 
     @media only screen and (max-width: $bp-med) {
@@ -83,6 +82,7 @@
 
       @media only screen and (max-width: $bp-med) {
         justify-content: inherit;
+        margin-bottom: -2rem;
       }
 
       &--logo-2 {
@@ -233,6 +233,7 @@
     width: 80%;
     margin: 0 auto;
     display: block;
+    margin-top: 2rem;
   }
 
   span.open.header__mobile-menu > span.header__mobile-menu--icon {
