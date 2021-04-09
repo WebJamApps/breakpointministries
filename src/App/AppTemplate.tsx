@@ -187,7 +187,7 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
               <span className="header__mobile-menu--icon" />
             </span>
             <span className="header__title">
-              <h2>Change in Christ</h2>
+              <h2>Change In Christ</h2>
             </span>
           </div>
         </header>
