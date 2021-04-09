@@ -10,6 +10,8 @@
   border: .2rem solid rgba($sand-3, .3);
   border-radius: 1.1rem;
 
+  overflow-y: auto;
+
   scrollbar-width: thin;
   scrollbar-color: $logo-blue-dark $color-grey-light-1;
 
@@ -26,6 +28,7 @@
     border-radius: .6rem;
     border: .3rem solid $color-grey-light-1;
   }
+
   @media only screen and (max-width: $bp-mobile-l) {
     width: 100%;
   }
@@ -37,7 +40,6 @@
 
   &__entry {
     margin: 2rem 1rem 0;
-    height: min-content;
 
     &--body {
       display: grid;
@@ -154,6 +156,7 @@
 
   @media only screen and (max-width: $bp-med) {
     grid-column: 1 / end;
+    height: 100vh;
   }
 
   @media only screen and (max-width: $bp-mobile-m) {
