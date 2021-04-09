@@ -49,3 +49,22 @@
     box-shadow: $box-shadow-3;
   }
 }
+
+@mixin scrollbarOverride {
+  scrollbar-width: thin;
+  scrollbar-color: $logo-blue-dark $color-grey-light-1;
+
+  &::-webkit-scrollbar {
+    width: 1.1rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $logo-blue-dark;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $logo-blue-dark;
+    border-radius: .6rem;
+    border: .3rem solid $color-grey-light-1;
+  }
+}

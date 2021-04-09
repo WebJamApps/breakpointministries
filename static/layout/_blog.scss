@@ -14,21 +14,10 @@
 
   overflow-y: auto;
 
-  scrollbar-width: thin;
-  scrollbar-color: $logo-blue-dark $color-grey-light-1;
+  @include scrollbarOverride;
 
-  &::-webkit-scrollbar {
-    width: 1.1rem;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: $logo-blue-dark;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: $logo-blue-dark;
-    border-radius: .6rem;
-    border: .3rem solid $color-grey-light-1;
+  @media only screen and (max-width: $bp-med) {
+    height: 80vh;
   }
 
   @media only screen and (max-width: $bp-mobile-l) {
@@ -36,7 +25,7 @@
   }
 
   &__entry {
-    margin: 2rem 1rem 0;
+    margin: 1rem 1rem 0;
 
     &--body {
       display: grid;

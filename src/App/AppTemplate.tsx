@@ -169,30 +169,32 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
     const { menuOpen } = this.state; const style = `${menuOpen ? 'open' : 'close'}`;
     return (
       <div className="sidebar">
-        <header className="header">
-          <div className="header__logo">
-            <img
-              className="header__logo--picture"
-              src="https://dl.dropbox.com/s/befh330hypey44l/fish%20with%20color.png?dl=0"
-              alt="The Jesus Fish with a multi-coloured background"
-            />
-            <span
-              className={`${style} header__mobile-menu`}
-              onClick={this.toggleMobileMenu}
-              onKeyPress={this.handleKeyMenu}
-              tabIndex={0}
-              role="button"
-            >
-              <span className="header__mobile-menu--icon" />
-            </span>
-            <span className="header__title">
-              <h2>Change In Christ</h2>
-            </span>
-          </div>
-        </header>
-        {this.sidebar()}
-        {this.navLinks(style)}
-        {this.headerLogo2()}
+        <div className="sidebar__content">
+          <header className="header">
+            <div className="header__logo">
+              <img
+                className="header__logo--picture"
+                src="https://dl.dropbox.com/s/befh330hypey44l/fish%20with%20color.png?dl=0"
+                alt="The Jesus Fish with a multi-coloured background"
+              />
+              <span
+                className={`${style} header__mobile-menu`}
+                onClick={this.toggleMobileMenu}
+                onKeyPress={this.handleKeyMenu}
+                tabIndex={0}
+                role="button"
+              >
+                <span className="header__mobile-menu--icon" />
+              </span>
+              <span className="header__title">
+                <h2>Change In Christ</h2>
+              </span>
+            </div>
+          </header>
+          {this.sidebar()}
+          {this.navLinks(style)}
+          {this.headerLogo2()}
+        </div>
       </div>
     );
   }
