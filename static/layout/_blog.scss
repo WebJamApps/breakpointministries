@@ -9,6 +9,26 @@
     .5rem .5rem .9rem 0 rgba($color-black, 0.25);
   border: .2rem solid rgba($sand-3, .3);
   border-radius: 1.1rem;
+
+  overflow-y: auto;
+
+  scrollbar-width: thin;
+  scrollbar-color: $logo-blue-dark $color-grey-light-1;
+
+  &::-webkit-scrollbar {
+    width: 1.1rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $logo-blue-dark;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $logo-blue-dark;
+    border-radius: .6rem;
+    border: .3rem solid $color-grey-light-1;
+  }
+
   @media only screen and (max-width: $bp-mobile-l) {
     width: 100%;
   }
@@ -20,7 +40,6 @@
 
   &__entry {
     margin: 2rem 1rem 0;
-    height: min-content;
 
     &--body {
       display: grid;
@@ -62,7 +81,7 @@
 
     &--header {
       font-weight: $font-weight-heavy;
-      font-size: 3.52rem;
+      font-size: 3rem;
       color: rgba($color-black, .9);
 
       @media only screen and (max-width: $bp-med) {
@@ -137,6 +156,7 @@
 
   @media only screen and (max-width: $bp-med) {
     grid-column: 1 / end;
+    height: 100vh;
   }
 
   @media only screen and (max-width: $bp-mobile-m) {
