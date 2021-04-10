@@ -8,6 +8,7 @@ import { withResizeDetector } from 'react-resize-detector';
 import CommonUtils from '../../lib/commonUtils';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import BlogEditor from '../../components/BlogEditor';
+import Footer from '../../App/Footer';
 
 export interface IBlog { created_at?: string; _id: string; title: string, body: string }
 
@@ -181,6 +182,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
               this.blogNotFound()
             )}
         </div>
+        <Footer />
       </div>
     );
   }

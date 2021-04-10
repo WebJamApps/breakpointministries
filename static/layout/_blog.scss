@@ -1,16 +1,15 @@
 .blog {
-  grid-column: full-start / full-end;
   background-color: rgba($color-white-2, .95);
   padding: .6rem;
-  width: 70vw;
   display: grid;
   grid-row-gap: 3rem;
   box-shadow:
     .5rem .5rem .9rem 0 rgba($color-black, 0.25);
   border: .2rem solid rgba($sand-3, .3);
   border-radius: 1.1rem;
+  grid-row: 1 / 2;
 
-  height: 90vh;
+  height: 85vh;
 
   overflow-y: auto;
 
@@ -138,11 +137,14 @@
   padding: 3rem;
   display: grid;
   grid-column: 2 / end;
+  grid-template-rows: 10fr 1fr;
   background: linear-gradient(rgba($color-white-2, 1), rgba($color-white-2, .5), rgba($color-white-2, .3), rgba($logo-blue, .3), rgba($logo-blue, .9));
+  grid-row-gap: 1rem;
 
   @media only screen and (max-width: $bp-med) {
     grid-column: 1 / end;
-    height: 100vh;
+    height: auto;
+    grid-row-gap: .5rem;
   }
 
   @media only screen and (max-width: $bp-mobile-m) {
