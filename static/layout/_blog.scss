@@ -110,26 +110,7 @@
     display: inline-flex;
     justify-content: flex-end;
     transform: translateY(-.5rem);
-
-    & i {
-      font-size: 2.2rem;
-      color: $logo-blue-dark;
-      transition: all .3s;
-
-      &:hover {
-        color: rgba($logo-blue-dark, .85);
-      }
-    }
-
-    li {
-      &:not(:last-child) {
-      margin-right: .5rem; }
-    }
-
-    &--link {
-      text-decoration: none;
-      font-size: 1.8rem;
-    }
+    @include socialMedia;
   }
 }
 
