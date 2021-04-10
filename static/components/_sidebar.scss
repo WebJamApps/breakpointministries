@@ -3,8 +3,6 @@
   grid-column: sidebar-start / sidebar-end;
   grid-row: 1 / -1;
   border-right: 1px solid rgba($color-black, .5);
-  display: grid;
-  grid-template-rows: repeat(2, min-content) 1fr;
   overflow-y: auto;
   overflow-x: hidden;
 
@@ -12,6 +10,8 @@
 
   &__content {
     height: 100vh;
+    display: grid;
+    grid-template-rows: repeat(2, min-content) 1fr;
 
     @media only screen and (max-width: $bp-med) {
       height: min-content;
