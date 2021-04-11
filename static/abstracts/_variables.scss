@@ -33,11 +33,13 @@ $font-weight-med: 700; // Equivalent to bold
 $font-weight-heavy: 900;
 
 // RESPONSIVE BREAKPOINTS
-$bp-largest: 75em;    //  1200px
-$bp-large: 62.5em;    //  1000px
-$bp-med: 50em;        //  800px
-$bp-sm: 37.5em;       //  600px
-$bp-tiny: 18.75em;    //  300px
+$bp-largest: 75em;      //  1200px
+$bp-large: 62.5em;      //  1000px
+$bp-med: 50em;          //  800px
+$bp-med-med: 46.875em;  //  750px
+$bp-med-sm: 46em;       //  730px
+$bp-sm: 37.5em;         //  600px
+$bp-tiny: 18.75em;      //  300px
 
 // MOBILE RESPONSIVE BREAKPOINTS
 $bp-mobile-l: 26.6em; // 425px

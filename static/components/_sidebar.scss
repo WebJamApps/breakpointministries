@@ -8,6 +8,12 @@
 
   @include scrollbarOverride;
 
+  @media only screen and (min-width: $bp-largest) {
+    @media screen and (orientation:landscape) {
+      grid-column: sidebar-start / 4;
+    }
+  }
+
   &__content {
     height: 100vh;
     display: grid;
@@ -15,6 +21,13 @@
 
     @media only screen and (max-width: $bp-med) {
       height: min-content;
+    }
+
+    @media only screen and (min-width: $bp-largest) {
+      @media screen and (orientation:landscape) {
+        margin: auto 0;
+        text-align: center
+      }
     }
   }
 
@@ -42,6 +55,12 @@
     display: grid;
     margin-bottom: 2rem;
 
+    @media only screen and (min-width: $bp-largest) {
+      @media screen and (orientation:landscape) {
+        margin: inherit;
+      }
+    }
+
     @media only screen and (max-width: $bp-med) {
       grid-template-rows: 1fr 2rem;
       grid-template-columns: 1fr;
@@ -58,6 +77,12 @@
       h2 {
         text-align: center;
         font-size: 3rem;
+
+        @media only screen and (min-width: $bp-largest) {
+          @media screen and (orientation:landscape) {
+            font-size: 2.75rem;
+          }
+        }
 
         @media only screen and (max-width: $bp-med) {
           font-size: 6rem;
@@ -91,6 +116,12 @@
       display: grid;
       justify-content: center;
 
+      @media only screen and (min-width: $bp-largest) {
+        @media screen and (orientation:landscape) {
+          justify-content: end;
+        }
+      }
+
       @media only screen and (max-width: $bp-med) {
         justify-content: inherit;
         margin-bottom: -2rem;
@@ -116,9 +147,24 @@
           grid-column: 1 / 1;
         }
       }
+      
+      &--picture {
+        @media only screen and (min-width: $bp-largest) {
+          @media screen and (orientation:landscape) {
+            max-width: 21vw
+          }
+        }
+      }
 
       &--picture-2 {
         margin: 0 auto;
+
+        @media only screen and (min-width: $bp-largest) {
+          @media screen and (orientation:landscape) {
+            margin-left: 4.5rem;
+            max-width: 15vw;
+          }
+        }
       }
     }
 
@@ -167,6 +213,12 @@
   .sidebar__functions {
     margin-left: .5rem;
     margin-right: 1.5rem;
+
+    @media only screen and (min-width: $bp-largest) {
+      @media screen and (orientation:landscape) {
+        margin-left: 5rem;
+      }
+    }
 
     .tos {
       font-size: .8rem;

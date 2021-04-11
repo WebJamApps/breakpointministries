@@ -19,6 +19,18 @@
     height: 80vh;
   }
 
+  @media only screen and (max-width: $bp-med-med) {
+    @media screen and (orientation:landscape) {
+      height: 50vh;
+    }
+  }
+
+  @media only screen and (max-width: $bp-med-sm) {
+    @media screen and (orientation:landscape) {
+      height: 55vh;
+    }
+  }
+
   @media only screen and (max-width: $bp-mobile-l) {
     width: 100%;
   }
@@ -121,6 +133,16 @@
   grid-template-rows: 10fr 1fr;
   background: linear-gradient(rgba($color-white-2, 1), rgba($color-white-2, .5), rgba($color-white-2, .3), rgba($logo-blue, .3), rgba($logo-blue, .9));
   grid-row-gap: 1rem;
+
+  @media only screen and (min-width: $bp-largest) {
+    @media screen and (orientation:landscape) {
+      grid-column: 4 / end;
+    }
+  }
+
+  @media screen and (orientation:landscape) {
+    grid-template-rows: 1fr;
+  }
 
   @media only screen and (max-width: $bp-med) {
     grid-column: 1 / end;
