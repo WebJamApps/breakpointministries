@@ -9,14 +9,6 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%; // 10px/16px = 62.5% -> 1rem = 10px
-
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-
-  & ::-webkit-scrollbar {
-    display: none;
-  }
-
   @media only screen and (max-width: $bp-largest) {
     font-size: 50%; // 1rem = 8px;
   }
@@ -26,6 +18,7 @@ body {
   font-weight: $font-weight-extra-light;
   line-height: 1.6;
   font-family: $default-font-family;
+  overflow-y: hidden;
 }
 
 .container {

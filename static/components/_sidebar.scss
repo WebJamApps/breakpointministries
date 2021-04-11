@@ -3,13 +3,24 @@
   grid-column: sidebar-start / sidebar-end;
   grid-row: 1 / -1;
   border-right: 1px solid rgba($color-black, .5);
-  display: grid;
-  grid-template-rows: repeat(2, min-content) 1fr;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  @include scrollbarOverride;
+
+  &__content {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: repeat(2, min-content) 1fr;
+
+    @media only screen and (max-width: $bp-med) {
+      height: min-content;
+    }
+  }
 
   @media only screen and (max-width: $bp-med) {
     grid-column: 1 / -1;
     grid-row: 1 / 2;
-    max-height: min-content;
     border-right: none;
     grid-template-rows: auto;
   }
@@ -29,7 +40,6 @@
 
   .header {
     display: grid;
-    grid-template-rows: 2rem 1fr;
     margin-bottom: 2rem;
 
     @media only screen and (max-width: $bp-med) {
@@ -77,25 +87,13 @@
       }
     }
 
-    &__border {
-      min-height: .8rem;
-      max-width: 100%;
-      background-color: rgba($logo-blue, .9);
-
-      @media only screen and (max-width: $bp-med) {
-        grid-row: 2 / 2;
-        border-top: $color-black .1rem solid;
-        min-height: .8rem;
-        background-color:  rgba($logo-blue, .9);
-      }
-    }
-
     &__logo {
       display: grid;
       justify-content: center;
 
       @media only screen and (max-width: $bp-med) {
         justify-content: inherit;
+        margin-bottom: -2rem;
       }
 
       &--logo-2 {
@@ -168,7 +166,7 @@
 
   .sidebar__functions {
     margin-left: .5rem;
-    margin-right: .5rem;
+    margin-right: 1.5rem;
 
     .tos {
       font-size: .8rem;
@@ -246,6 +244,7 @@
     width: 80%;
     margin: 0 auto;
     display: block;
+    margin-top: 2rem;
   }
 
   span.open.header__mobile-menu > span.header__mobile-menu--icon {

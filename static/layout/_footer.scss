@@ -1,0 +1,28 @@
+.footer {
+    background: white;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: auto 0;
+    padding: .25rem 1rem;
+
+    &__poweredBy {
+        margin: .25rem 0;
+        font-weight: $font-weight-med;
+        color: rgba($color-black, .8);
+    }
+
+    & a {
+        color: rgba($color-black, .7);
+        text-decoration: none;
+    }
+
+    &__social-media {
+        list-style: none;
+        width: 95%;
+        margin: .5rem auto;
+        display: inline-flex;
+        justify-content: flex-end;
+        @include socialMedia;
+    }
+}
