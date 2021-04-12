@@ -15,3 +15,27 @@
 @import 'layout/navigation';
 
 @import 'pages/admin.scss';
+
+
+/*TODO:
+
+800-1000 broken
+Possible fix: Change sidebar/blog grid start/end (sidebar-start / 3), (4 / end)
+
+1200+ broken
+Possible fixes:
+
+change header to justify-content to space-evenly
+Change sidebar start back to original (sidebar-start / 4), (4 / end)
+
+Maybe change logo to max-width to 23vw
+
+// Fix for 480 (Mainly font size in footer (1.46rem), blog-container grid-row-gap to .5rem, blog height: 53vh), div.open.sidebar__functions - margin-top: .25rem
+
+.sidebar .header__mobile-menu // Fixes positioning
+align-self: center;
+
+320 broken
+
+Desktop broken. 1200+ fixes should fix?
+*/
