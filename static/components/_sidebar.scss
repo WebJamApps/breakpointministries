@@ -138,21 +138,13 @@
       }
 
       &--picture, &--picture-2 {
-        max-width: 20vw;
+        max-width: 19vw;
 
         @media only screen and (max-width: $bp-med) {
           max-width: 20%;
           margin-bottom: 0;
           grid-row: 1 / 1;
           grid-column: 1 / 1;
-        }
-      }
-      
-      &--picture {
-        @media only screen and (min-width: $bp-largest) {
-          @media screen and (orientation:landscape) {
-            max-width: 21vw
-          }
         }
       }
 
