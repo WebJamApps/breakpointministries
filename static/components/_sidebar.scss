@@ -128,8 +128,8 @@
       @media only screen and (max-width: $bp-med) {
         display: initial;
         grid-row: 1 / 1;
-        justify-self: end;
-        margin-top: 1rem;
+        // justify-self: end;
+        margin-top: 6rem;
         margin-right: 6rem;
         outline: none;
 
@@ -160,6 +160,15 @@
 
       @media only screen and (max-width: $bp-sm) {
         margin-right: 4rem;
+        margin-top: 5rem;
+      }
+
+      @media only screen and (max-width: $bp-extra-sm) {
+        margin-top: 3rem;
+      }
+
+      @media only screen and (max-width: $bp-mobile-m) {
+        margin-top: 2.5rem;
       }
     }
   }

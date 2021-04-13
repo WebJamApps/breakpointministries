@@ -22,6 +22,7 @@ body {
 }
 
 .container {
+  height: 100vh;
   display: grid;
   grid-template-rows: minmax(100vh, auto);
   grid-template-columns: [sidebar-start] minmax(min-content, max-content) [sidebar-end full-start] minmax(5rem, .4fr) [center-start] repeat(8, [col-start] minmax(min-content, 8rem) [col-end]) [center-end] minmax(5rem, .4fr) [full-end];
