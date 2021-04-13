@@ -14,7 +14,7 @@
     grid-template-rows: repeat(2, min-content) 1fr;
 
     @media only screen and (max-width: $bp-med) {
-      height: min-content;
+      height: max-content;
     }
   }
 
@@ -164,11 +164,11 @@
       }
 
       @media only screen and (max-width: $bp-extra-sm) {
-        margin-top: 3rem;
+        margin-top: 4.5rem;
       }
 
       @media only screen and (max-width: $bp-mobile-m) {
-        margin-top: 2.5rem;
+        margin-top: 3.15rem;
       }
     }
   }
@@ -295,6 +295,13 @@
     background-color: rgba($color-black, .05);
     transform: translateY(-3px);
   }
+}
+
+// Controls the sidebar menu on mobile
+
+div.open:nth-child(1) {
+  height: 100vh;
+  overflow-y: auto;
 }
 
 .menu-item {

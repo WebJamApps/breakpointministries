@@ -190,10 +190,10 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
     );
   }
 
-  drawerContainer(): JSX.Element {
+  drawerContainer(className: string): JSX.Element {
     const { menuOpen } = this.state; const style = `${menuOpen ? 'open' : 'close'}`;
     return (
-      <div className="sidebar">
+      <div className={`${className} sidebar`}>
         <div className="sidebar__content">
           {this.drawerHeader(style)}
           {this.sidebar(style)}
@@ -205,10 +205,11 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
   }
 
   render(): JSX.Element {
+    const { menuOpen } = this.state; const style = `${menuOpen ? 'open' : 'close'}`;
     const { children } = this.props;
     return (
       <div className="container">
-        {this.drawerContainer()}
+        {this.drawerContainer(style)}
         {children}
       </div>
     );
