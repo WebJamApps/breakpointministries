@@ -14,7 +14,7 @@
     grid-template-rows: repeat(2, min-content) 1fr;
 
     @media only screen and (max-width: $bp-med) {
-      height: min-content;
+      height: max-content;
     }
   }
 
@@ -128,8 +128,8 @@
       @media only screen and (max-width: $bp-med) {
         display: initial;
         grid-row: 1 / 1;
-        justify-self: end;
-        margin-top: 1rem;
+        // justify-self: end;
+        margin-top: 6rem;
         margin-right: 6rem;
         outline: none;
 
@@ -160,6 +160,15 @@
 
       @media only screen and (max-width: $bp-sm) {
         margin-right: 4rem;
+        margin-top: 5rem;
+      }
+
+      @media only screen and (max-width: $bp-extra-sm) {
+        margin-top: 4.5rem;
+      }
+
+      @media only screen and (max-width: $bp-mobile-m) {
+        margin-top: 3.15rem;
       }
     }
   }
@@ -286,6 +295,13 @@
     background-color: rgba($color-black, .05);
     transform: translateY(-3px);
   }
+}
+
+// Controls the sidebar menu on mobile
+
+div.open:nth-child(1) {
+  height: 100vh;
+  overflow-y: auto;
 }
 
 .menu-item {
