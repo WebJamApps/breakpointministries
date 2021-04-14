@@ -6,7 +6,7 @@ function Footer(): JSX.Element {
     <div className="footer">
       <div className="footer__poweredBy">
         <p>
-          Website Powered By:
+          Powered By:
           {' '}
           <Link to="https://web-jam.com">Web Jam LLC</Link>
         </p>

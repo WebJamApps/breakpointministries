@@ -24,7 +24,7 @@ body {
 .container {
   height: 100vh;
   display: grid;
-  grid-template-rows: minmax(100vh, auto);
+  grid-template-rows: minmax(95vh, auto) 1fr;
   grid-template-columns: [sidebar-start] minmax(min-content, max-content) [sidebar-end full-start] minmax(5rem, .4fr) [center-start] repeat(8, [col-start] minmax(min-content, 8rem) [col-end]) [center-end] minmax(5rem, .4fr) [full-end];
 
   @media only screen and (max-width: $bp-large) {
@@ -32,7 +32,8 @@ body {
   }
 
   @media only screen and (max-width: $bp-med) {
-    grid-template-rows: min-content auto;
+    overflow-y: auto;
+    grid-template-rows: min-content auto min-content;
     grid-template-columns: [full-start] minmax(2rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(2rem, 1fr) [full-end];
   }
 }

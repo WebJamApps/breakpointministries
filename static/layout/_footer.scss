@@ -2,14 +2,25 @@
     background: white;
 
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin: auto 0;
+    grid-column: 2 / end;
     padding: .25rem 1rem;
+
+    @media only screen and (max-width: $bp-med) {
+        grid-column: 1 / end;
+    }
+
+    @media only screen and (max-width: $bp-med) {
+        grid-column: 1 / end;
+    }
 
     &__poweredBy {
         margin: .25rem 0;
         font-weight: $font-weight-med;
         color: rgba($color-black, .8);
+        text-align: left;
+        @media only screen and (max-width: $bp-med) {
+            margin: inherit;
+        }
 
         p {
             @media only screen and (max-width: $bp-extra-sm) {
@@ -27,10 +38,14 @@
 
     &__social-media {
         list-style: none;
-        width: 95%;
         margin: .5rem auto;
         display: inline-flex;
+        grid-column: 2 / end;
         justify-content: flex-end;
         @include socialMedia;
+        
+        @media only screen and (max-width: $bp-med) {
+            margin: auto 0;
+        }
     }
 }
