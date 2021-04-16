@@ -58,6 +58,7 @@
       h2 {
         text-align: center;
         font-size: 3rem;
+        margin-right: .5rem;
 
         @media only screen and (max-width: $bp-med) {
           font-size: 6rem;
@@ -128,7 +129,6 @@
       @media only screen and (max-width: $bp-med) {
         display: initial;
         grid-row: 1 / 1;
-        // justify-self: end;
         margin-top: 6rem;
         margin-right: 6rem;
         outline: none;
@@ -281,6 +281,13 @@
   margin-top: 2rem;
   margin-left: 1rem;
 
+  &__link {
+    & .fa, .fas {
+      font-size: 2rem;
+      margin-right: 2rem;
+    }
+  }
+
   &__link:link,
   &__link:visited {
     font-size: 1.4rem;
@@ -305,7 +312,6 @@ div.open:nth-child(1) {
 }
 
 .menu-item {
-  padding-left          : 1rem;
   min-height            : 4.4rem;
   padding-top           : 2.5rem;
   margin-bottom         : 1.5rem;
