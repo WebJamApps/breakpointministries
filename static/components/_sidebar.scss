@@ -129,7 +129,7 @@
       @media only screen and (max-width: $bp-med) {
         display: initial;
         grid-row: 1 / 1;
-        margin-top: 6rem;
+        margin-top: 7rem;
         margin-right: 6rem;
         outline: none;
 
@@ -158,6 +158,16 @@
         }
       }
 
+      @media only screen and (max-width: $bp-moto-g4) {}
+
+      @media only screen and (max-width: $bp-ipad) {
+        margin-top: 7rem;
+      }
+
+      @media only screen and (max-width: $bp-moto-g4) {
+        margin-top: 5.75rem;
+      }
+
       @media only screen and (max-width: $bp-sm) {
         margin-right: 4rem;
         margin-top: 5rem;
@@ -167,8 +177,20 @@
         margin-top: 4.5rem;
       }
 
+      @media only screen and (max-width: $bp-mobile-l) {
+        margin-top: 3.75rem;
+      }
+
+      @media only screen and (max-width: $bp-pixel-2) {
+        margin-top: 3.4rem;
+      }
+
       @media only screen and (max-width: $bp-mobile-m) {
         margin-top: 3.15rem;
+      }
+
+      @media only screen and (max-width: $bp-mobile-s) {
+        margin-top: 2.4rem;
       }
     }
   }
