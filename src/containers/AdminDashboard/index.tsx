@@ -66,31 +66,29 @@ export class AdminDashboard extends Component<DashboardProps, DashboardState> {
       type: 'text', label: 'Title', isRequired: false, onChange: this.onChange, value: title, width: '280px',
     };
     return (
-      <div className="horiz-scroll">
-        <div className="material-content elevation3 changeHomepage">
-          <form
-            id="post-blog"
-            style={{
-              textAlign: 'left', marginLeft: '4px', width: '100%', maxWidth: '100%',
-            }}
-          >
-            {this.forms.makeInput(inputParams)}
-            <p>&nbsp;</p>
-            <label htmlFor="content" style={{ fontSize: '12pt', fontWeight: 'bold' }}>
-              Content
-              <br />
-              {this.controller.editor(blogContent)}
-            </label>
-            {this.postBlogButton(title, blogContent)}
-          </form>
-        </div>
+      <div className="changeHomepage">
+        <form
+          id="post-blog"
+          style={{
+            textAlign: 'left', marginLeft: '4px', maxWidth: '100%',
+          }}
+        >
+          {this.forms.makeInput(inputParams)}
+          <p>&nbsp;</p>
+          <label htmlFor="content" style={{ fontSize: '12pt', fontWeight: 'bold' }}>
+            Content
+            <br />
+            {this.controller.editor(blogContent)}
+          </label>
+          {this.postBlogButton(title, blogContent)}
+        </form>
       </div>
     );
   }
 
   render(): JSX.Element {
     return (
-      <div className="page-content" style={{ margin: 'auto', width: '79vw' }}>
+      <div className="page-content">
         <h1 style={{ textAlign: 'center', marginTop: '10px', fontSize: '16pt' }}>
           Post A New Blog
         </h1>
