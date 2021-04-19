@@ -3,6 +3,8 @@
   margin: 3rem auto;
 
   @media only screen and (max-width: $bp-med) {
-    width: 98.5vw;
+    width: inherit;
   }
+
+  
 }

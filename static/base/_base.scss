@@ -33,6 +33,7 @@ body {
 
   @media only screen and (max-width: $bp-med) {
     overflow-y: auto;
+    @include scrollbarOverride;
     grid-template-rows: min-content auto min-content;
     grid-template-columns: [full-start] minmax(2rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(2rem, 1fr) [full-end];
   }
@@ -40,8 +41,22 @@ body {
   .page-content {
     margin: auto;
     width: 79vw;
-    overflow-y: scroll;
     height: 100vh;
-    @include scrollbarOverride;
+
+    @media only screen and (max-width: $bp-ipad-land) {
+      overflow-y: auto;
+      @include scrollbarOverride;
+    }
+
+    @media only screen and (max-width: $bp-med) {
+      width: 95vw;
+      height: auto;
+    }
+
+    @media only screen and (max-width: $bp-galaxy-fold) {
+      input#title {
+        width: 30.5rem !important;
+      }
+    }
   }
 }

@@ -5,8 +5,8 @@
     grid-column: 2 / end;
     padding: .25rem 1rem;
 
-    @media only screen and (max-width: $bp-med) {
-        grid-column: 1 / end;
+    @media only screen and (max-width: $bp-ipad-land) and (max-height: $bp-ipad-pro) {
+        margin: auto 0;
     }
 
     @media only screen and (max-width: $bp-med) {

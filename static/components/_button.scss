@@ -14,6 +14,10 @@ button[id*="addBlogButton"] {
 
 #c-h {
   width: 10%;
+  @media only screen and (max-width: $bp-med) {
+    width: 15%;
+  }
+
   @media only screen and (max-width: $bp-mobile-l) {
     width: 20%;
   }
