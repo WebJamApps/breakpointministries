@@ -35,7 +35,7 @@ const BlogEditor = ({
             width: '90%',
           })}
           <p>&nbsp;</p>
-          <label htmlFor="content" style={{ fontSize: '12pt', fontWeight: 'bold' }}>
+          <label className="contentLabel" htmlFor="content">
             Content
             <br />
             {utils.editor(body, comp.handleEditorChange)}

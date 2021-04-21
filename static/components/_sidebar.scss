@@ -30,6 +30,10 @@
   font-weight: $font-weight-light;
   color: rgba($logo-green-dark, .8);
 
+  @media only screen and (min-width: $bp-4k) {
+    font-size: 4rem;
+  }
+
   @media only screen and (max-width: $bp-med) {
     font-size: $default-font-size; }
   }
@@ -58,6 +62,11 @@
       h2 {
         text-align: center;
         font-size: 3rem;
+        margin-right: .5rem;
+
+        @media only screen and (min-width: $bp-4k) {
+          font-size: 5rem;
+        }
 
         @media only screen and (max-width: $bp-med) {
           font-size: 6rem;
@@ -128,8 +137,7 @@
       @media only screen and (max-width: $bp-med) {
         display: initial;
         grid-row: 1 / 1;
-        // justify-self: end;
-        margin-top: 6rem;
+        margin-top: 7rem;
         margin-right: 6rem;
         outline: none;
 
@@ -158,6 +166,14 @@
         }
       }
 
+      @media only screen and (max-width: $bp-ipad) {
+        margin-top: 7rem;
+      }
+
+      @media only screen and (max-width: $bp-moto-g4) {
+        margin-top: 5.75rem;
+      }
+
       @media only screen and (max-width: $bp-sm) {
         margin-right: 4rem;
         margin-top: 5rem;
@@ -167,8 +183,24 @@
         margin-top: 4.5rem;
       }
 
+      @media only screen and (max-width: $bp-mobile-l) {
+        margin-top: 3.75rem;
+      }
+
+      @media only screen and (max-width: $bp-pixel-2) {
+        margin-top: 3.4rem;
+      }
+
       @media only screen and (max-width: $bp-mobile-m) {
         margin-top: 3.15rem;
+      }
+
+      @media only screen and (max-width: $bp-mobile-s) {
+        margin-top: 2.4rem;
+      }
+
+      @media only screen and (max-width: $bp-galaxy-fold) {
+        margin-top: 1.8rem;
       }
     }
   }
@@ -199,10 +231,15 @@
       &--input {
         height: 2.5rem;
         font-size: 1.6rem;
+
+        @media only screen and (min-width: $bp-4k) {
+          height: 5.5rem;
+          font-size: 3.6rem;
+        }
       }
 
       &--btn {
-        width: 90%;
+        width: 90% !important;
         justify-self: end;
 
         &:hover {
@@ -281,6 +318,17 @@
   margin-top: 2rem;
   margin-left: 1rem;
 
+  &__link {
+    & .fa, .fas {
+      font-size: 2rem;
+      margin-right: 2rem;
+
+      @media only screen and (min-width: $bp-4k) {
+        font-size: 4rem;
+      }
+    }
+  }
+
   &__link:link,
   &__link:visited {
     font-size: 1.4rem;
@@ -289,6 +337,10 @@
     padding: 1.5rem;
     display: block;
     transition: all .2s;
+
+    @media only screen and (min-width: $bp-4k) {
+      font-size: 3.4rem;
+    }
   }
   &__link:hover,
   &__link:active {
@@ -305,7 +357,6 @@ div.open:nth-child(1) {
 }
 
 .menu-item {
-  padding-left          : 1rem;
   min-height            : 4.4rem;
   padding-top           : 2.5rem;
   margin-bottom         : 1.5rem;

@@ -1,31 +1,30 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 function Footer(): JSX.Element {
   return (
     <div className="footer">
       <div className="footer__poweredBy">
         <p>
-          Website Powered By:
+          Powered By:
           {' '}
-          <Link to="https://web-jam.com">Web Jam LLC</Link>
+          <a href="https://web-jam.com/" target="_blank" rel="noopener noreferrer">Web Jam LLC</a>
         </p>
       </div>
       <ul className="footer__social-media">
         <li>
-          <Link to="https://facebook.com/#">
+          <a href="https://facebook.com/#" target="_blank" rel="noopener noreferrer">
             <i className="fab fa-facebook" />
-          </Link>
+          </a>
         </li>
         <li>
-          <Link to="https://twitter.com/#">
+          <a href="https://twitter.com/#" target="_blank" rel="noopener noreferrer">
             <i className="fab fa-twitter" />
-          </Link>
+          </a>
         </li>
         <li>
-          <Link to="https://linkedin.com/#">
+          <a href="https://linkedin.com/#" target="_blank" rel="noopener noreferrer">
             <i className="fab fa-linkedin" />
-          </Link>
+          </a>
         </li>
       </ul>
     </div>
