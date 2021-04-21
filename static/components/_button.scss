@@ -10,10 +10,25 @@ button[id*="addBlogButton"] {
 
 button[id*="addBlogButton"] {
   width: 5rem;
+
+  @media only screen and (min-width: $bp-4k) {
+    width: 6rem !important;
+  }
+}
+
+@media only screen and (min-width: $bp-4k) {
+  .googleLoginButton, .googleLogoutButton {
+    font-size: 4rem !important;
+  }
 }
 
 #c-h {
-  width: 10%;
+  width: 10% !important;
+  
+  @media only screen and (max-width: $bp-med) {
+    width: 15%;
+  }
+
   @media only screen and (max-width: $bp-mobile-l) {
     width: 20%;
   }

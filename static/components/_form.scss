@@ -1,3 +1,14 @@
 input {
   font-size: 1.4rem;
+  padding-left: 0;
+  min-width: inherit;
+}
+
+.inquiryLabel, .contentLabel {
+  font-size: 12pt;
+  font-weight: bold;
+
+  @media only screen and (min-width: $bp-4k) {
+    font-size: 4rem;
+  } 
 }

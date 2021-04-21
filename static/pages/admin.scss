@@ -1,8 +1,37 @@
 .changeHomepage {
-  width: 100%;
-  margin: 30px auto;
+  width: 95%;
+  margin: 3rem auto;
 
   @media only screen and (max-width: $bp-med) {
-    width: 98.5vw;
+    width: inherit;
+  }
+
+  @media only screen and (min-width: $bp-4k) {
+    .tox :not(svg):not(rect) {
+      font-size: 3rem;
+    }
+  
+    .tox .tox-statusbar {
+      height: 4rem !important;
+      font-size: 3rem !important;
+      margin-bottom: 1rem;
+    }
+
+    #title {
+      width: 50rem !important;
+      height: 4rem;
+      font-size: 3.5rem;
+    }
+  }
+}
+
+.admin--header {
+
+  text-align: center;
+  margin-top: 1rem; 
+  font-size: 2.6rem;
+  
+  @media only screen and (min-width: $bp-4k) {
+    font-size: 4rem;
   }
 }

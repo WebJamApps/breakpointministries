@@ -33,11 +33,15 @@
 
     &--body {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, 1fr);
 
       p {
         font-size: 1.8rem;
         margin-bottom: .5rem;
+
+        @media only screen and (min-width: $bp-4k) {
+          font-size: 4rem;
+        }
       }
     }
 
@@ -74,6 +78,9 @@
       font-size: 2rem;
       color: rgba($color-black, .9);
 
+      @media only screen and (min-width: $bp-4k) {
+        font-size: 8rem;
+      }
       @media only screen and (max-width: $bp-med) {
         font-size: 2.88rem;
       }
@@ -105,6 +112,10 @@
     margin-left: 2rem;
     font-size: 1.28rem;
     font-weight: $font-weight-light;
+
+    @media only screen and (min-width: $bp-4k) {
+      font-size: 3rem;
+    }
   }
 
   &__social-media {

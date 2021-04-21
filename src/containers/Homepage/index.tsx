@@ -155,35 +155,49 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     );
   }
 
-  makeBlogArticle(): JSX.Element {
-    const { targetRef, blogs, auth } = this.props;
+  createBlogButtons(blog: IBlog): JSX.Element {
+    const { auth } = this.props;
     return (
-      <div className="blog-container">
-        <div className="blog" ref={targetRef}>
-          {blogs && blogs.length > 0 ? blogs.map((blog) => (
-            <div key={`blog_entry${blog._id}`} className="blog__entry">
-              <section className="blog__entry--body">
-                <h2 className="blog__entry--header">
-                  <Link key={blog._id} to={blog._id} className="blog__link">{ReactHtmlParser(blog && blog.title ? blog.title : '')}</Link>
-                </h2>
-                <div className="blog__entry--button-container">
-                  <span className="blog__entry--button-container__add-blog">{auth.isAuthenticated ? this.addBlogButton() : null}</span>
-                  <span className="blog__entry--button-container__delete-blog">{auth.isAuthenticated ? this.deleteBlogButton(blog._id) : null}</span>
-                  <span className="blog__entry--button-container__edit-blog">{auth.isAuthenticated ? this.editBlogButton(blog) : null}</span>
-                </div>
-                <div className="blog__entry--paragraph">
-                  {ReactHtmlParser(blog && blog.body ? blog.body : '')}
-                </div>
-                {this.blogEnder(blog)}
-              </section>
-            </div>
-          ))
-            : (
-              this.blogNotFound()
-            )}
+      <>
+        <span className="blog__entry--button-container__add-blog">{auth.isAuthenticated ? this.addBlogButton() : null}</span>
+        <span className="blog__entry--button-container__delete-blog">
+          {auth.isAuthenticated
+            ? this.deleteBlogButton(blog._id) : null}
+        </span>
+        <span className="blog__entry--button-container__edit-blog">{auth.isAuthenticated ? this.editBlogButton(blog) : null}</span>
+      </>
+    );
+  }
+
+  makeBlogArticle(): JSX.Element {
+    const { targetRef, blogs } = this.props;
+    return (
+      <>
+        <div className="blog-container">
+          <div className="blog" ref={targetRef}>
+            {blogs && blogs.length > 0 ? blogs.map((blog) => (
+              <div key={`blog_entry${blog._id}`} className="blog__entry">
+                <section className="blog__entry--body">
+                  <h2 className="blog__entry--header">
+                    <Link key={blog._id} to={blog._id} className="blog__link">{ReactHtmlParser(blog && blog.title ? blog.title : '')}</Link>
+                  </h2>
+                  <div className="blog__entry--button-container">
+                    {this.createBlogButtons(blog)}
+                  </div>
+                  <div className="blog__entry--paragraph">
+                    {ReactHtmlParser(blog && blog.body ? blog.body : '')}
+                  </div>
+                  {this.blogEnder(blog)}
+                </section>
+              </div>
+            ))
+              : (
+                this.blogNotFound()
+              )}
+          </div>
         </div>
         <DefaultFooter />
-      </div>
+      </>
     );
   }
 
