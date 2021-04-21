@@ -12,6 +12,12 @@
   backface-visibility: hidden;
   transition: all .2s;
 
+  @media only screen and (min-width: $bp-4k) {
+    height: 5.3rem;
+    width: 11rem !important;
+    font-size: 3rem;
+  }
+
   &:disabled {
     background-color: rgba($color-grey-light-1, .2);
     color: rgba($color-black, .6);
@@ -74,6 +80,11 @@
     font-size: 2.2rem;
     color: $logo-blue-dark;
     transition: all .3s;
+
+    @media only screen and (min-width: $bp-4k) {
+      font-size: 4.2rem;
+      margin-right: 1rem;
+    }
 
     &:hover {
       color: rgba($logo-blue-dark, .85);

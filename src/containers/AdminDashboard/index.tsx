@@ -75,7 +75,7 @@ export class AdminDashboard extends Component<DashboardProps, DashboardState> {
         >
           {this.forms.makeInput(inputParams)}
           <p>&nbsp;</p>
-          <label htmlFor="content" style={{ fontSize: '12pt', fontWeight: 'bold' }}>
+          <label className="contentLabel" htmlFor="content">
             Content
             <br />
             {this.controller.editor(blogContent)}
@@ -89,7 +89,7 @@ export class AdminDashboard extends Component<DashboardProps, DashboardState> {
   render(): JSX.Element {
     return (
       <div className="page-content">
-        <h1 style={{ textAlign: 'center', marginTop: '10px', fontSize: '16pt' }}>
+        <h1 className="admin--header">
           Post A New Blog
         </h1>
         {this.changeHomepage()}

@@ -81,17 +81,23 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
           <GoogleLogin
             responseType="code"
             clientId={cId}
+            icon={false}
+            className="googleLoginButton"
             buttonText="Login"
             accessType="offline"
             onSuccess={this.responseGoogleLogin}
             onFailure={this.authUtils.responseGoogleFailLogin}
             cookiePolicy="single_host_origin"
-          />
+          >
+            <i className="fab fa-google"> Login</i>
+          </GoogleLogin>
         </div>
       );
     } return (
       <div key={index} className="menu-item googleLogout">
-        <GoogleLogout clientId={cId} buttonText="Logout" onLogoutSuccess={this.responseGoogleLogout} />
+        <GoogleLogout className="googleLogoutButton" clientId={cId} icon={false} buttonText="Logout" onLogoutSuccess={this.responseGoogleLogout}>
+          <i className="fab fa-google"> Logout</i>
+        </GoogleLogout>
       </div>
     );
   }
