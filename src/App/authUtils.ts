@@ -18,6 +18,7 @@ async function setUser(view: AppTemplate): Promise<string> {
   try {
     decoded = jwt.verify(auth.token, process.env.HashString || /* istanbul ignore next */'');
   } catch (e) { return `${e.message}`; }
+  // check if user has the crediential, if not log them out and do not do line 22.
   if (decoded.user) dispatch({ type: 'SET_USER', data: decoded.user });
   else {
     try {
