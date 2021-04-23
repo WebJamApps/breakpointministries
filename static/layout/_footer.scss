@@ -5,6 +5,10 @@
     grid-column: 2 / end;
     padding: .25rem 1rem;
 
+    @media only screen and (min-width: $bp-4k) {
+        padding: 0.5rem 1rem;
+    }
+
     @media only screen and (max-width: $bp-ipad-land) and (max-height: $bp-ipad-pro) {
         margin: auto 0;
     }
@@ -18,11 +22,16 @@
         font-weight: $font-weight-med;
         color: rgba($color-black, .8);
         text-align: left;
+
         @media only screen and (max-width: $bp-med) {
             margin: inherit;
         }
 
         p {
+            @media only screen and (min-width: $bp-4k) {
+                font-size: 3rem;
+            }
+
             @media only screen and (max-width: $bp-extra-sm) {
                 @media only screen and (orientation: landscape) {
                     font-size: 1.56rem;

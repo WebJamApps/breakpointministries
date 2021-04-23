@@ -17,12 +17,6 @@ button[id*="addBlogButton"] {
 }
 
 .googleLoginButton, .googleLogoutButton {
-  margin-left: 35%;
-
-  @media only screen and (orientation: landscape) {
-    margin-left: 40%;
-  }
-
   @media only screen and (min-width: $bp-4k) {
     font-size: 4rem !important;
   }

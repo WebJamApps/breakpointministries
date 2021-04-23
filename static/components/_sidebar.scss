@@ -316,11 +316,6 @@
   grid-gap: 2rem;
 
   margin-top: 2rem;
-  margin-left: 35%;
-
-  @media only screen and (orientation: landscape) {
-    margin-left: 40%;
-  }
 
   &__link {
     & .fa, .fas {
