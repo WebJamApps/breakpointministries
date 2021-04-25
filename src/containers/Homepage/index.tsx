@@ -157,7 +157,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
 
   createBlogButtons(blog: IBlog): JSX.Element {
     const { auth } = this.props;
-    const valid = auth.isAuthenticated && auth.user.userType;
+    const valid = auth.isAuthenticated && auth.user && auth.user.userType;
     return (
       <>
         <span className="blog__entry--button-container__add-blog">{valid ? this.addBlogButton() : null}</span>
