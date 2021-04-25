@@ -2,6 +2,7 @@ import superagent from 'superagent';
 import jwt from 'jsonwebtoken';
 import { Dispatch } from 'react';
 import { GoogleLoginResponseOffline, GoogleLoginResponse } from 'react-google-login';
+import commonUtils from '../lib/commonUtils';
 import authenticate, { logout } from './authActions';
 import { GoogleBody } from './AppTypes';
 import type { AppTemplate } from './AppTemplate';
@@ -14,31 +15,24 @@ export interface AuthUtils {
 }
 async function setUser(view: AppTemplate): Promise<string> {
   const { auth, dispatch } = view.props;
-  let decoded: any, user: superagent.Response;
+  const userRoles = commonUtils.getUserRoles();
+  let decoded:any, user: superagent.Response, message = 'user set';
   try {
     decoded = jwt.verify(auth.token, process.env.HashString || /* istanbul ignore next */'');
   } catch (e) { return `${e.message}`; }
-  // check if user has the crediential, if not log them out and do not do line 22.
-  // userType is null in props? yet what am i missing/overlooking?
-  // It gets authenticated in auth actions and then dispatched in an action if authenticated?
-  // would I need to do a post request and then check if the email has the user typr from DB with a get?
-  // const userRoles: string[] = commonUtils.getUserRoles();
-  /* if(auth.user.userType && userRoles.indexOf(auth.user.userType) === -1) {
-    responseGoogleLogout(dispatch);
-    window.location.reload();
-  } */
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-  if (decoded.user) ({ type: 'SET_USER', data: decoded.user });
-  else {
+  if ((decoded && typeof decoded !== 'string') && (decoded.user && userRoles.indexOf(decoded.user.userType) !== -1)) {
+    dispatch({ type: 'SET_USER', data: decoded.user });
+  } else {
     try {
       user = await superagent.get(`${process.env.BackendUrl}/user/${decoded.sub}`)
         .set('Accept', 'application/json').set('Authorization', `Bearer ${auth.token}`);
+      if (userRoles.indexOf(user.body.userType) === -1) {
+        logout(dispatch); message = 'invalid userType';
+      } else dispatch({ type: 'SET_USER', data: user.body });
     } catch (e) { return `${e.message}`; }
-    dispatch({ type: 'SET_USER', data: user.body });
   }
   window.location.reload();
-  return 'user set';
+  return message;
 }
 async function responseGoogleLogin(response: GoogleLoginResponseOffline | GoogleLoginResponse, view: AppTemplate): Promise<string> {
   const uri = window.location.href;

@@ -157,14 +157,14 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
 
   createBlogButtons(blog: IBlog): JSX.Element {
     const { auth } = this.props;
+    const valid = auth.isAuthenticated && auth.user.userType;
     return (
       <>
-        <span className="blog__entry--button-container__add-blog">{auth.isAuthenticated ? this.addBlogButton() : null}</span>
+        <span className="blog__entry--button-container__add-blog">{valid ? this.addBlogButton() : null}</span>
         <span className="blog__entry--button-container__delete-blog">
-          {auth.isAuthenticated
-            ? this.deleteBlogButton(blog._id) : null}
+          {valid ? this.deleteBlogButton(blog._id) : null}
         </span>
-        <span className="blog__entry--button-container__edit-blog">{auth.isAuthenticated ? this.editBlogButton(blog) : null}</span>
+        <span className="blog__entry--button-container__edit-blog">{valid ? this.editBlogButton(blog) : null}</span>
       </>
     );
   }
