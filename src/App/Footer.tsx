@@ -5,9 +5,11 @@ function Footer(): JSX.Element {
     <div className="footer">
       <div className="footer__poweredBy">
         <p>
-          Powered By:
+          Powered By
           {' '}
-          <a href="https://web-jam.com/" target="_blank" rel="noopener noreferrer">Web Jam LLC</a>
+          <a href="https://web-jam.com/" target="_blank" rel="noopener noreferrer">
+            <u><strong>Web Jam LLC</strong></u>
+          </a>
         </p>
       </div>
       <ul className="footer__social-media">
