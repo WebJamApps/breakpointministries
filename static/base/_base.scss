@@ -59,4 +59,13 @@ body {
       }
     }
   }
+
+  &.close {
+    .blog-container {
+      display: none;
+    }
+    .footer {
+      display: none;
+    }
+  }
 }

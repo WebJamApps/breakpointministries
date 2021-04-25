@@ -22,7 +22,7 @@ describe('Home', () => {
       width={1000}
       height={800}
       blogs={testBlogs}
-      auth={{ isAuthenticated: true }}
+      auth={{ isAuthenticated: true, user: { userType: 'good' } }}
     />);
     wrapper2.instance().deleteBlog = jest.fn();
     wrapper2.find('#deleteBlogButton1').simulate('click');
@@ -34,7 +34,7 @@ describe('Home', () => {
       width={1000}
       height={800}
       blogs={testBlogs}
-      auth={{ isAuthenticated: true }}
+      auth={{ isAuthenticated: true, user: { userType: 'good' } }}
     />);
     const testBlog:any = { _id: '123' };
     const editButton = wrapper2.instance().editBlogButton(testBlog);
@@ -107,7 +107,7 @@ describe('Home', () => {
       width={1000}
       height={800}
       blogs={testBlogs}
-      auth={{ isAuthenticated: true }}
+      auth={{ isAuthenticated: true, user: { userType: 'good' } }}
     />);
     wrapper2.find('#addBlogButton').at(1).simulate('click');
     expect(wrapper2.instance().state).toStrictEqual({

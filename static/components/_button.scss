@@ -16,8 +16,8 @@ button[id*="addBlogButton"] {
   }
 }
 
-@media only screen and (min-width: $bp-4k) {
-  .googleLoginButton, .googleLogoutButton {
+.googleLoginButton, .googleLogoutButton {
+  @media only screen and (min-width: $bp-4k) {
     font-size: 4rem !important;
   }
 }
