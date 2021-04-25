@@ -18,15 +18,16 @@ async function setUser(view: AppTemplate): Promise<string> {
   try {
     decoded = jwt.verify(auth.token, process.env.HashString || /* istanbul ignore next */'');
   } catch (e) { return `${e.message}`; }
-  // check if user has the crediential, if not log them out and do not do line 22. 
-  // userType is null in props? yet what am i missing/overlooking? It gets authenticated in auth actions and then dispatched in an action if authenticated? 
+  // check if user has the crediential, if not log them out and do not do line 22.
+  // userType is null in props? yet what am i missing/overlooking?
+  // It gets authenticated in auth actions and then dispatched in an action if authenticated?
   // would I need to do a post request and then check if the email has the user typr from DB with a get?
   // const userRoles: string[] = commonUtils.getUserRoles();
-  /*if(auth.user.userType && userRoles.indexOf(auth.user.userType) === -1) {
+  /* if(auth.user.userType && userRoles.indexOf(auth.user.userType) === -1) {
     responseGoogleLogout(dispatch);
     window.location.reload();
-  }*/
-  if (decoded.user) dispatch({ type: 'SET_USER', data: decoded.user });
+  } */
+  if (decoded.user) ({ type: 'SET_USER', data: decoded.user });
   else {
     try {
       user = await superagent.get(`${process.env.BackendUrl}/user/${decoded.sub}`)
