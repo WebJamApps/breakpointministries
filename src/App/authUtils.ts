@@ -27,6 +27,8 @@ async function setUser(view: AppTemplate): Promise<string> {
     responseGoogleLogout(dispatch);
     window.location.reload();
   } */
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
   if (decoded.user) ({ type: 'SET_USER', data: decoded.user });
   else {
     try {
