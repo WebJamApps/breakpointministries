@@ -40,6 +40,14 @@ describe('authUtils', () => {
     const result = await authUtils.setUser(vStub);
     expect(result).toBe('user set');
   });
+  it('does not set the user when userType is not correct', async () => {
+    jwt.verify = jest.fn(() => ({ sub: '123' }));
+    const returnBody: Record<string, unknown> = { body: { userType: 'bogus' } };
+    const sa: any = superagent;
+    sa.get = () => ({ set: () => ({ set: () => Promise.resolve(returnBody) }) });
+    const result = await authUtils.setUser(vStub);
+    expect(result).toBe('invalid userType');
+  });
   it('sets the user fails to decode the token', async () => {
     jwt.verify = jest.fn(() => { throw new Error('bad'); });
     vStub.props.auth = {};
