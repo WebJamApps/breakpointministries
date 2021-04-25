@@ -3,6 +3,7 @@
 import jwt from 'jsonwebtoken';
 import superagent from 'superagent';
 import authUtils from '../../src/App/authUtils';
+import commonUtils from '../../src/lib/commonUtils';
 
 describe('authUtils', () => {
   const vStub: any = {
@@ -33,11 +34,19 @@ describe('authUtils', () => {
   });
   it('sets the user', async () => {
     jwt.verify = jest.fn(() => ({ sub: '123' }));
-    const returnBody: Record<string, unknown> = { body: {} };
+    const returnBody: Record<string, unknown> = { body: { userType: commonUtils.getUserRoles()[0] } };
     const sa: any = superagent;
     sa.get = () => ({ set: () => ({ set: () => Promise.resolve(returnBody) }) });
     const result = await authUtils.setUser(vStub);
     expect(result).toBe('user set');
+  });
+  it('does not set the user when userType is not correct', async () => {
+    jwt.verify = jest.fn(() => ({ sub: '123' }));
+    const returnBody: Record<string, unknown> = { body: { userType: 'bogus' } };
+    const sa: any = superagent;
+    sa.get = () => ({ set: () => ({ set: () => Promise.resolve(returnBody) }) });
+    const result = await authUtils.setUser(vStub);
+    expect(result).toBe('invalid userType');
   });
   it('sets the user fails to decode the token', async () => {
     jwt.verify = jest.fn(() => { throw new Error('bad'); });
@@ -47,7 +56,7 @@ describe('authUtils', () => {
     vStub.props.auth = { token: 'token' };
   });
   it('sets the user to the already decoded user', async () => {
-    jwt.verify = jest.fn(() => ({ sub: '123', user: {} }));
+    jwt.verify = jest.fn(() => ({ sub: '123', user: { userType: commonUtils.getUserRoles()[0] } }));
     const result = await authUtils.setUser(vStub);
     expect(result).toBe('user set');
   });
