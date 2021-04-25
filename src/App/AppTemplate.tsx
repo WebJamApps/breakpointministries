@@ -15,7 +15,7 @@ interface AppMainProps extends RouteComponentProps {
   dispatch: Dispatch<unknown>;
 }
 
-interface AppMainState { menuOpen: boolean }
+interface AppMainState { menuOpen: boolean, containerOpen: boolean }
 export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
   static defaultProps = {
     dispatch: /* istanbul ignore next */(): void => { },
@@ -34,7 +34,7 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
     super(props);
     this.menus = menuItems;
     this.menuUtils = menuUtils;
-    this.state = { menuOpen: false };
+    this.state = { menuOpen: false, containerOpen: true };
     this.close = this.close.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleKeyMenu = this.handleKeyMenu.bind(this);
@@ -47,9 +47,10 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
   }
 
   toggleMobileMenu(): void {
-    const { menuOpen } = this.state;
+    const { menuOpen, containerOpen } = this.state;
     const mO = !menuOpen;
-    this.setState({ menuOpen: mO });
+    const cO = !containerOpen;
+    this.setState({ menuOpen: mO, containerOpen: cO });
   }
 
   responseGoogleLogin(response: GoogleLoginResponseOffline | GoogleLoginResponse): Promise<string> {
@@ -59,12 +60,12 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
   responseGoogleLogout(): string { const { dispatch } = this.props; return this.authUtils.responseGoogleLogout(dispatch); }
 
   close(): boolean {
-    this.setState({ menuOpen: false });
+    this.setState({ menuOpen: false, containerOpen: true });
     return true;
   }
 
   handleKeyPress(e: { key: string; }): (void | null) {
-    if (e.key === 'Escape') return this.setState({ menuOpen: false });
+    if (e.key === 'Escape') return this.setState({ menuOpen: false, containerOpen: true });
     return null;
   }
 
@@ -211,10 +212,11 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
   }
 
   render(): JSX.Element {
-    const { menuOpen } = this.state; const style = `${menuOpen ? 'open' : 'close'}`;
+    const { menuOpen, containerOpen } = this.state; const style = `${menuOpen ? 'open' : 'close'}`;
+    const style2 = `${containerOpen ? 'open' : 'close'}`;
     const { children } = this.props;
     return (
-      <div className="container">
+      <div className={`${style2} container`}>
         {this.drawerContainer(style)}
         {children}
       </div>

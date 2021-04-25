@@ -10,6 +10,26 @@
       z-index: 100 !important;
       padding-left: 3rem;
       margin-top: 1rem;
+
+      .nav {
+        margin-left: 35%;
+
+        @media only screen and (orientation: landscape) {
+          margin-left: 40%;
+        }
+      }
+
+      .googleLoginButton, .googleLogoutButton {
+        margin-left: 35%;
+      
+        @media only screen and (orientation: landscape) {
+          margin-left: 40%;
+        }
+      
+        @media only screen and (min-width: $bp-4k) {
+          font-size: 4rem !important;
+        }
+      }
     }
   }
 }
