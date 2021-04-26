@@ -7,10 +7,19 @@ describe('blog reducer', () => {
     );
   });
   it('handles GOT_BLOGS', () => {
-    expect(
-      reducer(undefined, { type: 'GOT_BLOGS', data: [{ _id: 'asdfasf' }] }),
-    ).toEqual(
-      { blogs: [{ _id: 'asdfasf' }] },
-    );
+    const blogsArr = [{
+      _id: 'asdfasf', title: '', body: '', created_at: '2021-04-26T11:04:45.120Z', updated_at: '',
+    },
+    {
+      _id: 'bbbb', title: '', body: '', created_at: '2020-04-26T11:04:45.120Z', updated_at: '',
+    },
+    {
+      _id: 'cccc', title: '', body: '', created_at: '2022-04-26T11:04:45.120Z', updated_at: '',
+    },
+    {
+      _id: 'dddd', title: '', body: '', created_at: '2022-04-26T11:04:45.120Z', updated_at: '',
+    },
+    ];
+    expect(reducer(undefined, { type: 'GOT_BLOGS', data: blogsArr }).blogs.length).toBe(4);
   });
 });

@@ -15,12 +15,11 @@ const sortBlogs = (blogs:Iblog[]) => {
   return sortedBlogs;
 };
 
-const reducer = (state = initialState, action: { type: string; data: Iblog[]; }): Record<string, unknown> => {
+const reducer = (state = initialState, action: { type: string; data: Iblog[]; }): {blogs:Iblog[]} => {
   switch (action.type) {
     case 'GOT_BLOGS':
       return {
         ...state,
-        // blogs: action.data,
         blogs: sortBlogs(action.data),
       };
     default:
