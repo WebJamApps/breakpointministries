@@ -7,9 +7,13 @@ export interface Auth {
     userType?: string;
   };
 }
+
+export interface Iblog {
+  _id:string, title:string, body:string, created_at:string, updated_at:string
+}
 export interface Store {
   auth: Auth;
-  blogs: { blogs: any[] };
+  blogs: { blogs: Iblog[] };
 }
 
 const mapStoreToProps = (store: Store): Record<string, unknown> => ({
