@@ -320,7 +320,7 @@
   &__link {
     & .fa, .fas {
       font-size: 1.5rem;
-      margin-right: 2rem;
+      margin-right: .25rem;
 
       @media only screen and (min-width: $bp-4k) {
         font-size: 4rem;
@@ -339,6 +339,9 @@
 
     @media only screen and (min-width: $bp-4k) {
       font-size: 3.4rem;
+    }
+    @media only screen and (max-width: $bp-med) {
+      padding: 0 0 0 .4rem;
     }
   }
   &__link:hover,

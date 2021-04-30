@@ -106,7 +106,7 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
   makeMenuLink(menu: MenuItem, index: number): JSX.Element {
     return (
       <div key={index} className="nav">
-        <Link to={menu.link} className="nav__link" onClick={this.close} style={{ padding: '0px' }}>
+        <Link to={menu.link} className="nav__link" onClick={this.close}>
           <i className={`${menu.iconClass}`} />
           &nbsp;
           <span className="nav-item">{menu.name}</span>
