@@ -2,6 +2,10 @@
   width: 95%;
   margin: 3rem auto;
 
+  #post-blog > label.contentLabel > div {
+    height: 51rem !important;
+  }
+
   @media only screen and (max-width: $bp-med) {
     width: inherit;
   }
