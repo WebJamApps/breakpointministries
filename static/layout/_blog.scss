@@ -56,6 +56,31 @@
   &__entry {
     margin: 1rem 1rem 0;
 
+    &--paragraph {
+      & > p:nth-child(1) > iframe {
+
+        @media only screen and (max-width: $bp-sm) {
+          width: 56rem;
+        }
+
+        @media only screen and (max-width: $bp-mobile-l) {
+          width: 42rem;
+        }
+
+        @media only screen and (max-width: $bp-mobile-m) {
+          width: 37rem;
+        }
+
+        @media only screen and (max-width: $bp-mobile-s) {
+          width: 33rem;
+        }
+
+        @media only screen and (max-width: $bp-galaxy-fold) {
+          width: 29rem;
+        }
+      }
+    }
+
     &--body {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
