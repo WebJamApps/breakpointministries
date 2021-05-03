@@ -49,6 +49,7 @@ export class App extends Component<AppProps> {
               <Route exact path="/" component={DefaultHomepage} />
               {auth.isAuthenticated && auth.user.userType && userRoles.indexOf(auth.user.userType) !== -1
                 ? <Route path="/admin" component={AdminDashboardDefault} /> : null}
+              <Route path="/_id" component={DefaultHomepage} />
               <Route component={AppFourOhFour} />
             </Switch>
           </AppTemplateDefault>

@@ -2,7 +2,7 @@ import React, { RefObject } from 'react';
 import Superagent from 'superagent';
 import Moment from 'react-moment';
 import { connect } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import ReactHtmlParser from 'react-html-parser';
 import { withResizeDetector } from 'react-resize-detector';
 import CommonUtils from '../../lib/commonUtils';
@@ -179,7 +179,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
               <div key={`blog_entry${blog._id}`} className="blog__entry">
                 <section className="blog__entry--body">
                   <h2 className="blog__entry--header">
-                    <Link key={blog._id} to={blog._id} className="blog__link">{ReactHtmlParser(blog && blog.title ? blog.title : '')}</Link>
+                    <a key={blog._id} href={blog._id} className="blog__link">{ReactHtmlParser(blog && blog.title ? blog.title : '')}</a>
                   </h2>
                   <div className="blog__entry--button-container">
                     {this.createBlogButtons(blog)}
@@ -206,9 +206,9 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     /* eslint-disable jsx-a11y/anchor-is-valid */
     return (
       <li key={`${type}${id}`}>
-        <Link to="#" className={`blog__social-media--link ${type}`} aria-label={`Link to ${type} page`}>
+        <a href="#" className={`blog__social-media--link ${type}`} aria-label={`Link to ${type} page`}>
           <i key={id} className={`fab fa-${type}`} />
-        </Link>
+        </a>
       </li>
     );
   }
@@ -221,9 +221,9 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
           {this.makeLink(id, 'twitter')}
           {this.makeLink(id, 'linkedin')}
           <li key={`url${id}`}>
-            <Link key={`urll${id}`} to="#" className="blog__social-media--link copylink" aria-label="Permanent link to blog posting">
+            <a key={`urll${id}`} href={`/${id}`} className="blog__social-media--link copylink" aria-label="Permanent link to blog posting">
               <i key={id} className="fas fa-link" />
-            </Link>
+            </a>
           </li>
         </ul>
       </div>
