@@ -160,6 +160,7 @@
     "react-hot-loader": "latest",
     "react-test-renderer": "^16.14.0",
     "redux-mock-store": "latest",
+    "resize-observer-polyfill": "latest",
     "stylelint": "latest",
     "stylelint-config-standard": "latest",
     "stylelint-scss": "latest",
