@@ -43,6 +43,20 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
 
   async componentDidMount(): Promise<void> {
     this.commonUtils.setTitleAndScroll('', window.screen.width);
+    const params = new URLSearchParams(window.location.search);
+    this.checkBlogId(params);
+  }
+
+  // TODO here is example for building the link for the share buttons
+  // http://localhost:9000/?id=6043ee1df6a24931fd372290
+
+  // eslint-disable-next-line class-methods-use-this
+  checkBlogId(params: URLSearchParams): void {
+    const myId = params.get('id');
+    if (myId) {
+      const blog = document.getElementById(myId);
+      if (blog)blog.scrollIntoView();
+    }
   }
 
   // eslint-disable-next-line class-methods-use-this
