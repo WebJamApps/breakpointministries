@@ -3,7 +3,7 @@ import type { IBlog, Homepage } from '../../containers/Homepage';
 import Forms from '../../lib/forms';
 import utils from './blogEditorUtils';
 
-type PageProps = {comp:Homepage;editBlog:IBlog;};
+type PageProps = { comp:Homepage;editBlog:IBlog; };
 const BlogEditor = ({
   comp, editBlog,
 }:PageProps): JSX.Element => {
