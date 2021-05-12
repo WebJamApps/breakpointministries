@@ -43,6 +43,27 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
 
   async componentDidMount(): Promise<void> {
     this.commonUtils.setTitleAndScroll('', window.screen.width);
+    const params = new URLSearchParams(window.location.search);
+    this.checkBlogId(params);
+  }
+
+  handleEditorChange(body: string): void {
+    const { editBlog } = this.state;
+    const newEditBlog = { ...editBlog, body };
+    // eslint-disable-next-line react/no-unused-state
+    this.setState({ editBlog: newEditBlog });
+  }
+
+  // TODO here is example for building the link for the share buttons
+  // http://localhost:9000/?id=6043ee1df6a24931fd372290
+
+  // eslint-disable-next-line class-methods-use-this
+  checkBlogId(params: URLSearchParams): void {
+    const myId = params.get('id');
+    if (myId) {
+      const blog = document.getElementById(myId);
+      if (blog)blog.scrollIntoView();
+    }
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -79,13 +100,6 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
   }
 
   makeEditBlogSection(blog: IBlog): void { this.setState({ editBlog: blog }); }
-
-  handleEditorChange(body: string): void {
-    const { editBlog } = this.state;
-    const newEditBlog = { ...editBlog, body };
-    // eslint-disable-next-line react/no-unused-state
-    this.setState({ editBlog: newEditBlog });
-  }
 
   editBlogButton(blog: IBlog): JSX.Element {
     return (
@@ -171,6 +185,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
 
   makeBlogArticle(): JSX.Element {
     const { targetRef, blogs } = this.props;
+    console.log(blogs);
     return (
       <>
         <div className="blog-container">
@@ -178,8 +193,8 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
             {blogs && blogs.length > 0 ? blogs.map((blog) => (
               <div key={`blog_entry${blog._id}`} className="blog__entry">
                 <section className="blog__entry--body">
-                  <h2 className="blog__entry--header">
-                    <a key={blog._id} href={blog._id} className="blog__link">{ReactHtmlParser(blog && blog.title ? blog.title : '')}</a>
+                  <h2 className="blog__entry--header" id={blog._id}>
+                    {ReactHtmlParser(blog && blog.title ? blog.title : '')}
                   </h2>
                   <div className="blog__entry--button-container">
                     {this.createBlogButtons(blog)}
