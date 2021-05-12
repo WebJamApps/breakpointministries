@@ -236,7 +236,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
           {this.makeLink(id, 'twitter')}
           {this.makeLink(id, 'linkedin')}
           <li key={`url${id}`}>
-            <a key={`urll${id}`} href={`/${id}`} className="blog__social-media--link copylink" aria-label="Permanent link to blog posting">
+            <a key={`urll${id}`} href={`/?id=${id}`} className="blog__social-media--link copylink" aria-label="Permanent link to blog posting">
               <i key={id} className="fas fa-link" />
             </a>
           </li>
