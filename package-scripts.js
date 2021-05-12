@@ -2,6 +2,8 @@
 const {
   series, crossEnv, concurrent, rimraf,
 } = require('nps-utils');
+
+require('dotenv').config();
 // const { config: { port: E2E_PORT } } = require('./test/protractor.conf');
 
 module.exports = {
@@ -41,7 +43,7 @@ module.exports = {
         development: {
           default: series(
             'nps webpack.build.before',
-            'npx webpack --progress --env development',
+            'npx webpack --progress --node-env=development --env.development',
           ),
           serve: series.nps(
             'webpack.build.development',
@@ -51,11 +53,11 @@ module.exports = {
         production: {
           inlineCss: series(
             'nps webpack.build.before',
-            crossEnv('npx webpack --env NODE_ENV=production --progress --env production'),
+            crossEnv('npx webpack  --node-env=production --progress --env.production'),
           ),
           default: series(
             'nps webpack.build.before',
-            crossEnv('npx webpack --env NODE_ENV=production --progress --env production'),
+            crossEnv('npx webpack --node-env=production --progress --env production'),
           ),
           serve: series.nps(
             'webpack.build.production',
@@ -64,8 +66,8 @@ module.exports = {
         },
       },
       server: {
-        default: 'webpack serve --env development --inline',
-        hmr: 'webpack serve --env development --inline --hot',
+        default: 'webpack serve --node-env=development --env --inline',
+        hmr: 'webpack serve --node-env=development --env --inline --hot',
       },
     },
     serve: 'pushstate-server dist',

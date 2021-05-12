@@ -47,6 +47,13 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     this.checkBlogId(params);
   }
 
+  handleEditorChange(body: string): void {
+    const { editBlog } = this.state;
+    const newEditBlog = { ...editBlog, body };
+    // eslint-disable-next-line react/no-unused-state
+    this.setState({ editBlog: newEditBlog });
+  }
+
   // TODO here is example for building the link for the share buttons
   // http://localhost:9000/?id=6043ee1df6a24931fd372290
 
@@ -93,13 +100,6 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
   }
 
   makeEditBlogSection(blog: IBlog): void { this.setState({ editBlog: blog }); }
-
-  handleEditorChange(body: string): void {
-    const { editBlog } = this.state;
-    const newEditBlog = { ...editBlog, body };
-    // eslint-disable-next-line react/no-unused-state
-    this.setState({ editBlog: newEditBlog });
-  }
 
   editBlogButton(blog: IBlog): JSX.Element {
     return (
