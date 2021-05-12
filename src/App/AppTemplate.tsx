@@ -46,11 +46,19 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
     this.authUtils = authUtils;
   }
 
-  toggleMobileMenu(): void {
-    const { menuOpen, containerOpen } = this.state;
-    const mO = !menuOpen;
-    const cO = !containerOpen;
-    this.setState({ menuOpen: mO, containerOpen: cO });
+  handleKeyMenu(e: { key: string; }): (void | null) {
+    if (e.key === 'Enter') return this.toggleMobileMenu();
+    return null;
+  }
+
+  handleKeyPress(e: { key: string; }): (void | null) {
+    if (e.key === 'Escape') return this.setState({ menuOpen: false, containerOpen: true });
+    return null;
+  }
+
+  close(): boolean {
+    this.setState({ menuOpen: false, containerOpen: true });
+    return true;
   }
 
   responseGoogleLogin(response: GoogleLoginResponseOffline | GoogleLoginResponse): Promise<string> {
@@ -59,19 +67,11 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
 
   responseGoogleLogout(): string { const { dispatch } = this.props; return this.authUtils.responseGoogleLogout(dispatch); }
 
-  close(): boolean {
-    this.setState({ menuOpen: false, containerOpen: true });
-    return true;
-  }
-
-  handleKeyPress(e: { key: string; }): (void | null) {
-    if (e.key === 'Escape') return this.setState({ menuOpen: false, containerOpen: true });
-    return null;
-  }
-
-  handleKeyMenu(e: { key: string; }): (void | null) {
-    if (e.key === 'Enter') return this.toggleMobileMenu();
-    return null;
+  toggleMobileMenu(): void {
+    const { menuOpen, containerOpen } = this.state;
+    const mO = !menuOpen;
+    const cO = !containerOpen;
+    this.setState({ menuOpen: mO, containerOpen: cO });
   }
 
   googleButtons(type: string, index: string | number | undefined): JSX.Element {
