@@ -1,4 +1,5 @@
 import React, { RefObject } from 'react';
+import { FacebookShareButton, FacebookIcon, LinkedinShareButton, LinkedinIcon, TwitterShareButton, TwitterIcon } from 'react-share';
 import Superagent from 'superagent';
 import Moment from 'react-moment';
 import { connect } from 'react-redux';
@@ -220,22 +221,53 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
   makeLink(id: string, type: string): JSX.Element {
     /* eslint-disable jsx-a11y/anchor-is-valid */
     return (
-      <li key={`${type}${id}`}>
-        <a href="#" className={`blog__social-media--link ${type}`} aria-label={`Link to ${type} page`}>
-          <i key={id} className={`fab fa-${type}`} />
-        </a>
-      </li>
+        <li key={`${type}${id}`}>
+          <a href="#" className={`blog__social-media--link ${type}`} aria-label={`Link to ${type} page`}>
+            <i key={id} className={`fab fa-${type}`} />
+          </a>
+        </li>
     );
+  }
+
+  facebookButton(id: string) {
+    return(
+      <FacebookShareButton
+        url={process.env.NODE_ENV !== 'production' ? 'google.com' : `${process.env.BackendUrl}/blog/?id=${id}`}
+      >
+        <FacebookIcon round size={26} />
+      </FacebookShareButton>
+    )
+  }
+
+  twitterButton(id: string) {
+    return (
+      <TwitterShareButton
+        url={process.env.NODE_ENV !== 'production' ? 'google.com' : `${process.env.BackendUrl}/blog/?id=${id}`}
+      >
+        <TwitterIcon round size={26} />
+      </TwitterShareButton>
+    )
+  }
+
+  linkedinButton(id: string) {
+    return(
+      <LinkedinShareButton
+      url={process.env.NODE_ENV !== 'production' ? 'google.com' : `${process.env.BackendUrl}/blog/?id=${id}`}
+      >
+        <LinkedinIcon round size={26} />
+      </LinkedinShareButton>
+    )
   }
 
   socialMedia(id: string): JSX.Element {
     return (
       <div style={{ display: 'grid' }}>
         <ul className="blog__social-media">
-          {this.makeLink(id, 'facebook')}
-          {this.makeLink(id, 'twitter')}
-          {this.makeLink(id, 'linkedin')}
+          {this.facebookButton(id)}
+          {this.twitterButton(id)}
+          {this.linkedinButton(id)}
           <li key={`url${id}`}>
+            {/*TODO: Add onClick function to copy url into clipboard, a link if need be after.*/}
             <a key={`urll${id}`} href={`/?id=${id}`} className="blog__social-media--link copylink" aria-label="Permanent link to blog posting">
               <i key={id} className="fas fa-link" />
             </a>
