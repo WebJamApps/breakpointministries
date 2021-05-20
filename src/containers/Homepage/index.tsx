@@ -223,7 +223,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
   makeSocialMediaButton(TagName: any, TagIcon: any, id: string): JSX.Element {
     return (
       <TagName
-        url={process.env.NODE_ENV !== 'production' ? 'google.com' : `${process.env.BackendUrl}/blog/?id=${id}`}
+        url={process.env.NODE_ENV !== 'production' ? 'https://www.changeinchrist.org/?id=6043ee1df6a24931fd372290' : `${process.env.BackendUrl}/blog/?id=${id}`}
       >
         <TagIcon round size={26} />
       </TagName>
