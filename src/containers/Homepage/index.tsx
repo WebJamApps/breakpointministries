@@ -224,7 +224,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     return (
       <TagName
         url={process.env.NODE_ENV !== 'production'
-          ? 'https://www.changeinchrist.org/?id=6043ee1df6a24931fd372290' : `${process.env.BackendUrl}/blog/?id=${id}`}
+          ? `https://www.changeinchrist.org/blog/?id=${id}` : `${process.env.BackendUrl}/blog/?id=${id}`}
       >
         <TagIcon round size={26} />
       </TagName>
