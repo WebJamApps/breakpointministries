@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import ReactHtmlParser from 'react-html-parser';
 import { withResizeDetector } from 'react-resize-detector';
+import { Props } from 'react-share/lib/ShareButton';
 import CommonUtils from '../../lib/commonUtils';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import BlogEditor from '../../components/BlogEditor';
@@ -57,7 +58,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     this.setState({ editBlog: newEditBlog });
   }
 
-  // TODO here is example for building the link for the share buttons
+  // here is example for building the link for the share buttons
   // http://localhost:9000/?id=6043ee1df6a24931fd372290
 
   // eslint-disable-next-line class-methods-use-this
@@ -188,7 +189,6 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
 
   makeBlogArticle(): JSX.Element {
     const { targetRef, blogs } = this.props;
-    console.log(blogs);
     return (
       <>
         <div className="blog-container">
@@ -220,11 +220,13 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  makeSocialMediaButton(TagName: any, TagIcon: any, id: string): JSX.Element {
+  makeSocialMediaButton(TagName: typeof FacebookShareButton | typeof TwitterShareButton | typeof LinkedinShareButton,
+    TagIcon: typeof FacebookIcon | typeof TwitterIcon | typeof LinkedinIcon, id:string):JSX.Element {
+    const URL = `${window.location.href.split('?')[0]}?${id}`;
+    console.log(URL);
     return (
       <TagName
-        url={process.env.NODE_ENV !== 'production'
-          ? 'https://www.changeinchrist.org/?id=6043ee1df6a24931fd372290' : `${process.env.BackendUrl}/blog/?id=${id}`}
+        url="https://test.com"
       >
         <TagIcon round size={26} />
       </TagName>
@@ -238,12 +240,11 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
           {this.makeSocialMediaButton(FacebookShareButton, FacebookIcon, id)}
           {this.makeSocialMediaButton(TwitterShareButton, TwitterIcon, id)}
           {this.makeSocialMediaButton(LinkedinShareButton, LinkedinIcon, id)}
-          <li key={`url${id}`}>
-            {/* TODO: Add onClick function to copy url into clipboard, a link if need be after. */}
+          {/* <li key={`url${id}`}>
             <a key={`urll${id}`} href={`/?id=${id}`} className="blog__social-media--link copylink" aria-label="Permanent link to blog posting">
               <i key={id} className="fas fa-link" />
             </a>
-          </li>
+          </li> */}
         </ul>
       </div>
     );
