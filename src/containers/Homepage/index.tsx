@@ -8,7 +8,6 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import ReactHtmlParser from 'react-html-parser';
 import { withResizeDetector } from 'react-resize-detector';
-import { Props } from 'react-share/lib/ShareButton';
 import CommonUtils from '../../lib/commonUtils';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import BlogEditor from '../../components/BlogEditor';
@@ -62,9 +61,6 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     // eslint-disable-next-line react/no-unused-state
     this.setState({ editBlog: newEditBlog });
   }
-
-  // here is example for building the link for the share buttons
-  // http://localhost:9000/?id=6043ee1df6a24931fd372290
 
   // eslint-disable-next-line class-methods-use-this
   checkBlogId(params: URLSearchParams): void {
@@ -144,29 +140,6 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     );
   }
 
-  blogEnder(blog: IBlog): JSX.Element {
-    let newTime;
-    // eslint-disable-next-line prefer-destructuring
-    if (blog.created_at !== undefined && blog.created_at !== null) {
-      newTime = <Moment format="MM/DD/YYYY hh:mm">{blog.created_at}</Moment>;
-    }
-    return (
-      <div className="blog__ender">
-        <div style={{ display: 'inline-block' }}>
-          <div className="blog__time-stamp">
-            <span>
-              Posted: &nbsp;
-              {newTime}
-            </span>
-          </div>
-          {// TODO remove process.env check when feature is working
-      /* istanbul ignore next */process.env.NODE_ENV !== 'production' ? this.socialMedia(blog._id) : null
-          }
-        </div>
-      </div>
-    );
-  }
-
   // eslint-disable-next-line class-methods-use-this
   blogNotFound(): JSX.Element {
     return (
@@ -189,6 +162,58 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
         </span>
         <span className="blog__entry--button-container__edit-blog">{valid ? this.editBlogButton(blog) : null}</span>
       </>
+    );
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  makeSocialMediaButton(TagName: typeof FacebookShareButton | typeof TwitterShareButton | typeof LinkedinShareButton,
+    TagIcon: typeof FacebookIcon | typeof TwitterIcon | typeof LinkedinIcon, id:string):JSX.Element {
+    const URL = `https://www.changeinchrist.org/?id=${id}`;
+    console.log(URL);
+    return (
+      <TagName
+        url={URL}
+      >
+        <TagIcon round size={26} />
+      </TagName>
+    );
+  }
+
+  socialMedia(id: string): JSX.Element {
+    return (
+      <div style={{ display: 'grid' }}>
+        <ul className="blog__social-media">
+          {this.makeSocialMediaButton(FacebookShareButton, FacebookIcon, id)}
+          {this.makeSocialMediaButton(TwitterShareButton, TwitterIcon, id)}
+          {this.makeSocialMediaButton(LinkedinShareButton, LinkedinIcon, id)}
+          {/* <li key={`url${id}`}>
+            <a key={`urll${id}`} href={`/?id=${id}`} className="blog__social-media--link copylink" aria-label="Permanent link to blog posting">
+              <i key={id} className="fas fa-link" />
+            </a>
+          </li> */}
+        </ul>
+      </div>
+    );
+  }
+
+  blogEnder(blog: IBlog): JSX.Element {
+    let newTime;
+    // eslint-disable-next-line prefer-destructuring
+    if (blog.created_at !== undefined && blog.created_at !== null) {
+      newTime = <Moment format="MM/DD/YYYY hh:mm">{blog.created_at}</Moment>;
+    }
+    return (
+      <div className="blog__ender">
+        <div style={{ display: 'inline-block' }}>
+          <div className="blog__time-stamp">
+            <span>
+              Posted: &nbsp;
+              {newTime}
+            </span>
+          </div>
+          {this.socialMedia(blog._id)}
+        </div>
+      </div>
     );
   }
 
@@ -221,37 +246,6 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
         </div>
         <DefaultFooter />
       </>
-    );
-  }
-
-  // eslint-disable-next-line class-methods-use-this
-  makeSocialMediaButton(TagName: typeof FacebookShareButton | typeof TwitterShareButton | typeof LinkedinShareButton,
-    TagIcon: typeof FacebookIcon | typeof TwitterIcon | typeof LinkedinIcon, id:string):JSX.Element {
-    const URL = `${window.location.href.split('?')[0]}?${id}`;
-    console.log(URL);
-    return (
-      <TagName
-        url="https://test.com"
-      >
-        <TagIcon round size={26} />
-      </TagName>
-    );
-  }
-
-  socialMedia(id: string): JSX.Element {
-    return (
-      <div style={{ display: 'grid' }}>
-        <ul className="blog__social-media">
-          {this.makeSocialMediaButton(FacebookShareButton, FacebookIcon, id)}
-          {this.makeSocialMediaButton(TwitterShareButton, TwitterIcon, id)}
-          {this.makeSocialMediaButton(LinkedinShareButton, LinkedinIcon, id)}
-          {/* <li key={`url${id}`}>
-            <a key={`urll${id}`} href={`/?id=${id}`} className="blog__social-media--link copylink" aria-label="Permanent link to blog posting">
-              <i key={id} className="fas fa-link" />
-            </a>
-          </li> */}
-        </ul>
-      </div>
     );
   }
 
