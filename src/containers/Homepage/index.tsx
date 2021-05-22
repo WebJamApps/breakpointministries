@@ -51,6 +51,11 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     this.checkBlogId(params);
   }
 
+  async componentDidUpdate(): Promise<void> {
+    const params = new URLSearchParams(window.location.search);
+    this.checkBlogId(params);
+  }
+
   handleEditorChange(body: string): void {
     const { editBlog } = this.state;
     const newEditBlog = { ...editBlog, body };
