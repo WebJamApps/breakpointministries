@@ -47,7 +47,8 @@ class AdminController {
 
   handleEditorChange(blogContent: string): boolean { this.view.setState({ blogContent }); return true; }
 
-  editor(blogContent: string | undefined): JSX.Element {
+  editor(blogContent: string): JSX.Element {
+    // const blogC = blogContent || '';
     return (
       <Editor
         apiKey={process.env.TINY_KEY}
