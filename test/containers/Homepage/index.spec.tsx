@@ -119,4 +119,18 @@ describe('Home', () => {
       referrer: '/admin#admin-top',
     });
   });
+  it('blog id defined for and scroll to blog', () => {
+    const scrollIntoViewMock = jest.fn();
+    window.HTMLElement.prototype.scrollIntoView = scrollIntoViewMock;
+    document.body.innerHTML = '<div id="production"></div>';
+    const params = new URLSearchParams('?id=production');
+    expect(params.get('id')).toBeDefined();
+    wrapper.instance().checkBlogId(params);
+  });
+  it('blog id not defined for blog', () => {
+    document.body.innerHTML = '<div></div>';
+    const params = new URLSearchParams();
+    expect(params.get('id')).toBe(null);
+    wrapper.instance().checkBlogId(params);
+  });
 });
