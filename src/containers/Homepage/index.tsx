@@ -169,7 +169,6 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
   makeSocialMediaButton(TagName: typeof FacebookShareButton | typeof TwitterShareButton | typeof LinkedinShareButton,
     TagIcon: typeof FacebookIcon | typeof TwitterIcon | typeof LinkedinIcon, id:string):JSX.Element {
     const URL = `https://www.changeinchrist.org/?id=${id}`;
-    console.log(URL);
     return (
       <TagName
         url={URL}
