@@ -38,7 +38,7 @@ export class AdminDashboard extends Component<DashboardProps, DashboardState> {
 
   componentDidMount(): void { this.commonUtils.setTitleAndScroll('Admin Dashboard', window.screen.width); }
 
-  onChange(evt: React.ChangeEvent<HTMLInputElement>): string {
+  onChange(evt: React.ChangeEvent<HTMLInputElement>): string { // This is the blog title change event
     evt.persist();
     this.setState((prevState) => ({ ...prevState, [evt.target.id]: evt.target.value }));
     return evt.target.id;
@@ -62,6 +62,7 @@ export class AdminDashboard extends Component<DashboardProps, DashboardState> {
 
   changeHomepage(): JSX.Element {
     const { title, blogContent } = this.state;
+    console.log(blogContent);
     const inputParams = {
       type: 'text', label: 'Title', isRequired: false, onChange: this.onChange, value: title, width: '280px',
     };
