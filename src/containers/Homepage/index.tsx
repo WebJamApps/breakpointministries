@@ -195,6 +195,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     );
   }
 
+  // eslint-disable-next-line class-methods-use-this
   blogEnder(blog: IBlog): JSX.Element {
     let newTime;
     // eslint-disable-next-line prefer-destructuring
@@ -229,7 +230,6 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
                     {ReactHtmlParser(blog && blog.title ? blog.title : '')}
                     {this.socialMedia(blog._id)}
                   </h2>
-                  
                   <div className="blog__entry--button-container">
                     {this.createBlogButtons(blog)}
                   </div>
