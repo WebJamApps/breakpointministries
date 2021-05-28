@@ -180,7 +180,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
 
   socialMedia(id: string): JSX.Element {
     return (
-      <div style={{ display: 'grid' }}>
+      <div style={{ display: 'inline-flex', float: 'right' }}>
         <ul className="blog__social-media">
           {this.makeSocialMediaButton(FacebookShareButton, FacebookIcon, id)}
           {this.makeSocialMediaButton(TwitterShareButton, TwitterIcon, id)}
@@ -210,7 +210,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
               {newTime}
             </span>
           </div>
-          {this.socialMedia(blog._id)}
+          {/* this.socialMedia(blog._id) */}
         </div>
       </div>
     );
@@ -227,7 +227,9 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
                 <section className="blog__entry--body">
                   <h2 className="blog__entry--header" id={blog._id}>
                     {ReactHtmlParser(blog && blog.title ? blog.title : '')}
+                    {this.socialMedia(blog._id)}
                   </h2>
+                  
                   <div className="blog__entry--button-container">
                     {this.createBlogButtons(blog)}
                   </div>

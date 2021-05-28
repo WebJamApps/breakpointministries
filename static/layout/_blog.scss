@@ -195,11 +195,9 @@
   &__social-media {
     height: min-content;
     list-style: none;
-    width: 95%;
     margin: 0 auto;
     display: inline-flex;
     justify-content: flex-end;
-    transform: translateY(-.5rem);
     @include socialMedia;
 
     @media only screen and (min-width: $bp-galaxy-fold) {
