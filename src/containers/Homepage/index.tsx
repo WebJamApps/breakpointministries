@@ -211,7 +211,6 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
               {newTime}
             </span>
           </div>
-          {/* this.socialMedia(blog._id) */}
         </div>
       </div>
     );
