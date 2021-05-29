@@ -157,6 +157,7 @@
     "identity-obj-proxy": "latest",
     "jest": "latest",
     "jest-puppeteer": "latest",
+    "node-notifier": "latest",
     "puppeteer": "latest",
     "react-hot-loader": "latest",
     "react-test-renderer": "^16.14.0",
