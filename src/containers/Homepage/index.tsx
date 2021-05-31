@@ -171,7 +171,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     const URL = `https://www.changeinchrist.org/?id=${id}`;
     return (
       <TagName
-        url={URL} 
+        url={URL}
         style={{ paddingLeft: '.2rem' }}
       >
         <TagIcon round size={26} />
