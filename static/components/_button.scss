@@ -22,7 +22,7 @@ button[id*="addBlogButton"] {
   }
 }
 
-#c-h {
+#c-h, #update-blog-button, #cancel-blog-update-button {
   width: 10%;
   
   @media only screen and (max-width: $bp-med) {
