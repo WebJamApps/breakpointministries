@@ -12,7 +12,7 @@ function Footer(): JSX.Element {
           </a>
         </p>
       </div>
-      <ul className="footer__social-media">
+      {/* <ul className="footer__social-media">
         <li>
           <a href="https://facebook.com/#" target="_blank" rel="noopener noreferrer">
             <i className="fab fa-facebook" />
@@ -28,7 +28,7 @@ function Footer(): JSX.Element {
             <i className="fab fa-linkedin" />
           </a>
         </li>
-      </ul>
+    </ul> */}
     </div>
   );
 }

@@ -172,6 +172,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     return (
       <TagName
         url={URL}
+        style={{ paddingLeft: '.2rem' }}
       >
         <TagIcon round size={26} />
       </TagName>
@@ -180,7 +181,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
 
   socialMedia(id: string): JSX.Element {
     return (
-      <div style={{ display: 'grid' }}>
+      <div className="blog__social-media_upper">
         <ul className="blog__social-media">
           {this.makeSocialMediaButton(FacebookShareButton, FacebookIcon, id)}
           {this.makeSocialMediaButton(TwitterShareButton, TwitterIcon, id)}
@@ -195,6 +196,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     );
   }
 
+  // eslint-disable-next-line class-methods-use-this
   blogEnder(blog: IBlog): JSX.Element {
     let newTime;
     // eslint-disable-next-line prefer-destructuring
@@ -210,7 +212,6 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
               {newTime}
             </span>
           </div>
-          {this.socialMedia(blog._id)}
         </div>
       </div>
     );
@@ -227,7 +228,9 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
                 <section className="blog__entry--body">
                   <h2 className="blog__entry--header" id={blog._id}>
                     {ReactHtmlParser(blog && blog.title ? blog.title : '')}
+                    {/* this.socialMedia(blog._id) */}
                   </h2>
+                  {this.socialMedia(blog._id)}
                   <div className="blog__entry--button-container">
                     {this.createBlogButtons(blog)}
                   </div>
