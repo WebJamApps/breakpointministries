@@ -2,7 +2,7 @@
   width: 95%;
   margin: 3rem auto;
 
-  #post-blog > label.contentLabel > div {
+  #post-blog, .update-blog > label.contentLabel > div {
     height: 51rem !important;
   }
 
@@ -27,7 +27,7 @@
       margin-bottom: 1rem;
     }
 
-    #title {
+    #title, #blogtitle {
       width: 50rem !important;
       height: 4rem;
       font-size: 3.5rem;

@@ -22,7 +22,7 @@ button[id*="addBlogButton"] {
   }
 }
 
-#c-h, #update-blog-button, #cancel-blog-update-button {
+#c-h {
   width: 10%;
   
   @media only screen and (max-width: $bp-med) {
@@ -36,5 +36,19 @@ button[id*="addBlogButton"] {
   @media only screen and (max-width: $bp-mobile-s) {
     height: auto;
     width: 15%;
+  }
+
+}
+
+#update-blog-button, #cancel-blog-update-button {
+  width: 15%;
+
+  @media only screen and (max-width: $bp-med) {
+    width: 20%;
+  }
+
+  @media only screen and (max-width: $bp-mobile-m) {
+    width: 30%;
+    height: 3rem;
   }
 }
