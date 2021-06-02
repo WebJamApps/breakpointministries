@@ -9,18 +9,16 @@ const BlogEditor = ({
 }:PageProps): JSX.Element => {
   const { title, body } = editBlog;
   return (
-    <div className="horiz-scroll blogEditor">
-      <div
-        className="material-content elevation3"
-        style={{
-          width: '78vw', margin: 'auto', padding: '10px', paddingTop: '20px',
-        }}
-      >
-        <h1 style={{ textAlign: 'center', fontSize: '16pt' }}>Edit Blog</h1>
+    <div className="page-content">
+      <h1 className="admin--header">
+        Post A New Blog
+      </h1>
+      <div className="changeHomepage">
         <form
           id={`update-blog${editBlog._id}`}
+          className="update-blog"
           style={{
-            textAlign: 'left', marginLeft: '4px', width: '100%', maxWidth: '100%',
+            textAlign: 'left', marginLeft: '4px', maxWidth: '100%',
           }}
         >
           {Forms.makeInput({
@@ -32,7 +30,7 @@ const BlogEditor = ({
               comp.setState({ editBlog: newEditBlog });
             },
             value: title,
-            width: '90%',
+            width: '280px',
           })}
           <p>&nbsp;</p>
           <label className="contentLabel" htmlFor="content">
@@ -45,6 +43,7 @@ const BlogEditor = ({
               style={{ marginRight: '10px' }}
               type="button"
               id="update-blog-button"
+              className="btn"
               disabled={false}
               onClick={() => comp.putAPI()}
             >
@@ -54,6 +53,7 @@ const BlogEditor = ({
               style={{ marginRight: '10px' }}
               type="button"
               id="cancel-blog-update-button"
+              className="btn"
               disabled={false}
               onClick={() => comp.setState({ editBlog: { _id: '', title: '', body: '' } })}
             >
