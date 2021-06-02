@@ -63,10 +63,6 @@
         grid-row: 3 / 4;
       }
 
-      @media only screen and (max-width: $bp-extra-sm) {
-        padding-left: 1rem;
-      }
-
       & > p:nth-child(1) > iframe {
 
         @media only screen and (max-width: $bp-sm) {
@@ -156,10 +152,6 @@
         grid-row: 1 / 2;
       }
 
-      @media only screen and (max-width: $bp-extra-sm) {
-        padding-left: 1rem;
-      }
-
       @media only screen and (max-width: $bp-mobile-s) {
         font-size: 2.5rem;
       }
@@ -203,7 +195,6 @@
 
   &__social-media_upper {
     display: inline;
-    padding-left: 10px;
     top: 10%;
     position: relative;
   }
