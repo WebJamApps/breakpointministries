@@ -143,6 +143,7 @@
       font-weight: $font-weight-heavy;
       font-size: 2rem;
       color: rgba($color-black, .9);
+      align-content: center;
 
       @media only screen and (min-width: $bp-4k) {
         font-size: 8rem;
@@ -201,12 +202,10 @@
   }
 
   &__social-media_upper {
-    display: grid;
-    justify-content: left;
-
-    @media only screen and (max-width: $bp-extra-sm) {
-      grid-row: 2;
-    }
+    display: inline;
+    padding-left: 10px;
+    top: 10%;
+    position: relative;
   }
 
   &__social-media {
