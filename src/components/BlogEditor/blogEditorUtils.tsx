@@ -4,7 +4,7 @@ import React from 'react';
 const editor = (blogContent: string | undefined, handleEditorChange: (...args:any)=>any): JSX.Element => (
   <Editor
     apiKey={process.env.TINY_KEY}
-    initialValue={blogContent}
+    value={blogContent}
     init={{
       height: 600,
       menubar: 'insert tools',

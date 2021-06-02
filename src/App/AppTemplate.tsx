@@ -158,19 +158,6 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
     );
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  headerLogo2(): JSX.Element {
-    return (
-      <div className="header__logo--logo-2">
-        <img
-          className="header__logo--picture-2"
-          src="https://dl.dropboxusercontent.com/s/0o9m9sggpgiooft/ChristTheRedeemerResized.png?dl=0"
-          alt="A statue of jesus"
-        />
-      </div>
-    );
-  }
-
   drawerHeader(className: string): JSX.Element {
     return (
       <header className="header">
@@ -205,7 +192,6 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
           {this.drawerHeader(style)}
           {this.sidebar(style)}
           {this.navLinks(style)}
-          {this.headerLogo2()}
         </div>
       </div>
     );
