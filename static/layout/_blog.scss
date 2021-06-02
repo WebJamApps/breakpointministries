@@ -63,10 +63,6 @@
         grid-row: 3 / 4;
       }
 
-      @media only screen and (max-width: $bp-extra-sm) {
-        padding-left: 1rem;
-      }
-
       & > p:nth-child(1) > iframe {
 
         @media only screen and (max-width: $bp-sm) {
@@ -143,6 +139,7 @@
       font-weight: $font-weight-heavy;
       font-size: 2rem;
       color: rgba($color-black, .9);
+      align-content: center;
 
       @media only screen and (min-width: $bp-4k) {
         font-size: 8rem;
@@ -153,10 +150,6 @@
 
       @media only screen and (max-width: $bp-header-fix) {
         grid-row: 1 / 2;
-      }
-
-      @media only screen and (max-width: $bp-extra-sm) {
-        padding-left: 1rem;
       }
 
       @media only screen and (max-width: $bp-mobile-s) {
@@ -201,12 +194,10 @@
   }
 
   &__social-media_upper {
-    display: grid;
-    justify-content: left;
-
-    @media only screen and (max-width: $bp-extra-sm) {
-      grid-row: 2;
-    }
+    display: inline;
+    padding-left: 10px;
+    top: 10%;
+    position: relative;
   }
 
   &__social-media {
