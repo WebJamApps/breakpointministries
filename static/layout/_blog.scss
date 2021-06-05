@@ -201,7 +201,11 @@
     position: relative;
     @include socialMedia;
 
+    @media only screen and (max-width: $bp-med) {
+      top: 16%
+    }
     @media only screen and (max-width: $bp-header-fix) {
+      top: 0%;
       grid-row: 2;
     }
   }
