@@ -89,10 +89,10 @@
 
     &--body {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: auto 1fr 1fr;
 
       @media only screen and (max-width: $bp-header-fix) {
-        grid-template-columns: 1fr;
+        grid-template-columns: auto 1fr;
       }
 
       p {
@@ -140,6 +140,7 @@
       font-size: 2rem;
       color: rgba($color-black, .9);
       align-content: center;
+      padding-right: 10px;
 
       @media only screen and (min-width: $bp-4k) {
         font-size: 8rem;
@@ -193,20 +194,16 @@
     }
   }
 
-  &__social-media_upper {
-    display: inline;
-    padding-left: 10px;
-    top: 10%;
-    position: relative;
-  }
-
   &__social-media {
     height: min-content;
     list-style: none;
-    margin: 0 auto;
     display: inline-flex;
-    justify-content: flex-end;
+    position: relative;
     @include socialMedia;
+
+    @media only screen and (max-width: $bp-header-fix) {
+      grid-row: 2;
+    }
   }
 }
 
