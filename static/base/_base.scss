@@ -54,7 +54,7 @@ body {
     }
 
     @media only screen and (max-width: $bp-galaxy-fold) {
-      input#title {
+      input#title, input#blogtitle {
         width: 30.5rem !important;
       }
     }

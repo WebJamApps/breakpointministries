@@ -2,12 +2,18 @@
   width: 95%;
   margin: 3rem auto;
 
-  #post-blog > label.contentLabel > div {
+  #post-blog, .update-blog > label.contentLabel > div {
     height: 51rem !important;
   }
 
+  .update-blog > label.contentLabel > div {
+    height: 51rem !important;
+  }
   @media only screen and (max-width: $bp-med) {
     width: inherit;
+    .tox .tox-tbtn {
+      width: 20vw;
+    }
   }
 
   @media only screen and (min-width: $bp-4k) {
@@ -21,7 +27,7 @@
       margin-bottom: 1rem;
     }
 
-    #title {
+    #title, #blogtitle {
       width: 50rem !important;
       height: 4rem;
       font-size: 3.5rem;
