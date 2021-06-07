@@ -181,18 +181,16 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
 
   socialMedia(id: string): JSX.Element {
     return (
-      <div className="blog__social-media_upper">
-        <ul className="blog__social-media">
-          {this.makeSocialMediaButton(FacebookShareButton, FacebookIcon, id)}
-          {this.makeSocialMediaButton(TwitterShareButton, TwitterIcon, id)}
-          {this.makeSocialMediaButton(LinkedinShareButton, LinkedinIcon, id)}
-          {/* <li key={`url${id}`}>
+      <ul className="blog__social-media">
+        {this.makeSocialMediaButton(FacebookShareButton, FacebookIcon, id)}
+        {this.makeSocialMediaButton(TwitterShareButton, TwitterIcon, id)}
+        {this.makeSocialMediaButton(LinkedinShareButton, LinkedinIcon, id)}
+        {/* <li key={`url${id}`}>
             <a key={`urll${id}`} href={`/?id=${id}`} className="blog__social-media--link copylink" aria-label="Permanent link to blog posting">
               <i key={id} className="fas fa-link" />
             </a>
-          </li> */}
-        </ul>
-      </div>
+        </li> */}
+      </ul>
     );
   }
 
@@ -228,8 +226,8 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
                 <section className="blog__entry--body">
                   <h2 className="blog__entry--header" id={blog._id}>
                     {ReactHtmlParser(blog && blog.title ? blog.title : '')}
-                    {this.socialMedia(blog._id)}
                   </h2>
+                  {this.socialMedia(blog._id)}
                   <div className="blog__entry--button-container">
                     {this.createBlogButtons(blog)}
                   </div>
