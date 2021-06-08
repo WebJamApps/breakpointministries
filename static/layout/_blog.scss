@@ -199,6 +199,8 @@
     list-style: none;
     display: inline-flex;
     position: relative;
+    padding-left: 10px;
+	  grid-template-columns: repeat(auto-fill, 28px);
     @include socialMedia;
 
     @media only screen and (max-width: $bp-med) {
@@ -206,10 +208,12 @@
     }
     @media only screen and (max-width: $bp-header-fix) {
       top: 0%;
-      grid-row: 2;
     }
     @media only screen and (min-width: $bp-largest) {
       top: 5%;
+    }
+    @media only screen and (max-width: $bp-extra-some) {
+      padding-left: 0;
     }
   }
 }
