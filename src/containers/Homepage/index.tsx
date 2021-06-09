@@ -225,7 +225,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
               <div key={`blog_entry${blog._id}`} className="blog__entry">
                 <section className="blog__entry--body">
                   <h2 className="blog__entry--header" id={blog._id}>
-                    {ReactHtmlParser(blog && blog.title ? blog.title : '')}
+                    <span style={{ paddingRight: '10px' }}>{ReactHtmlParser(blog && blog.title ? blog.title : '')}</span>
                     {this.socialMedia(blog._id)}
                   </h2>
                   <div className="blog__entry--button-container">
