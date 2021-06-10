@@ -62,7 +62,6 @@ export class AdminDashboard extends Component<DashboardProps, DashboardState> {
 
   changeHomepage(): JSX.Element {
     const { title, blogContent } = this.state;
-    console.log(blogContent);
     const inputParams = {
       type: 'text', label: 'Title', isRequired: false, onChange: this.onChange, value: title, width: '280px',
     };
