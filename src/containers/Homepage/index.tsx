@@ -6,7 +6,7 @@ import Superagent from 'superagent';
 import Moment from 'react-moment';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import ReactHtmlParser from 'react-html-parser';
+import HtmlReactParser from 'html-react-parser';
 import { withResizeDetector } from 'react-resize-detector';
 import CommonUtils from '../../lib/commonUtils';
 import mapStoreToProps from '../../redux/mapStoreToProps';
@@ -87,7 +87,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
       r = await this.superagent.delete(`${process.env.BackendUrl}/blog/${id}`)
         .set('Authorization', `Bearer ${auth.token}`)
         .set('Accept', 'application/json');
-    } catch (e) { return `${e.message}`; }
+    } catch (e: any) { return `${e.message}`; }
     return this.finishAPI('delete', r);
   }
 
@@ -100,7 +100,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
         .set('Authorization', `Bearer ${auth.token}`)
         .set('Accept', 'application/json')
         .send({ body: editBlog.body, title: editBlog.title });
-    } catch (e) { return `${e.message}`; }
+    } catch (e: any) { return `${e.message}`; }
     return this.finishAPI('update', r);
   }
 
@@ -225,14 +225,14 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
               <div key={`blog_entry${blog._id}`} className="blog__entry">
                 <section className="blog__entry--body">
                   <h2 className="blog__entry--header" id={blog._id}>
-                    <span style={{ paddingRight: '10px' }}>{ReactHtmlParser(blog && blog.title ? blog.title : '')}</span>
+                    <span style={{ paddingRight: '10px' }}>{HtmlReactParser(blog && blog.title ? blog.title : '')}</span>
                     {this.socialMedia(blog._id)}
                   </h2>
                   <div className="blog__entry--button-container">
                     {this.createBlogButtons(blog)}
                   </div>
                   <div className="blog__entry--paragraph">
-                    {ReactHtmlParser(blog && blog.body ? blog.body : '')}
+                    {HtmlReactParser(blog && blog.body ? blog.body : '')}
                   </div>
                   {this.blogEnder(blog)}
                 </section>

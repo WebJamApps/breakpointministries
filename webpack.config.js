@@ -13,11 +13,15 @@ const ensureArray = (config) => config && (Array.isArray(config) ? config : [con
 const when = (condition, config, negativeConfig) => (condition ? ensureArray(config) : ensureArray(negativeConfig));
 
 // primary config:
+const nodeEnv = process.env.NODE_ENV || 'development';
 const title = 'Change In Christ';
 const outDir = path.resolve(__dirname, 'dist');
 const srcDir = path.resolve(__dirname, 'src');
 const baseUrl = '/';
-
+const envVars = ['NODE_ENV', 'BackendUrl', 'GoogleClientId', 'userRoles', 'HashString', 'TINY_KEY'];
+if (nodeEnv === 'development')envVars.push('PORT');
+if (process.env.BackendUrl === 'http://localhost:7000') {
+}
 module.exports = (env) => ({
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
@@ -33,11 +37,6 @@ module.exports = (env) => ({
     vendor: ['jquery', 'bootstrap'],
   },
 
-  stats: {
-    children: true,
-    errorDetails: true,
-  },
-
   mode: env.production ? 'production' : 'development',
 
   output: {
@@ -50,7 +49,7 @@ module.exports = (env) => ({
   performance: { hints: false },
 
   devServer: {
-    contentBase: outDir,
+    static: outDir,
     hot: true,
     historyApiFallback: { // serve index.html for all 404 (required for push-state)
       rewrites: [
@@ -93,7 +92,7 @@ module.exports = (env) => ({
         use: [
           process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
           'css-loader', // translates CSS into CommonJS
-          'sass-loader', // compiles Sass to CSS, using Node Sass by default
+          'sass-loader', // compiles Sass to CSS, using dart sass
         ],
       },
       // Still needed for some node modules that use CSS
@@ -101,7 +100,8 @@ module.exports = (env) => ({
         test: /\.css$/i,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
-      { test: /\.html$/i, loader: 'html-loader' },
+      { test: /\.html$/i, loader: 'html-loader' }, // eslint-disable-next-line no-useless-escape
+      // embed small images and fonts as Data Urls and larger ones as files:
       { test: /\.(png|gif|jpg|cur)$/i, loader: 'url-loader', options: { limit: 8192 } },
       { test: /\.woff2(\?v=[0-9]\.[0-9]\.[0-9])?$/i, loader: 'url-loader', options: { limit: 10000, mimetype: 'application/font-woff2' } },
       { test: /\.woff(\?v=[0-9]\.[0-9]\.[0-9])?$/i, loader: 'url-loader', options: { limit: 10000, mimetype: 'application/font-woff' } },
@@ -131,7 +131,7 @@ module.exports = (env) => ({
         { from: 'static/favicon.ico', to: 'favicon.ico' },
       ],
     }),
-    new webpack.EnvironmentPlugin(['NODE_ENV', 'BackendUrl', 'GoogleClientId', 'userRoles', 'HashString', 'TINY_KEY']),
+    new webpack.EnvironmentPlugin(envVars),
     ...when(env.analyze, new BundleAnalyzerPlugin()),
   ],
 });
