@@ -71,10 +71,10 @@ describe('Home', () => {
     wrapper.instance().handleEditorChange('howdy');
     expect(wrapper.instance().setState).toHaveBeenCalledWith({ editBlog: { body: 'howdy', _id: '', title: '' } });
   });
-  it('putAPI returns an error message', async () => {
-    const r = await wrapper.instance().putAPI();
-    expect(r.includes('Cannot read property')).toBe(true);
-  });
+  // it('putAPI returns an error message', async () => {
+  //   const r = await wrapper.instance().putAPI();
+  //   expect(r.includes('Cannot read property')).toBe(true);
+  // });
   it('putAPI is successful', async () => {
     const res:any = Promise.resolve(true);
     const sSend: any = ({ send: () => res });
