@@ -1,5 +1,5 @@
 import { configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import { config } from 'dotenv';
 
 global.ResizeObserver = require('resize-observer-polyfill');
@@ -20,9 +20,3 @@ window.HTMLMediaElement.prototype.load = () => { /* do nothing */ };
 window.HTMLMediaElement.prototype.play = () => Promise.resolve();
 window.HTMLMediaElement.prototype.pause = () => { /* do nothing */ };
 Object.defineProperty(window, 'location', { value: { reload: jest.fn(), assign: jest.fn(), href: '/' }, writable: true });
-// window.location = {
-//   ...window.location,
-//   href: 'https://web-jam.com',
-//   reload: () => {},
-//   assign: () => {},
-// };

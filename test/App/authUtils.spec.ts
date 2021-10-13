@@ -33,7 +33,7 @@ describe('authUtils', () => {
     expect(res).toBe('bad');
   });
   it('sets the user', async () => {
-    jwt.verify = jest.fn(() => ({ sub: '123' }));
+    jwt.verify = jest.fn(() => ('123'));
     const returnBody: Record<string, unknown> = { body: { userType: commonUtils.getUserRoles()[0] } };
     const sa: any = superagent;
     sa.get = () => ({ set: () => ({ set: () => Promise.resolve(returnBody) }) });
@@ -41,7 +41,7 @@ describe('authUtils', () => {
     expect(result).toBe('user set');
   });
   it('does not set the user when userType is not correct', async () => {
-    jwt.verify = jest.fn(() => ({ sub: '123' }));
+    jwt.verify = jest.fn(() => ('123'));
     const returnBody: Record<string, unknown> = { body: { userType: 'bogus' } };
     const sa: any = superagent;
     sa.get = () => ({ set: () => ({ set: () => Promise.resolve(returnBody) }) });
@@ -55,13 +55,24 @@ describe('authUtils', () => {
     expect(result).toBe('bad');
     vStub.props.auth = { token: 'token' };
   });
-  it('sets the user to the already decoded user', async () => {
-    jwt.verify = jest.fn(() => ({ sub: '123', user: { userType: commonUtils.getUserRoles()[0] } }));
-    const result = await authUtils.setUser(vStub);
-    expect(result).toBe('user set');
-  });
+  // it('sets the user to the already decoded user', async () => {
+  //   const verify = jwt.verify as jest.MockedFunction<
+  //   (
+  //     token: string,
+  //     secretOrPublicKey: jwt.Secret,
+  //     options?: jwt.VerifyOptions,
+  //   ) => Record<string, unknown> | string>;
+  //   verify.mockReturnValue({ sub: '123', user: {} });
+  //   Object.defineProperty(window, 'location', { value: { assign: () => { }, reload: () => { } }, writable: true });
+  //   window.location.reload = jest.fn();
+  //   const cStub3: any = {
+  //     props: { auth: { token: 'token' }, dispatch: (obj: any) => { expect(obj.type).toBe('SET_USER'); } },
+  //   };
+  //   const result = await authUtils.setUser(cStub3);
+  //   expect(result).toBe('set user');
+  // });
   it('catches fetch user error when sets the user', async () => {
-    jwt.verify = jest.fn(() => ({ sub: '123' }));
+    jwt.verify = jest.fn(() => ('123'));
     const sa: any = superagent;
     sa.get = jest.fn(() => ({ set: () => ({ set: () => Promise.reject(new Error('bad')) }) }));
     const res = await authUtils.setUser(vStub);
