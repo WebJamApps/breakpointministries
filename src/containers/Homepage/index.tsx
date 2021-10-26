@@ -12,6 +12,7 @@ import CommonUtils from '../../lib/commonUtils';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import BlogEditor from '../../components/BlogEditor';
 import DefaultFooter from '../../App/Footer';
+import utils from './HomepageUtils';
 
 export interface IBlog { created_at?: string; _id: string; title: string, body: string }
 
@@ -36,12 +37,15 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
 
   parentRef: React.RefObject<unknown>;
 
+  utils: typeof utils;
+
   constructor(props: HomepageProps) {
     super(props);
     this.parentRef = React.createRef();
     // eslint-disable-next-line react/no-unused-state
     this.state = { editBlog: { title: '', body: '', _id: '' }, referrer: '' };
     this.handleEditorChange = this.handleEditorChange.bind(this);
+    this.utils = utils;
   }
 
   async componentDidMount(): Promise<void> {
@@ -67,7 +71,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     const myId = params.get('id');
     if (myId) {
       const blog = document.getElementById(myId);
-      if (blog)blog.scrollIntoView();
+      /*istanbul ignore else*/if (blog)blog.scrollIntoView();
     }
   }
 
@@ -89,19 +93,6 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
         .set('Accept', 'application/json');
     } catch (e: any) { return `${e.message}`; }
     return this.finishAPI('delete', r);
-  }
-
-  async putAPI(): Promise<string> {
-    const { editBlog } = this.state;
-    const { auth } = this.props;
-    let r;
-    try {
-      r = await this.superagent.put(`${process.env.BackendUrl}/blog/${editBlog._id}`)
-        .set('Authorization', `Bearer ${auth.token}`)
-        .set('Accept', 'application/json')
-        .send({ body: editBlog.body, title: editBlog.title });
-    } catch (e: any) { return `${e.message}`; }
-    return this.finishAPI('update', r);
   }
 
   makeEditBlogSection(blog: IBlog): void { this.setState({ editBlog: blog }); }

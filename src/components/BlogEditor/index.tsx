@@ -45,7 +45,7 @@ const BlogEditor = ({
               id="update-blog-button"
               className="btn"
               disabled={false}
-              onClick={() => comp.putAPI()}
+              onClick={() => comp.utils.putAPI(comp)}
             >
               Update Blog
             </button>
