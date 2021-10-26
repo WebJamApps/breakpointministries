@@ -1,6 +1,6 @@
 {
   "name": "changeinchrist",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "changeinchrist.org",
   "main": "dist/index.html",
   "repository": {
@@ -9,7 +9,7 @@
   },
   "author": "https://github.com/orgs/WebJamApps/teams/handlersandkickers",
   "engines": {
-    "node": ">=16.2.0"
+    "node": ">=16.8.0"
   },
   "files": [
     "webpack.config.js",
@@ -158,7 +158,7 @@
     "react-hot-loader": "latest",
     "react-test-renderer": "^17.0.0",
     "redux-mock-store": "latest",
-    "stylelint": "^13.13.1",
+    "stylelint": "latest",
     "stylelint-config-standard": "^22.0.0",
     "stylelint-scss": "latest",
     "ts-jest": "latest",
