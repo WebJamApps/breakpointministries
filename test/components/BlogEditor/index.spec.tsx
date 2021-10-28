@@ -10,7 +10,7 @@ describe('Dashboard Container', () => {
     editBlog = { title: '', _id: '123', body: '' };
     compStub = {
       setState: jest.fn(),
-      putAPI: jest.fn(),
+      utils: { putAPI: jest.fn() },
     };
     wrapper = shallow<typeof BlogEditor>(<BlogEditor
       comp={compStub}
@@ -27,7 +27,7 @@ describe('Dashboard Container', () => {
     const myForm = wrapper.find('#update-blog123');
     const buttonDiv = myForm.find('#update-blog-button-div');
     buttonDiv.find('#update-blog-button').simulate('click');
-    expect(compStub.putAPI).toHaveBeenCalled();
+    expect(compStub.utils.putAPI).toHaveBeenCalled();
   });
   it('handles click for cancel-blog-update-button', () => {
     const myForm = wrapper.find('#update-blog123');

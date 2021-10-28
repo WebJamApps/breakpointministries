@@ -10,7 +10,7 @@ const fetchGet = async (view:
   const { dispatch } = view.props;
   try {
     res = await view.superagent.get(`${process.env.BackendUrl}/${route}`).set('Accept', 'application/json');
-  } catch (e) {
+  } catch (e: any) {
     if (route.includes('homePageContent')) {
       return dispatch({ type: `${reducer}`, data: { title: '', comments: '' } });
     }
