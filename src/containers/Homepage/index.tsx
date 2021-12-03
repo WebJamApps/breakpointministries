@@ -210,8 +210,8 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     const { targetRef, blogs } = this.props;
     return (
       <>
-        <div className="blog-container">
-          <div className="blog" ref={targetRef}>
+        <div className="blog-container" ref={targetRef}>
+          <div className="blog">
             {blogs && blogs.length > 0 ? blogs.map((blog) => (
               <div key={`blog_entry${blog._id}`} className="blog__entry">
                 <section className="blog__entry--body">
