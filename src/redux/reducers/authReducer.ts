@@ -5,8 +5,9 @@ const initialState = {
   token: '',
   user: {},
 };
-const reducer = (state = initialState,
-  action: { type: string; data?: { name?: string, email?: string; token?: string; }; error?: { message?: string; }; }): Record<string, unknown> => {
+const reducer = (
+  action: { type: string; data?: { name?: string, email?: string; token?: string; }; 
+    error?: { message?: string; }; }, state = initialState): Record<string, unknown> => {
   switch (action.type) {
     case 'GOT_TOKEN':
       // eslint-disable-next-line no-param-reassign

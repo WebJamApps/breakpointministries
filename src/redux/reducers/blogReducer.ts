@@ -20,7 +20,7 @@ const sortBlogs = (blogs:Iblog[]) => {
   return sortedBlogs;
 };
 
-const reducer = (state = initialState, action: { type: string; data: Iblog[]; }): { blogs:Iblog[] } => {
+const reducer = (action: { type: string; data: Iblog[]; }, state = initialState): { blogs:Iblog[] } => {
   switch (action.type) {
     case 'GOT_BLOGS':
       return {
