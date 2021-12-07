@@ -1,4 +1,4 @@
-import React, { RefObject } from 'react';
+import React from 'react';
 import {
   FacebookShareButton, FacebookIcon, LinkedinShareButton, LinkedinIcon, TwitterShareButton, TwitterIcon,
 } from 'react-share';
@@ -7,7 +7,6 @@ import Moment from 'react-moment';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import HtmlReactParser from 'html-react-parser';
-import { withResizeDetector } from 'react-resize-detector';
 import CommonUtils from '../../lib/commonUtils';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import BlogEditor from '../../components/BlogEditor';
@@ -17,9 +16,6 @@ import utils from './HomepageUtils';
 export interface IBlog { created_at?: string; _id: string; title: string, body: string }
 
 type HomepageProps = {
-  targetRef: RefObject<HTMLDivElement>;
-  width: number;
-  height: number;
   blogs: any[];
   auth: any;
 };
@@ -207,10 +203,10 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
   }
 
   makeBlogArticle(): JSX.Element {
-    const { targetRef, blogs } = this.props;
+    const { blogs } = this.props;
     return (
       <>
-        <div className="blog-container" ref={targetRef}>
+        <div className="blog-container">
           <div className="blog">
             {blogs && blogs.length > 0 ? blogs.map((blog) => (
               <div key={`blog_entry${blog._id}`} className="blog__entry">
@@ -247,4 +243,4 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
   }
 }
 
-export default connect(mapStoreToProps, null)(withResizeDetector(Homepage));
+export default connect(mapStoreToProps, null)(Homepage);
