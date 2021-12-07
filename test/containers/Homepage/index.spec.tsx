@@ -11,16 +11,12 @@ const testBlogs = [
   },
   { _id: 'badBlog' },
 ];
-const targetRef:any = {};
-const wrapper = shallow<Homepage>(<Homepage targetRef={targetRef} width={1000} height={800} blogs={testBlogs} auth={{ isAuthenticated: false }} />);
+const wrapper = shallow<Homepage>(<Homepage blogs={testBlogs} auth={{ isAuthenticated: false }} />);
 
 describe('Home', () => {
   it('renders snapshot correctly', () => { expect(wrapper).toMatchSnapshot(); });
   it('renders when authenticated and clicks button to deleteBlog', () => {
     const wrapper2 = shallow<Homepage>(<Homepage
-      targetRef={targetRef}
-      width={1000}
-      height={800}
       blogs={testBlogs}
       auth={{ isAuthenticated: true, user: { userType: 'good' } }}
     />);
@@ -30,9 +26,6 @@ describe('Home', () => {
   });
   it('renders when authenticated and clicks button to editBlog', () => {
     const wrapper2 = shallow<Homepage>(<Homepage
-      targetRef={targetRef}
-      width={1000}
-      height={800}
       blogs={testBlogs}
       auth={{ isAuthenticated: true, user: { userType: 'good' } }}
     />);
@@ -77,9 +70,6 @@ describe('Home', () => {
   });
   it('renders blogNotFound', () => {
     const wrapper3 = shallow<Homepage>(<Homepage
-      targetRef={targetRef}
-      width={1000}
-      height={800}
       blogs={[]}
       auth={{ isAuthenticated: false }}
     />);
@@ -87,9 +77,6 @@ describe('Home', () => {
   });
   it('renders when authenticated and clicks button to addBlog', () => {
     const wrapper2 = shallow<Homepage>(<Homepage
-      targetRef={targetRef}
-      width={1000}
-      height={800}
       blogs={testBlogs}
       auth={{ isAuthenticated: true, user: { userType: 'good' } }}
     />);
