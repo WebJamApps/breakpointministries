@@ -64,7 +64,11 @@
       }
 
       & > p:nth-child(1) > iframe {
-        width: auto;
+        @media only screen and (min-width: $bp-large) {
+          width: 56rem;
+        }
+
+        width: 100%;
       }
     }
 
