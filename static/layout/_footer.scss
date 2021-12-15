@@ -17,6 +17,10 @@
         grid-column: 1 / end;
     }
 
+    @media only screen and (max-width: $bp-mobile-s) {
+        padding: 0 1rem;
+    }
+
     &__poweredBy {
         margin: .25rem 0;
         font-weight: $font-weight-med;
