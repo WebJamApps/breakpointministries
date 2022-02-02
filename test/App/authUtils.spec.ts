@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import jwt from 'jsonwebtoken';
 import superagent from 'superagent';
@@ -33,7 +32,8 @@ describe('authUtils', () => {
     expect(res).toBe('bad');
   });
   it('sets the user', async () => {
-    jwt.verify = jest.fn(() => ('123'));
+    const verifyMock:any = jest.fn(() => ('123'));
+    jwt.verify = verifyMock;
     const returnBody: Record<string, unknown> = { body: { userType: commonUtils.getUserRoles()[0] } };
     const sa: any = superagent;
     sa.get = () => ({ set: () => ({ set: () => Promise.resolve(returnBody) }) });
@@ -41,7 +41,8 @@ describe('authUtils', () => {
     expect(result).toBe('user set');
   });
   it('does not set the user when userType is not correct', async () => {
-    jwt.verify = jest.fn(() => ('123'));
+    const verifyMock:any = jest.fn(() => ('123'));
+    jwt.verify = verifyMock;
     const returnBody: Record<string, unknown> = { body: { userType: 'bogus' } };
     const sa: any = superagent;
     sa.get = () => ({ set: () => ({ set: () => Promise.resolve(returnBody) }) });
@@ -66,7 +67,8 @@ describe('authUtils', () => {
     expect(result).toBe('user set');
   });
   it('catches fetch user error when sets the user', async () => {
-    jwt.verify = jest.fn(() => ('123'));
+    const verifyMock:any = jest.fn(() => ('123'));
+    jwt.verify = verifyMock;
     const sa: any = superagent;
     sa.get = jest.fn(() => ({ set: () => ({ set: () => Promise.reject(new Error('bad')) }) }));
     const res = await authUtils.setUser(vStub);
