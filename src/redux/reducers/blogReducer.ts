@@ -20,6 +20,7 @@ const sortBlogs = (blogs:Iblog[]) => {
   return sortedBlogs;
 };
 
+// eslint-disable-next-line @typescript-eslint/default-param-last
 const reducer = (state = initialState, action: { type: string; data: Iblog[]; }): { blogs:Iblog[] } => {  
   switch (action.type) {
     case 'GOT_BLOGS':
