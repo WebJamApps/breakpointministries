@@ -11,16 +11,12 @@ const testBlogs = [
   },
   { _id: 'badBlog' },
 ];
-const targetRef:any = {};
-const wrapper = shallow<Homepage>(<Homepage targetRef={targetRef} width={1000} height={800} blogs={testBlogs} auth={{ isAuthenticated: false }} />);
+const wrapper = shallow<Homepage>(<Homepage blogs={testBlogs} auth={{ isAuthenticated: false }} />);
 
 describe('Home', () => {
   it('renders snapshot correctly', () => { expect(wrapper).toMatchSnapshot(); });
   it('renders when authenticated and clicks button to deleteBlog', () => {
     const wrapper2 = shallow<Homepage>(<Homepage
-      targetRef={targetRef}
-      width={1000}
-      height={800}
       blogs={testBlogs}
       auth={{ isAuthenticated: true, user: { userType: 'good' } }}
     />);
@@ -30,9 +26,6 @@ describe('Home', () => {
   });
   it('renders when authenticated and clicks button to editBlog', () => {
     const wrapper2 = shallow<Homepage>(<Homepage
-      targetRef={targetRef}
-      width={1000}
-      height={800}
       blogs={testBlogs}
       auth={{ isAuthenticated: true, user: { userType: 'good' } }}
     />);
@@ -71,31 +64,12 @@ describe('Home', () => {
     wrapper.instance().handleEditorChange('howdy');
     expect(wrapper.instance().setState).toHaveBeenCalledWith({ editBlog: { body: 'howdy', _id: '', title: '' } });
   });
-  it('putAPI returns an error message', async () => {
-    const r = await wrapper.instance().putAPI();
-    expect(r.includes('Cannot read property')).toBe(true);
-  });
-  it('putAPI is successful', async () => {
-    const res:any = Promise.resolve(true);
-    const sSend: any = ({ send: () => res });
-    wrapper.instance().finishAPI = jest.fn();
-    const putR: any = () => ({
-      set: () => ({ set: () => sSend }),
-    });
-    wrapper.instance().superagent.put = putR;
-    wrapper.update();
-    await wrapper.instance().putAPI();
-    expect(wrapper.instance().finishAPI).toHaveBeenCalled();
-  });
   it('redirects to /admin', () => {
     wrapper.setState({ referrer: '/admin#test' });
     expect(wrapper.find(Redirect).length).toBe(1);
   });
   it('renders blogNotFound', () => {
     const wrapper3 = shallow<Homepage>(<Homepage
-      targetRef={targetRef}
-      width={1000}
-      height={800}
       blogs={[]}
       auth={{ isAuthenticated: false }}
     />);
@@ -103,9 +77,6 @@ describe('Home', () => {
   });
   it('renders when authenticated and clicks button to addBlog', () => {
     const wrapper2 = shallow<Homepage>(<Homepage
-      targetRef={targetRef}
-      width={1000}
-      height={800}
       blogs={testBlogs}
       auth={{ isAuthenticated: true, user: { userType: 'good' } }}
     />);

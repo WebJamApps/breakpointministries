@@ -1,4 +1,4 @@
-import React, { RefObject } from 'react';
+import React from 'react';
 import {
   FacebookShareButton, FacebookIcon, LinkedinShareButton, LinkedinIcon, TwitterShareButton, TwitterIcon,
 } from 'react-share';
@@ -6,19 +6,16 @@ import Superagent from 'superagent';
 import Moment from 'react-moment';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import ReactHtmlParser from 'react-html-parser';
-import { withResizeDetector } from 'react-resize-detector';
+import HtmlReactParser from 'html-react-parser';
 import CommonUtils from '../../lib/commonUtils';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import BlogEditor from '../../components/BlogEditor';
 import DefaultFooter from '../../App/Footer';
+import utils from './HomepageUtils';
 
 export interface IBlog { created_at?: string; _id: string; title: string, body: string }
 
 type HomepageProps = {
-  targetRef: RefObject<HTMLDivElement>;
-  width: number;
-  height: number;
   blogs: any[];
   auth: any;
 };
@@ -36,12 +33,15 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
 
   parentRef: React.RefObject<unknown>;
 
+  utils: typeof utils;
+
   constructor(props: HomepageProps) {
     super(props);
     this.parentRef = React.createRef();
     // eslint-disable-next-line react/no-unused-state
     this.state = { editBlog: { title: '', body: '', _id: '' }, referrer: '' };
     this.handleEditorChange = this.handleEditorChange.bind(this);
+    this.utils = utils;
   }
 
   async componentDidMount(): Promise<void> {
@@ -67,7 +67,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     const myId = params.get('id');
     if (myId) {
       const blog = document.getElementById(myId);
-      if (blog)blog.scrollIntoView();
+      /*istanbul ignore else*/if (blog)blog.scrollIntoView();
     }
   }
 
@@ -87,21 +87,8 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
       r = await this.superagent.delete(`${process.env.BackendUrl}/blog/${id}`)
         .set('Authorization', `Bearer ${auth.token}`)
         .set('Accept', 'application/json');
-    } catch (e) { return `${e.message}`; }
+    } catch (e: any) { return `${e.message}`; }
     return this.finishAPI('delete', r);
-  }
-
-  async putAPI(): Promise<string> {
-    const { editBlog } = this.state;
-    const { auth } = this.props;
-    let r;
-    try {
-      r = await this.superagent.put(`${process.env.BackendUrl}/blog/${editBlog._id}`)
-        .set('Authorization', `Bearer ${auth.token}`)
-        .set('Accept', 'application/json')
-        .send({ body: editBlog.body, title: editBlog.title });
-    } catch (e) { return `${e.message}`; }
-    return this.finishAPI('update', r);
   }
 
   makeEditBlogSection(blog: IBlog): void { this.setState({ editBlog: blog }); }
@@ -172,6 +159,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     return (
       <TagName
         url={URL}
+        style={{ paddingLeft: '.2rem' }}
       >
         <TagIcon round size={26} />
       </TagName>
@@ -180,21 +168,20 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
 
   socialMedia(id: string): JSX.Element {
     return (
-      <div style={{ display: 'grid' }}>
-        <ul className="blog__social-media">
-          {this.makeSocialMediaButton(FacebookShareButton, FacebookIcon, id)}
-          {this.makeSocialMediaButton(TwitterShareButton, TwitterIcon, id)}
-          {this.makeSocialMediaButton(LinkedinShareButton, LinkedinIcon, id)}
-          {/* <li key={`url${id}`}>
+      <ul className="blog__social-media">
+        {this.makeSocialMediaButton(FacebookShareButton, FacebookIcon, id)}
+        {this.makeSocialMediaButton(TwitterShareButton, TwitterIcon, id)}
+        {this.makeSocialMediaButton(LinkedinShareButton, LinkedinIcon, id)}
+        {/* <li key={`url${id}`}>
             <a key={`urll${id}`} href={`/?id=${id}`} className="blog__social-media--link copylink" aria-label="Permanent link to blog posting">
               <i key={id} className="fas fa-link" />
             </a>
-          </li> */}
-        </ul>
-      </div>
+        </li> */}
+      </ul>
     );
   }
 
+  // eslint-disable-next-line class-methods-use-this
   blogEnder(blog: IBlog): JSX.Element {
     let newTime;
     // eslint-disable-next-line prefer-destructuring
@@ -210,29 +197,29 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
               {newTime}
             </span>
           </div>
-          {this.socialMedia(blog._id)}
         </div>
       </div>
     );
   }
 
   makeBlogArticle(): JSX.Element {
-    const { targetRef, blogs } = this.props;
+    const { blogs } = this.props;
     return (
       <>
         <div className="blog-container">
-          <div className="blog" ref={targetRef}>
+          <div className="blog">
             {blogs && blogs.length > 0 ? blogs.map((blog) => (
               <div key={`blog_entry${blog._id}`} className="blog__entry">
                 <section className="blog__entry--body">
                   <h2 className="blog__entry--header" id={blog._id}>
-                    {ReactHtmlParser(blog && blog.title ? blog.title : '')}
+                    <span style={{ paddingRight: '10px' }}>{HtmlReactParser(blog && blog.title ? blog.title : '')}</span>
+                    {this.socialMedia(blog._id)}
                   </h2>
                   <div className="blog__entry--button-container">
                     {this.createBlogButtons(blog)}
                   </div>
                   <div className="blog__entry--paragraph">
-                    {ReactHtmlParser(blog && blog.body ? blog.body : '')}
+                    {HtmlReactParser(blog && blog.body ? blog.body : '')}
                   </div>
                   {this.blogEnder(blog)}
                 </section>
@@ -256,4 +243,4 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
   }
 }
 
-export default connect(mapStoreToProps, null)(withResizeDetector(Homepage));
+export default connect(mapStoreToProps, null)(Homepage);

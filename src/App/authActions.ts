@@ -14,14 +14,14 @@ export const authError = (e: Error): unknown => ({
 
 export const logout = (dispatch: Dispatch<unknown>): void => dispatch({ type: 'LOGOUT' });
 
-async function authFunc(body: GoogleBody, props: AppProps): Promise<string|Error> {
+async function authFunc(body: GoogleBody, props: AppProps): Promise<string | Error> {
   const { auth } = props;
   if (auth.isAuthenticated) return 'authenticated';
   let data;
   try {
     data = await superagent.post(`${process.env.BackendUrl}/user/auth/google`)
       .set({ Accept: 'application/json' }).send(body);
-  } catch (e) {
+  } catch (e: any) {
     props.dispatch(authError(e));
     return Promise.reject(e);
   }

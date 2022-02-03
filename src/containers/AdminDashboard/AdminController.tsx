@@ -30,7 +30,7 @@ class AdminController {
         .set('Authorization', `Bearer ${auth.token}`)
         .set('Accept', 'application/json')
         .send({ title, body: blogContent });
-    } catch (e) { return `${e.message}`; }
+    } catch (e: any) { return `${e.message}`; }
     if (r.status === 201) {
       window.location.assign('/');
       return `${r.status}`;
@@ -52,7 +52,7 @@ class AdminController {
     return (
       <Editor
         apiKey={process.env.TINY_KEY}
-        initialValue={blogContent}
+        value={blogContent}
         init={{
           height: 600,
           menubar: 'insert tools',

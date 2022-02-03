@@ -242,6 +242,19 @@
         width: 90% !important;
         justify-self: end;
 
+        &::after {
+          content: "";
+          display: inline-block;
+          height: 100%;
+          width: 100%;
+          border-radius: 2rem;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: -1;
+          transition: all .4s;
+        }
+
         &:hover {
           transform: translateY(-.2rem);
           box-shadow: $box-shadow-2;
@@ -255,19 +268,6 @@
         &:active {
           transform: translateY(-.1rem);
           box-shadow: $box-shadow-3;
-        }
-
-        &::after {
-          content: "";
-          display: inline-block;
-          height: 100%;
-          width: 100%;
-          border-radius: 2rem;
-          position: absolute;
-          top: 0;
-          left: 0;
-          z-index: -1;
-          transition: all .4s;
         }
       }
     }
@@ -355,7 +355,6 @@
 
 div.open:nth-child(1) {
   height: 100vh;
-  overflow-y: auto;
 }
 
 .menu-item {

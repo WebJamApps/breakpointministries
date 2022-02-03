@@ -32,7 +32,6 @@ body {
   }
 
   @media only screen and (max-width: $bp-med) {
-    overflow-y: auto;
     @include scrollbarOverride;
     grid-template-rows: min-content auto min-content;
     grid-template-columns: [full-start] minmax(2rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(2rem, 1fr) [full-end];
@@ -54,7 +53,7 @@ body {
     }
 
     @media only screen and (max-width: $bp-galaxy-fold) {
-      input#title {
+      input#title, input#blogtitle {
         width: 30.5rem !important;
       }
     }

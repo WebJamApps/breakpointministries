@@ -42,20 +42,21 @@ export class App extends Component<AppProps> {
     const { auth } = this.props;
     const userRoles: string[] = commonUtils.getUserRoles();
     return (
-      <div id="App" className="App">
-        <Router>
-          <AppTemplateDefault>
-            <Switch>
-              <Route exact path="/" component={DefaultHomepage} />
-              {auth.isAuthenticated && auth.user.userType && userRoles.indexOf(auth.user.userType) !== -1
-                ? <Route path="/admin" component={AdminDashboardDefault} /> : null}
-              <Route path="/_id" component={DefaultHomepage} />
-              <Route component={AppFourOhFour} />
-            </Switch>
-          </AppTemplateDefault>
-        </Router>
-      </div>
-
+      <React.StrictMode>
+        <div id="App" className="App">
+          <Router>
+            <AppTemplateDefault>
+              <Switch>
+                <Route exact path="/" component={DefaultHomepage} />
+                {auth.isAuthenticated && auth.user.userType && userRoles.indexOf(auth.user.userType) !== -1
+                  ? <Route path="/admin" component={AdminDashboardDefault} /> : null}
+                <Route path="/_id" component={DefaultHomepage} />
+                <Route component={AppFourOhFour} />
+              </Switch>
+            </AppTemplateDefault>
+          </Router>
+        </div>
+      </React.StrictMode>
     );
   }
 }
