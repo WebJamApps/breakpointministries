@@ -22,11 +22,11 @@ describe('blog reducer', () => {
     ];
     expect(reducer(undefined, { type: 'GOT_BLOGS', data: blogsArr }).blogs.length).toBe(4);
   });
-  it('empty object state is valid for sort', () => {
+  it('one object is valid for sort', () => {
     expect(reducer(undefined, { type: 'GOT_BLOGS', data: [{
-      _id: String(), title: '', body: '', created_at: '', updated_at: '',
+      _id: String(1111), title: '', body: '', created_at: '2021-04-26T11:04:45.120Z', updated_at: '',
     }] })).toEqual({ blogs: [{
-      _id: String(), title: '', body: '', created_at: '', updated_at: '',
+      _id: String(1111), title: '', body: '', created_at: '2021-04-26T11:04:45.120Z', updated_at: '',
     }] });
   });
 });
