@@ -22,4 +22,11 @@ describe('blog reducer', () => {
     ];
     expect(reducer(undefined, { type: 'GOT_BLOGS', data: blogsArr }).blogs.length).toBe(4);
   });
+  it('empty object state is valid for sort', () => {
+    expect(reducer(undefined, { type: 'GOT_BLOGS', data: [{
+      _id: String(), title: '', body: '', created_at: '', updated_at: '',
+    }] })).toEqual({ blogs: [{
+      _id: String(), title: '', body: '', created_at: '', updated_at: '',
+    }] });
+  });
 });
