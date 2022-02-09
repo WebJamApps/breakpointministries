@@ -29,4 +29,8 @@ describe('blog reducer', () => {
       _id: String(1111), title: '', body: '', created_at: '2021-04-26T11:04:45.120Z', updated_at: '',
     }] });
   });
+  it('empty object is valid for sort', () => {
+    expect(()=>reducer(undefined, { type: 'GOT_BLOGS', data: [] })).not.toThrowError();
+    expect(reducer(undefined, { type: 'GOT_BLOGS', data: [] })).toEqual({ blogs: [] });
+  });
 });

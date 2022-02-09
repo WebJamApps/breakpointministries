@@ -6,13 +6,17 @@ const initialState = {
 
 const sortBlogs = (blogs:Iblog[]) => {
   let sortedBlogs = blogs;
-  sortedBlogs = blogs.sort((a, b) => {
-    const aTime = new Date(a.created_at).getTime();
-    const bTime = new Date(b.created_at).getTime();
-    if (aTime > bTime) return -1;
-    if (aTime < bTime) return 1;
-    return 0;
-  });
+  try {
+    sortedBlogs = blogs.sort((a, b) => {
+      const aTime = new Date(a.created_at).getTime();
+      const bTime = new Date(b.created_at).getTime();
+      if (aTime > bTime) return -1;
+      if (aTime < bTime) return 1;
+      return 0;
+    });
+  } catch (error){
+    console.log(error);
+  }
   return sortedBlogs;
 };
 

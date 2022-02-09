@@ -6,7 +6,7 @@ import { renderMain } from '../src/main';
 describe('Main', () => {
   it('renders correctly', () => {
     act(() => {
-      renderMain();
+      expect(renderMain()).toMatchSnapshot();
     });
   });
 });
