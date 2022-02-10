@@ -8,6 +8,6 @@ describe('Main', () => {
     act(() => {
       const mainStack = renderer.create(<MainStack/>).toJSON();
       expect(mainStack).toMatchSnapshot();
-    })
+    });
   });
 });
