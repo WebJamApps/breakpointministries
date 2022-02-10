@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { act } from 'react-dom/test-utils';
-import { renderMain, MainStack } from '../src/main';
+import React from 'react';
+import { MainStack } from '../src/main';
+import renderer, { act } from 'react-test-renderer';
 
 describe('Main', () => {
   it('renders correctly', () => {
     act(() => {
-      renderMain();
-    });
-    expect(MainStack).toBeDefined();
+      const mainStack = renderer.create(<MainStack/>).toJSON();
+      expect(mainStack).toMatchSnapshot();
+    })
   });
 });
