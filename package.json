@@ -9,8 +9,8 @@
   },
   "author": "https://github.com/orgs/WebJamApps/teams/handlersandkickers",
   "engines": {
-    "node": ">=16.13.2 <17",
-    "npm": ">=8.4.0 <9"
+    "node": ">=16.14.0 <17",
+    "npm": ">=8.5.0 <9"
   },
   "files": [
     "webpack.config.js",
@@ -34,7 +34,7 @@
     "test": "npm run test:lint && npm run test:jest",
     "test:local": "npm run test:lint-fix && npm run test:jest && npm run cc",
     "test:jest": "jest --config jest.config.json --no-cache --runInBand",
-    "cleaninstall": "rm -rf yarn.lock && rm -rf package-lock.json && rm -rf node_modules && npm cache clean --force && npm install",
+    "cleaninstall": "rm -rf yarn.lock && rm -rf package-lock.json && rm -rf node_modules && npm install -g npm@latest && npm cache clean --force && npm install && npm audit fix --force",
     "postinstall": "npm run build:prod"
   },
   "dependencies": {

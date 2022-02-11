@@ -1,4 +1,4 @@
-import reducer from '../../src/redux/reducers/blogReducer';
+import reducer, { sortBlogs } from '../../src/redux/reducers/blogReducer';
 
 describe('blog reducer', () => {
   it('returns the initial state', () => {
@@ -32,5 +32,8 @@ describe('blog reducer', () => {
   it('empty object is valid for sort', () => {
     expect(()=>reducer(undefined, { type: 'GOT_BLOGS', data: [] })).not.toThrowError();
     expect(reducer(undefined, { type: 'GOT_BLOGS', data: [] })).toEqual({ blogs: [] });
+  });
+  it('sortBlogs when blogs is undefined', ()=> {
+    expect(sortBlogs(undefined).length).toBe(0);
   });
 });
