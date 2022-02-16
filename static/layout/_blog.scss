@@ -64,7 +64,7 @@
       }
 
       & > p:nth-child(1) > iframe {
-        @media only screen and (min-width: $bp-large) {
+        @media only screen and (min-width: calc($bp-large + 1px)) {
           width: 56rem;
         }
 
