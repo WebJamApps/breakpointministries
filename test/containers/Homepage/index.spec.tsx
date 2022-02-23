@@ -31,7 +31,7 @@ describe('Home', () => {
     />);
     const testBlog:any = { _id: '123' };
     const editButton = wrapper2.instance().editBlogButton(testBlog);
-    editButton.props.onClick();
+    editButton.props.onOpen();
     expect(wrapper2.contains(<BlogEditor editBlog={testBlog} comp={wrapper2.instance()} />)).toBe(true);
   });
   it('deleteBlog successfully', async () => {
