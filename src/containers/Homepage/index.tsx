@@ -12,6 +12,7 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 import BlogEditor from '../../components/BlogEditor';
 import DefaultFooter from '../../App/Footer';
 import utils from './HomepageUtils';
+import { Tooltip } from '@mui/material';
 
 export interface IBlog { created_at?: string; _id: string; title: string, body: string }
 
@@ -95,19 +96,21 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
 
   editBlogButton(blog: IBlog): JSX.Element {
     return (
+      <Tooltip title={`edit Blog ${blog._id}`} onOpen={() => this.makeEditBlogSection(blog)}>
       <button
         id={`editBlogButton${blog._id}`}
         style={{ width: '50px' }}
         type="button"
-        onClick={() => this.makeEditBlogSection(blog)}
       >
         Edit
       </button>
+      </Tooltip>
     );
   }
 
   deleteBlogButton(id: string): JSX.Element {
     return (
+      <Tooltip title={`delete Blog ${id}`}>
       <button
         id={`deleteBlogButton${id}`}
         style={{ width: '50px' }}
@@ -116,14 +119,17 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
       >
         Delete
       </button>
+      </Tooltip>
     );
   }
 
   addBlogButton(): JSX.Element {
     return (
+      <Tooltip title='add Blog'>
       <button type="button" id="addBlogButton" onClick={() => this.setState({ referrer: '/admin#admin-top' })}>
         <i className="fa fa-plus" />
       </button>
+      </Tooltip>
     );
   }
 
@@ -169,9 +175,15 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
   socialMedia(id: string): JSX.Element {
     return (
       <ul className="blog__social-media">
+        <Tooltip title = 'Share on Facebook'>
         {this.makeSocialMediaButton(FacebookShareButton, FacebookIcon, id)}
+        </Tooltip>
+        <Tooltip title = 'Share on Twitter'>
         {this.makeSocialMediaButton(TwitterShareButton, TwitterIcon, id)}
+        </Tooltip>
+        <Tooltip title = 'Share on Linkedin'>
         {this.makeSocialMediaButton(LinkedinShareButton, LinkedinIcon, id)}
+        </Tooltip>
         {/* <li key={`url${id}`}>
             <a key={`urll${id}`} href={`/?id=${id}`} className="blog__social-media--link copylink" aria-label="Permanent link to blog posting">
               <i key={id} className="fas fa-link" />

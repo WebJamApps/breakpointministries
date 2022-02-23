@@ -38,6 +38,9 @@
     "postinstall": "npm run build:prod"
   },
   "dependencies": {
+    "@emotion/react": "^11.8.1",
+    "@emotion/styled": "^11.8.1",
+    "@mui/material": "^5.4.2",
     "@popperjs/core": "^2.9.2",
     "@tinymce/tinymce-react": "^3.12.6",
     "@types/copy-webpack-plugin": "latest",
