@@ -96,7 +96,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
 
   editBlogButton(blog: IBlog): JSX.Element {
     return (
-      <Tooltip title={`edit Blog ${blog._id}`} onOpen={() => this.makeEditBlogSection(blog)}>
+      <Tooltip title={`Edit Blog ${blog._id}`} onOpen={() => this.makeEditBlogSection(blog)}>
       <button
         id={`editBlogButton${blog._id}`}
         style={{ width: '50px' }}
@@ -110,7 +110,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
 
   deleteBlogButton(id: string): JSX.Element {
     return (
-      <Tooltip title={`delete Blog ${id}`}>
+      <Tooltip title={`Delete Blog ${id}`}>
       <button
         id={`deleteBlogButton${id}`}
         style={{ width: '50px' }}
@@ -125,7 +125,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
 
   addBlogButton(): JSX.Element {
     return (
-      <Tooltip title='add Blog'>
+      <Tooltip title='Add Blog'>
       <button type="button" id="addBlogButton" onClick={() => this.setState({ referrer: '/admin#admin-top' })}>
         <i className="fa fa-plus" />
       </button>
@@ -181,7 +181,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
         <Tooltip title = 'Share on Twitter'>
         {this.makeSocialMediaButton(TwitterShareButton, TwitterIcon, id)}
         </Tooltip>
-        <Tooltip title = 'Share on Linkedin'>
+        <Tooltip title = 'Share on LinkedIn'>
         {this.makeSocialMediaButton(LinkedinShareButton, LinkedinIcon, id)}
         </Tooltip>
         {/* <li key={`url${id}`}>

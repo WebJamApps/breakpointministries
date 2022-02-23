@@ -79,7 +79,7 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
     const cId = process.env.GoogleClientId || /* istanbul ignore next */'';
     if (type === 'login') {
       return (
-        <Tooltip key={index} title={'Login with your Google'} >
+        <Tooltip key={index} title={'Login with your Google account'} >
         <div key={index} className="menu-item googleLogin">
           <GoogleLogin
             responseType="code"
@@ -98,13 +98,11 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
         </Tooltip>
       );
     } return (
-      <Tooltip key={index} title={'Logout with your Google'} >
       <div key={index} className="menu-item googleLogout">
         <GoogleLogout className="googleLogoutButton" clientId={cId} icon={false} buttonText="Logout" onLogoutSuccess={this.responseGoogleLogout}>
           <i className="fab fa-google"> Logout</i>
         </GoogleLogout>
       </div>
-      </Tooltip>
     );
   }
 
