@@ -1,6 +1,6 @@
 {
   "name": "changeinchrist",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "changeinchrist.org",
   "main": "dist/index.html",
   "repository": {
@@ -9,8 +9,8 @@
   },
   "author": "https://github.com/orgs/WebJamApps/teams/handlersandkickers",
   "engines": {
-    "node": ">=16.14.0 <17",
-    "npm": ">=8.5.0 <9"
+    "node": ">=18.0.0 <19",
+    "npm": ">=8.7.0 <9"
   },
   "files": [
     "webpack.config.js",
@@ -43,14 +43,12 @@
     "@mui/material": "^5.4.2",
     "@popperjs/core": "^2.9.2",
     "@tinymce/tinymce-react": "^3.12.6",
-    "@types/copy-webpack-plugin": "latest",
     "@types/core-js": "^2.5.4",
     "@types/domutils": "^1.7.2",
     "@types/ejs": "^3.0.1",
     "@types/enzyme": "^3.10.5",
     "@types/html-webpack-plugin": "latest",
     "@types/jest": "^27.0.0",
-    "@types/mini-css-extract-plugin": "latest",
     "@types/node": "latest",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.2",
@@ -61,7 +59,6 @@
     "@types/sanitize-html": "^1.22.0",
     "@types/socketcluster-client": "^15.1.2",
     "@types/superagent": "^4.1.7",
-    "@types/terser-webpack-plugin": "latest",
     "@types/webpack-bundle-analyzer": "latest",
     "@types/webpack-env": "latest",
     "bootstrap": "latest",
@@ -119,7 +116,7 @@
   },
   "devDependencies": {
     "@testing-library/jest-dom": "latest",
-    "@testing-library/react": "latest",
+    "@testing-library/react": "^12.1.5",
     "@types/react-test-renderer": "latest",
     "@types/redux-mock-store": "latest",
     "@typescript-eslint/eslint-plugin": "latest",

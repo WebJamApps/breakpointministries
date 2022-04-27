@@ -135,7 +135,7 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
     const iB = `btn ${cN}__form--btn`;
     const pH = `${h2Text}...`;
     let toolT = cN;
-    if (toolT == 'search'){
+    if (toolT == 'search') {
       toolT = 'Search for Blog';
     } else {
       toolT = 'Subscribe to Blog';
