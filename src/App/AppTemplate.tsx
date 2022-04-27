@@ -8,6 +8,7 @@ import authUtils from './authUtils';
 import mapStoreToProps, { Auth } from '../redux/mapStoreToProps';
 import menuUtils from './menuUtils';
 import menuItems, { MenuItem } from './menuItems';
+import { Tooltip } from '@mui/material';
 
 interface AppMainProps extends RouteComponentProps {
   children: React.ReactNode;
@@ -78,6 +79,7 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
     const cId = process.env.GoogleClientId || /* istanbul ignore next */'';
     if (type === 'login') {
       return (
+        <Tooltip key={index} title={'Login with your Google account'} >
         <div key={index} className="menu-item googleLogin">
           <GoogleLogin
             responseType="code"
@@ -93,6 +95,7 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
             <i className="fab fa-google"> Login</i>
           </GoogleLogin>
         </div>
+        </Tooltip>
       );
     } return (
       <div key={index} className="menu-item googleLogout">
@@ -131,7 +134,14 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
     const icN = `${cN}__form--input`;
     const iB = `btn ${cN}__form--btn`;
     const pH = `${h2Text}...`;
+    let toolT = cN;
+    if (toolT == 'search') {
+      toolT = 'Search for Blog';
+    } else {
+      toolT = 'Subscribe to Blog';
+    }
     return (
+      <Tooltip title={toolT}>
       <div className={cN}>
         <h2 className={h2cN}>{h2Text}</h2>
         <form className={fcN} action="get">
@@ -139,6 +149,7 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
           <input className={iB} type="submit" value={h2Text} />
         </form>
       </div>
+      </Tooltip>
     );
   }
 
