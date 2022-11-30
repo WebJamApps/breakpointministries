@@ -97,7 +97,7 @@
     "sass": "^1.35.2",
     "sass-loader": "latest",
     "slick-carousel": "latest",
-    "snyk": "^1.667.0",
+    "snyk": "^1.1064.0",
     "socketcluster-client": "^16.0.3",
     "source-map-loader": "latest",
     "stream-browserify": "^3.0.0",
